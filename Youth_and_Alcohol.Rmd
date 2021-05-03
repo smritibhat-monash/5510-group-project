@@ -11,8 +11,54 @@ library(tidyverse)
 ```
 
 ```{r}
-BAC_limits_raw <- read_csv("data/Legal blood alcohol concentration (BAC) limits for youngnovice drivers.csv")
+BAC_limits_raw <- read_csv("data/Legal_blood_alcohol_concentration_(BAC)_limits_for_youngnovice_drivers.csv")
+BAC_limits_tidy <- BAC_limits_raw[-1,] %>% 
+  rename("country" = X1, 
+         "year" = X2, 
+         "BAC_limits" = 'Legal blood alcohol concentration (BAC) limits') %>% 
+  filter(!(BAC_limits == "."))
 ```
 
+```{r}
+Age_limits_raw <- read_csv("data/Age_limits_Alcohol_servicesales.csv")
+Age_limits_tidy <- Age_limits_raw[-1,] %>% 
+   rename("country" = X1, 
+          "year" = X2, 
+          "sale_beer" = 'Age limits off-premise sales',
+          "sale_wine" = 'Age limits off-premise sales_1',
+          "sale_spirits" = 'Age limits off-premise sales_2',
+          "service_beer" = 'Age limits on-premise service',
+          "service_wine" = 'Age limits on-premise service_1',
+          "service_spirits" = 'Age limits on-premise service_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "type", values_to = "limit")
+```
 
+```{r}
+current_drinkers_15_19_raw <- read_csv("data/15-19_years_old_current_drinkers_(%).csv")
+current_drinkers_15_19_tidy <- current_drinkers_15_19_raw[-1,] %>% 
+  rename("country" = X1, 
+          "year" = X2, 
+          "All" = '15-19 years old, current drinkers (%)',
+          "Male" = '15-19 years old, current drinkers (%)_1',
+          "Female" = '15-19 years old, current drinkers (%)_2') %>% 
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage") %>% 
+  separate(col = percentage, into = c("drinker_percentage", "range"), " ")
+current_drinkers_15_19_tidy <- current_drinkers_15_19_tidy[,-5]
+
+         
+```
+
+```{r}
+heavy_drinkers_15_19_raw <- read_csv("data/15-19_years_old_heavy_episodic_drinking_drinkers_only_past_30_days.csv")
+heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_raw[-1,] %>% 
+  rename("country" = X1, 
+          "year" = X2, 
+          "All" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)',
+          "Male" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)_1',
+          "Female" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)_2') %>% 
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage") %>% 
+  separate(col = percentage, into = c("heavy_drinker_percentage", "range"), " ")
+heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_tidy[,-5]
+  
+```
 
