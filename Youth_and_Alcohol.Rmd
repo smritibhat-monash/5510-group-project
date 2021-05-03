@@ -1,0 +1,18 @@
+---
+title: "Youth and Alcohol"
+author: "Kexin Xu"
+date: "2021/5/3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+BAC_limits_raw <- read_csv("data/Legal blood alcohol concentration (BAC) limits for youngnovice drivers.csv")
+```
+
+
+
