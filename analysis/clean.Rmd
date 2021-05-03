@@ -14,7 +14,26 @@ library(unglue)
 
 # Research Question No. 4
 
-What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?
+**What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?**
+
+_Researcher: Smriti Vinayak Bhat_
+
+## Description of Data
+
+There are multiple data sets downloaded from the GISAH tool of WHO.
+
+It is split into two main parts:
+
+1. Consumption pattern data -
+  - This data has been downloaded from Levels of Consumption^[https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH] section of the GISAH tool.
+  - This conists of alcohol per capita consumption from 2010 onward by country, type of beverage and alcohol, recorded per capita (15+ years) consumption (in litres of pure alcohol).
+
+2. Alcohol policy timeline database -
+  - This data contains Alcohol Policy Timeline Database of WHO African Region^[https://apps.who.int/gho/data/node.gisah.A1700?lang=en&showonly=GISAH], WHO Region of the Americas^[https://apps.who.int/gho/data/node.gisah.A1600?lang=en&showonly=GISAH], WHO European Region^[https://apps.who.int/gho/data/node.gisah.A1500?lang=en&showonly=GISAH], WHO Eastern Mediterranean Region^[https://apps.who.int/gho/data/node.gisah.A1800?lang=en&showonly=GISAH], WHO South-East Asian Region^[https://apps.who.int/gho/data/node.gisah.A2000?lang=en&showonly=GISAH] and WHO Western Pacific Region^[https://apps.who.int/gho/data/node.gisah.A1900?lang=en&showonly=GISAH].
+  - It contains the country, action area and policy changes done in each country according to year.
+  
+**Both these sets of data are being used to track the trend from 2010-2016**
+
 
 ## Reading in Data
 
@@ -104,7 +123,9 @@ consumption_pattern <- read_csv("../data/consumption_pattern.csv")
 
 ### Cleaning Data Pertaining to Policy Responses
 
-The below code filters data for Africa. 
+Since the research question aims to only look at changes due to policy responses, in this step the code will be written to remove all values where no policy response has been done or the data is not available.
+
+The below code cleans data for Africa. 
 ```{r}
 africa_2010 <- africa_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -135,7 +156,7 @@ africa_2016 <- africa_2016 %>%
   na.omit()
 ```
 
-The below code filters data for the Americas. 
+The below code cleans data for the Americas. 
 ```{r}
 americas_2010 <- americas_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -166,7 +187,7 @@ americas_2016 <- americas_2016 %>%
   na.omit()
 ```
 
-The below code filters data for Asia. 
+The below code cleans data for Asia. 
 ```{r}
 asia_2010 <- asia_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -197,7 +218,7 @@ asia_2016 <- asia_2016 %>%
   na.omit()
 ```
 
-The below code filters data for Europe. 
+The below code cleans data for Europe. 
 ```{r}
 europe_2010 <- europe_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -235,7 +256,7 @@ europe_2016 <- europe_2016 %>%
   na.omit()
 ```
 
-The below code filters data for Mediterranean. 
+The below code cleans data for Mediterranean. 
 ```{r}
 med_2010 <- med_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -266,7 +287,7 @@ med_2016 <- med_2016 %>%
   na.omit()
 ```
 
-The below code filters data for the Pacific region. 
+The below code cleans data for the Pacific region. 
 ```{r}
 pacific_2010 <- pacific_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -296,3 +317,120 @@ pacific_2016 <- pacific_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
+
+The below code chunk combines the data from all countries year wise.
+
+```{r}
+policy_pattern_africa <- full_join(africa_2010,africa_2011,by=c("Country","Action Area")) %>%
+  full_join(africa_2012,by=c("Country","Action Area")) %>%
+  full_join(africa_2013,by=c("Country","Action Area")) %>%
+  full_join(africa_2014,by=c("Country","Action Area")) %>%
+  full_join(africa_2015,by=c("Country","Action Area")) %>%
+  full_join(africa_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_americas <- full_join(americas_2010,americas_2011,by=c("Country","Action Area")) %>%
+  full_join(americas_2012,by=c("Country","Action Area")) %>%
+  full_join(americas_2013,by=c("Country","Action Area")) %>%
+  full_join(americas_2014,by=c("Country","Action Area")) %>%
+  full_join(americas_2015,by=c("Country","Action Area")) %>%
+  full_join(americas_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_asia <- full_join(asia_2010,asia_2011,by=c("Country","Action Area")) %>%
+  full_join(asia_2012,by=c("Country","Action Area")) %>%
+  full_join(asia_2013,by=c("Country","Action Area")) %>%
+  full_join(asia_2014,by=c("Country","Action Area")) %>%
+  full_join(asia_2015,by=c("Country","Action Area")) %>%
+  full_join(asia_2016,by=c("Country","Action Area")) %>%
+  arrange(Country)
+
+policy_pattern_europe <- full_join(europe_2010,europe_2011,by=c("Country","Action Area")) %>%
+  full_join(europe_2012,by=c("Country","Action Area")) %>%
+  full_join(europe_2013,by=c("Country","Action Area")) %>%
+  full_join(europe_2014,by=c("Country","Action Area")) %>%
+  full_join(europe_2015,by=c("Country","Action Area")) %>%
+  full_join(europe_2016,by=c("Country","Action Area")) %>%
+  arrange(Country)
+
+policy_pattern_med <- full_join(med_2010,med_2011,by=c("Country","Action Area")) %>%
+  full_join(med_2012,by=c("Country","Action Area")) %>%
+  full_join(med_2013,by=c("Country","Action Area")) %>%
+  full_join(med_2014,by=c("Country","Action Area")) %>%
+  full_join(med_2015,by=c("Country","Action Area")) %>%
+  full_join(med_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_pacific <- full_join(pacific_2010,pacific_2011,by=c("Country","Action Area")) %>%
+  full_join(pacific_2012,by=c("Country","Action Area")) %>%
+  full_join(pacific_2013,by=c("Country","Action Area")) %>%
+  full_join(pacific_2014,by=c("Country","Action Area")) %>%
+  full_join(pacific_2015,by=c("Country","Action Area")) %>%
+  full_join(pacific_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+```
+
+The below code binds all the countries' policy pattern together.
+
+```{r}
+policy_pattern <- rbind(policy_pattern_africa,
+                        policy_pattern_americas,
+                        policy_pattern_asia,
+                        policy_pattern_europe,
+                        policy_pattern_med,
+                        policy_pattern_pacific) %>%
+  arrange(Country)
+```
+
+
+### Cleaning the Data Pertaining to Trend of Consumption of Alcohol
+
+1. The code renames the columns for convenience.
+
+```{r}
+
+consumption_pattern <- consumption_pattern %>%
+  rename(Country = X1,
+         `Beverage Types` = X3, 
+         "2018" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "2017" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "2016" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "2015" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "2014" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "2013" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "2012" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "2011" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "2010" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`)
+```
+
+2. The code chunk drops the variables X2 and 2018 as we don't need data source or the trend past 2017. Since our final set of policy data dates back to 2016, we need to retain the figures of 2017 to see their effect.
+
+```{r}
+consumption_pattern <- consumption_pattern %>%
+  select(-c(X2, "2018"))
+```
+
+3. The code chunk drops the first row as it is a repeat of the heading.
+
+```{r}
+consumption_pattern <- consumption_pattern %>%
+  filter(!str_detect(Country,"Country"))
+```
+
+4. The code chunk removes countries for whom policy data is not present.
+
+```{r}
+consumption_pattern <- semi_join(consumption_pattern,
+                                 policy_pattern,
+                                 by="Country")
+```
+
+## Storing Cleaned Data Set
+
+Saving both cleaned sets of data back into csv:
+
+```{r}
+write_csv(policy_pattern,"../clean_data/policy_pattern.csv")
+write_csv(consumption_pattern,"../clean_data/consumption_pattern.csv")
+```
+
