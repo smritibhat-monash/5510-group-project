@@ -6,9 +6,10 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 library(dplyr)
 library(tidyverse)
+library(unglue)
 ```
 
 # Research Question No. 4
@@ -17,10 +18,82 @@ What are the recurring patterns of policy responses across different countries i
 
 ## Reading the data
 
+### Reading in data of policy responses worldwide
+
+```{r}
+file_path <- ("../data/{geo}/")
+csv_africa_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("africa"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_asia_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("asia"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_americas_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("americas"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_europe_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("europe"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_med_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("med"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_pacific_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("pacific"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+
+africa_2010 <- read_csv(csv_africa_paths[1])
+africa_2011 <- read_csv(csv_africa_paths[2])
+africa_2012 <- read_csv(csv_africa_paths[3])
+africa_2013 <- read_csv(csv_africa_paths[4])
+africa_2014 <- read_csv(csv_africa_paths[5])
+africa_2015 <- read_csv(csv_africa_paths[6])
+africa_2016 <- read_csv(csv_africa_paths[7])
+
+americas_2010 <- read_csv(csv_americas_paths[1])
+americas_2011 <- read_csv(csv_americas_paths[2])
+americas_2012 <- read_csv(csv_americas_paths[3])
+americas_2013 <- read_csv(csv_americas_paths[4])
+americas_2014 <- read_csv(csv_americas_paths[5])
+americas_2015 <- read_csv(csv_americas_paths[6])
+americas_2016 <- read_csv(csv_americas_paths[7])
+
+europe_2010 <- read_csv(csv_europe_paths[1])
+europe_2011 <- read_csv(csv_europe_paths[2])
+europe_2012 <- read_csv(csv_europe_paths[3])
+europe_2013 <- read_csv(csv_europe_paths[4])
+europe_2014 <- read_csv(csv_europe_paths[5])
+europe_2015 <- read_csv(csv_europe_paths[6])
+europe_2016 <- read_csv(csv_europe_paths[7])
+
+asia_2010 <- read_csv(csv_asia_paths[1])
+asia_2011 <- read_csv(csv_asia_paths[2])
+asia_2012 <- read_csv(csv_asia_paths[3])
+asia_2013 <- read_csv(csv_asia_paths[4])
+asia_2014 <- read_csv(csv_asia_paths[5])
+asia_2015 <- read_csv(csv_asia_paths[6])
+asia_2016 <- read_csv(csv_asia_paths[7])
+
+med_2010 <- read_csv(csv_med_paths[1])
+med_2011 <- read_csv(csv_med_paths[2])
+med_2012 <- read_csv(csv_med_paths[3])
+med_2013 <- read_csv(csv_med_paths[4])
+med_2014 <- read_csv(csv_med_paths[5])
+med_2015 <- read_csv(csv_med_paths[6])
+med_2016 <- read_csv(csv_med_paths[7])
+
+pacific_2010 <- read_csv(csv_pacific_paths[1])
+pacific_2011 <- read_csv(csv_pacific_paths[2])
+pacific_2012 <- read_csv(csv_pacific_paths[3])
+pacific_2013 <- read_csv(csv_pacific_paths[4])
+pacific_2014 <- read_csv(csv_pacific_paths[5])
+pacific_2015 <- read_csv(csv_pacific_paths[6])
+pacific_2016 <- read_csv(csv_pacific_paths[7])
+```
+
+### Reading in data required to check consumption of alcohol
+
 ```{r}
 consumption_pattern <- read_csv("../data/consumption_pattern.csv")
-
-
 ```
 
 ## Cleaning the data
