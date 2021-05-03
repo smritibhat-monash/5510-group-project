@@ -104,4 +104,195 @@ consumption_pattern <- read_csv("../data/consumption_pattern.csv")
 
 ### Cleaning Data Pertaining to Policy Responses
 
+The below code filters data for Africa. 
+```{r}
+africa_2010 <- africa_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
 
+africa_2011 <- africa_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+africa_2012 <- africa_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+africa_2013 <- africa_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+africa_2014 <- africa_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+africa_2015 <- africa_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+africa_2016 <- africa_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code filters data for the Americas. 
+```{r}
+americas_2010 <- americas_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+americas_2011 <- americas_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+americas_2012 <- americas_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+americas_2013 <- americas_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+americas_2014 <- americas_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+americas_2015 <- americas_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+americas_2016 <- americas_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code filters data for Asia. 
+```{r}
+asia_2010 <- asia_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+asia_2011 <- asia_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+asia_2012 <- asia_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+asia_2013 <- asia_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+asia_2014 <- asia_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+asia_2015 <- asia_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+asia_2016 <- asia_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code filters data for Europe. 
+```{r}
+europe_2010 <- europe_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2011 <- europe_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2012 <- europe_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2013 <- europe_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2014 <- europe_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2015 <- europe_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2016 <- europe_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+```
+
+The below code filters data for Mediterranean. 
+```{r}
+med_2010 <- med_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+med_2011 <- med_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+med_2012 <- med_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+med_2013 <- med_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+med_2014 <- med_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+med_2015 <- med_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+med_2016 <- med_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code filters data for the Pacific region. 
+```{r}
+pacific_2010 <- pacific_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+pacific_2011 <- pacific_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+pacific_2012 <- pacific_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+pacific_2013 <- pacific_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+pacific_2014 <- pacific_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+pacific_2015 <- pacific_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+pacific_2016 <- pacific_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
