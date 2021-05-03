@@ -1,0 +1,28 @@
+---
+title: "Cleaning the Data"
+author: "Hayaku"
+date: "03/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
+```
+
+# Research Question No. 4
+
+What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?
+
+## Reading the data
+
+```{r}
+consumption_pattern <- read_csv("../data/consumption_pattern.csv")
+
+
+```
+
+## Cleaning the data
+
+

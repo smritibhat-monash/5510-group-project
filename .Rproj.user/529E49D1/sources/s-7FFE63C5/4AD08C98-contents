@@ -1,0 +1,22 @@
+---
+title: "Clean Data"
+author: "Shaine"
+date: "03/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+cancer_alc <- read_csv("data/cancer_alcohol.csv")
+```
+
+```{r}
+cancer_alc <- cancer_alc %>%
+  rename(Country = X1)
+```
+
