@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
+##Q5
+
 ```{r}
 BAC_limits_raw <- read_csv("data/Legal_blood_alcohol_concentration_(BAC)_limits_for_youngnovice_drivers.csv")
 BAC_limits_tidy <- BAC_limits_raw[-1,] %>% 
@@ -60,5 +62,50 @@ heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_raw[-1,] %>%
   separate(col = percentage, into = c("heavy_drinker_percentage", "range"), " ")
 heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_tidy[,-5]
   
+```
+
+##Q6
+
+```{r}
+at_least_once_a_week_raw <- read_csv("data/15_years_old_any_alcoholic_beverage_at_least_once_a_week_(%).csv")
+at_least_once_a_week_tidy <- at_least_once_a_week_15_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "Male" = '15-years old, any alcoholic beverage consumed at least once a week, (%)',
+          "Female" = '15-years old, any alcoholic beverage consumed at least once a week, (%)_1') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+first_drink_earlier_than_13_raw <- read_csv("data/15_years_old_first_drink_at_13_years_or_younger_(%).csv")
+first_drink_earlier_than_13_tidy <- first_drink_earlier_than_13_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old first drink at 13 years or younger, (%)',
+          "Male" = '15-years old first drink at 13 years or younger, (%)_1',
+          "Female" = '15-years old first drink at 13 years or younger, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+any_alcohol_in_past_12_months_raw <- read_csv("data/15_years_old_any_alcoholic_beverage_in_past_12_months_(%).csv")
+any_alcohol_in_past_12_months_tidy <- any_alcohol_in_past_12_months_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old any alcoholic beverage consumed in past 12 months, (%)',
+          "Male" = '15-years old any alcoholic beverage consumed in past 12 months, (%)_1',
+          "Female" = '15-years old any alcoholic beverage consumed in past 12 months, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+any_alcohol_in_past_30_days_raw <- read_csv("data/15_years_old_any_alcoholic_beverage_in_past_30_days_(%).csv")
+any_alcohol_in_past_30_days_tidy <- any_alcohol_in_past_30_days_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old any alcoholic beverage consumed in past 30 days, (%)',
+          "Male" = '15-years old any alcoholic beverage consumed in past 30 days, (%)_1',
+          "Female" = '15-years old any alcoholic beverage consumed in past 30 days, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
 ```
 
