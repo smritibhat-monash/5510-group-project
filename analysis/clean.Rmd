@@ -16,9 +16,11 @@ library(unglue)
 
 What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?
 
-## Reading the data
+## Reading in Data
 
-### Reading in data of policy responses worldwide
+### Reading in Data of Policy Responses Worldwide
+
+This section contains the code to read in data of policy responses to the problem of alcoholism from different parts of the world for the years 2010-2016.
 
 ```{r}
 file_path <- ("../data/{geo}/")
@@ -90,12 +92,16 @@ pacific_2015 <- read_csv(csv_pacific_paths[6])
 pacific_2016 <- read_csv(csv_pacific_paths[7])
 ```
 
-### Reading in data required to check consumption of alcohol
+### Reading in Data Required to Check Consumption of Alcohol
+
+This section contains the code to read in data which will help track worldwide consumption of alcohol
 
 ```{r}
 consumption_pattern <- read_csv("../data/consumption_pattern.csv")
 ```
 
 ## Cleaning the data
+
+### Cleaning Data Pertaining to Policy Responses
 
 
