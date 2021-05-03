@@ -1,0 +1,109 @@
+---
+title: "Clean Data"
+author: "Shaine"
+date: "03/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+# Research Question No. 3
+Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?
+
+## Reading the data
+
+```{r}
+cancer_alcohol <- read_csv("data/cancer_alcohol.csv")
+liver_alcohol <- read_csv("data/liver_alcohol.csv")
+traffic_alcohol <- read_csv("data/traffic_alcohol.csv")
+cancer_death <- read_csv("data/cancer_death.csv")
+liver_death <- read_csv("data/liver_death.csv")
+traffic_death <- read_csv("data/traffic_death.csv")
+```
+
+
+## Cleaning the data
+
+### Alcohol-attrivuted deaths
+
+```{r clean-cancer-alcohol}
+cancer_a <- tail(cancer_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), cancer deaths`,
+         female = `Alcohol-attributable fractions (15+), cancer deaths_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+cancer_a_clean <- pivot_longer(cancer_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-cancer")
+```
+
+
+```{r clean-liver-alcohol}
+liver_a <- tail(liver_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), liver cirrhosis deaths (%)`,
+         female = `Alcohol-attributable fractions (15+), liver cirrhosis deaths (%)_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+liver_a_clean <- pivot_longer(liver_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-liver")
+```
+
+
+```{r clean-traffic-alcohol}
+traffic_a <- tail(traffic_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), road traffic crash deaths (%)`,
+         female = `Alcohol-attributable fractions (15+), road traffic crash deaths (%)_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+traffic_a_clean <- pivot_longer(traffic_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-traffic")
+```
+
+
+### Number of death per 100,000 population   
+
+```{r clean-cancer-death}
+cancer_d <- tail(cancer_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Cancer, age-standardized death rates (15+), per 100,000 population`,
+         female = `Cancer, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+cancer_d_clean <- pivot_longer(cancer_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "cancer-death-population")
+```
+
+
+```{r clean-liver-death}
+liver_d <- tail(liver_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Liver cirrhosis, age-standardized death rates (15+), per 100,000 population`,
+         female = `Liver cirrhosis, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+liver_d_clean <- pivot_longer(liver_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "liver-cirrhosis-death-population")
+```
+
+
+```{r clean-traffic-death}
+traffic_d <- tail(traffic_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Road traffic injuries, age-standardized death rates (15+), per 100,000 population`,
+         female = `Road traffic injuries, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+traffic_d_clean <- pivot_longer(traffic_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "road-traffic-death-population")
+```
