@@ -107,3 +107,14 @@ traffic_d_clean <- pivot_longer(traffic_d, cols = c("male", "female"),
                                  names_to = "gender",
                                  values_to = "road-traffic-death-population")
 ```
+
+
+```{r}
+write_csv(cancer_a_clean, "../clean_data/cancer_a_clean.csv")
+write_csv(cancer_d_clean, "../clean_data/cancer_d_clean.csv")
+write_csv(liver_a_clean, "../clean_data/liver_a_clean.csv")
+write_csv(liver_d_clean, "../clean_data/liver_d_clean.csv")
+write_csv(traffic_a_clean, "../clean_data/traffic_a_clean.csv")
+write_csv(traffic_d_clean, "../clean_data/traffic_d_clean.csv")
+```
+
