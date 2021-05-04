@@ -1,0 +1,571 @@
+country,year,gender,percentage
+Liechtenstein,2015,All,89
+Liechtenstein,2015,Male,93
+Liechtenstein,2015,Female,86
+Liechtenstein,2011,All,86
+Liechtenstein,2011,Male,85
+Liechtenstein,2011,Female,90
+Albania,2015,All,60
+Albania,2015,Male,71
+Albania,2015,Female,51
+Albania,2011,All,52
+Albania,2011,Male,63
+Albania,2011,Female,44
+Antigua and Barbuda,2016,All,62.8
+Antigua and Barbuda,2016,Male,NA
+Antigua and Barbuda,2016,Female,NA
+Argentina,2011,All,72.4
+Argentina,2011,Male,NA
+Argentina,2011,Female,NA
+Argentina,2009,All,68.9
+Argentina,2009,Male,NA
+Argentina,2009,Female,NA
+Argentina,2007,All,73.6
+Argentina,2007,Male,NA
+Argentina,2007,Female,NA
+Argentina,2005,All,65.2
+Argentina,2005,Male,NA
+Argentina,2005,Female,NA
+Argentina,2001,All,72.2
+Argentina,2001,Male,NA
+Argentina,2001,Female,NA
+Armenia,2007,All,66
+Armenia,2007,Male,NA
+Armenia,2007,Female,NA
+Australia,2011,All,60.2
+Australia,2011,Male,60.1
+Australia,2011,Female,60.2
+Australia,2008,All,77.6
+Australia,2008,Male,77.1
+Australia,2008,Female,78.1
+Austria,2015,All,88
+Austria,2015,Male,86
+Austria,2015,Female,90
+Austria,2007,All,92
+Austria,2007,Male,92
+Austria,2007,Female,97
+Austria,2003,All,93
+Austria,2003,Male,92
+Austria,2003,Female,94
+Bahamas,2016,All,51.1
+Bahamas,2016,Male,NA
+Bahamas,2016,Female,NA
+Barbados,2016,All,51.6
+Barbados,2016,Male,NA
+Barbados,2016,Female,NA
+Belgium,2015,All,80
+Belgium,2015,Male,77
+Belgium,2015,Female,83
+Belgium,2011,All,83
+Belgium,2011,Male,82
+Belgium,2011,Female,84
+Belgium,2007,All,83
+Belgium,2007,Male,85
+Belgium,2007,Female,82
+Belgium,2003,All,90
+Belgium,2003,Male,91
+Belgium,2003,Female,89
+Belize,2016,All,58.8
+Belize,2016,Male,NA
+Belize,2016,Female,NA
+Bolivia (Plurinational State of),2008,All,31.4
+Bolivia (Plurinational State of),2008,Male,NA
+Bolivia (Plurinational State of),2008,Female,NA
+Bosnia and Herzegovina,2011,All,66
+Bosnia and Herzegovina,2011,Male,74
+Bosnia and Herzegovina,2011,Female,59
+Brazil,2004,All,78.2
+Brazil,2004,Male,NA
+Brazil,2004,Female,NA
+Bulgaria,2015,All,86
+Bulgaria,2015,Male,88
+Bulgaria,2015,Female,85
+Bulgaria,2011,All,83
+Bulgaria,2011,Male,83
+Bulgaria,2011,Female,83
+Bulgaria,2007,All,83
+Bulgaria,2007,Male,84
+Bulgaria,2007,Female,81
+Bulgaria,2003,All,86
+Bulgaria,2003,Male,87
+Bulgaria,2003,Female,86
+Bulgaria,1999,All,82
+Bulgaria,1999,Male,84
+Bulgaria,1999,Female,81
+Canada,2011,All,61.2
+Canada,2011,Male,NA
+Canada,2011,Female,NA
+Canada,2006,All,74.7
+Canada,2006,Male,NA
+Canada,2006,Female,NA
+Chile,2009,All,57
+Chile,2009,Male,54.9
+Chile,2009,Female,59.5
+Chile,2007,All,58.6
+Chile,2007,Male,56.1
+Chile,2007,Female,61
+Chile,2005,All,59.8
+Chile,2005,Male,57.7
+Chile,2005,Female,61.8
+Chile,2003,All,60.4
+Chile,2003,Male,58.8
+Chile,2003,Female,61.9
+Chile,2001,All,61.5
+Chile,2001,Male,60.2
+Chile,2001,Female,62.9
+Croatia,2015,All,92
+Croatia,2015,Male,94
+Croatia,2015,Female,91
+Croatia,2011,All,85
+Croatia,2011,Male,87
+Croatia,2011,Female,84
+Croatia,2007,All,84
+Croatia,2007,Male,83
+Croatia,2007,Female,84
+Croatia,2003,All,82
+Croatia,2003,Male,85
+Croatia,2003,Female,79
+Cyprus,2015,All,88
+Cyprus,2015,Male,90
+Cyprus,2015,Female,87
+Cyprus,2011,All,82
+Cyprus,2011,Male,87
+Cyprus,2011,Female,78
+Cyprus,2007,All,79
+Cyprus,2007,Male,84
+Cyprus,2007,Female,73
+Cyprus,2003,All,79
+Cyprus,2003,Male,84
+Cyprus,2003,Female,74
+Czechia,2015,All,96
+Czechia,2015,Male,95
+Czechia,2015,Female,97
+Czechia,2011,All,93
+Czechia,2011,Male,93
+Czechia,2011,Female,93
+Czechia,2007,All,93
+Czechia,2007,Male,92
+Czechia,2007,Female,95
+Czechia,2003,All,95
+Czechia,2003,Male,95
+Czechia,2003,Female,95
+Denmark,2015,All,92
+Denmark,2015,Male,93
+Denmark,2015,Female,92
+Denmark,2011,All,92
+Denmark,2011,Male,93
+Denmark,2011,Female,92
+Denmark,2003,All,95
+Denmark,2003,Male,96
+Denmark,2003,Female,95
+Dominica,2016,All,68.1
+Dominica,2016,Male,NA
+Dominica,2016,Female,NA
+El Salvador,2008,All,24.1
+El Salvador,2008,Male,NA
+El Salvador,2008,Female,NA
+Estonia,2015,All,86
+Estonia,2015,Male,87
+Estonia,2015,Female,86
+Estonia,2011,All,85
+Estonia,2011,Male,83
+Estonia,2011,Female,88
+Estonia,2007,All,87
+Estonia,2007,Male,84
+Estonia,2007,Female,90
+Estonia,2003,All,87
+Estonia,2003,Male,86
+Estonia,2003,Female,89
+Finland,2015,All,74
+Finland,2015,Male,75
+Finland,2015,Female,72
+Finland,2011,All,75
+Finland,2011,Male,73
+Finland,2011,Female,76
+Finland,2007,All,77
+Finland,2007,Male,75
+Finland,2007,Female,78
+Finland,2003,All,80
+Finland,2003,Male,78
+Finland,2003,Female,81
+France,2015,All,84
+France,2015,Male,85
+France,2015,Female,83
+France,2011,All,85
+France,2011,Male,86
+France,2011,Female,84
+France,2007,All,81
+France,2007,Male,80
+France,2007,Female,81
+France,2003,All,80
+France,2003,Male,82
+France,2003,Female,78
+Georgia,2015,All,85
+Georgia,2015,Male,86
+Georgia,2015,Female,83
+Germany,2011,All,89
+Germany,2011,Male,91
+Germany,2011,Female,87
+Germany,2007,All,91
+Germany,2007,Male,91
+Germany,2007,Female,92
+Germany,2003,All,93
+Germany,2003,Male,93
+Germany,2003,Female,93
+Greece,2015,All,94
+Greece,2015,Male,95
+Greece,2015,Female,93
+Greece,2011,All,89
+Greece,2011,Male,89
+Greece,2011,Female,88
+Greece,2007,All,87
+Greece,2007,Male,89
+Greece,2007,Female,86
+Greece,2003,All,91
+Greece,2003,Male,93
+Greece,2003,Female,90
+Grenada,2016,All,61
+Grenada,2016,Male,NA
+Grenada,2016,Female,NA
+Grenada,2005,All,66.5
+Grenada,2005,Male,NA
+Grenada,2005,Female,NA
+Guatemala,2002,All,35.9
+Guatemala,2002,Male,NA
+Guatemala,2002,Female,NA
+Guyana,2016,All,39.3
+Guyana,2016,Male,NA
+Guyana,2016,Female,NA
+Haiti,2016,All,38
+Haiti,2016,Male,NA
+Haiti,2016,Female,NA
+Honduras,2005,All,20.7
+Honduras,2005,Male,NA
+Honduras,2005,Female,NA
+Hungary,2015,All,93
+Hungary,2015,Male,94
+Hungary,2015,Female,92
+Hungary,2011,All,87
+Hungary,2011,Male,86
+Hungary,2011,Female,88
+Hungary,2007,All,84
+Hungary,2007,Male,83
+Hungary,2007,Female,85
+Hungary,2003,All,84
+Hungary,2003,Male,84
+Hungary,2003,Female,84
+Iceland,2015,All,35
+Iceland,2015,Male,36
+Iceland,2015,Female,33
+Iceland,2011,All,43
+Iceland,2011,Male,41
+Iceland,2011,Female,45
+Iceland,2007,All,56
+Iceland,2007,Male,52
+Iceland,2007,Female,60
+Iceland,2003,All,64
+Iceland,2003,Male,62
+Iceland,2003,Female,65
+Ireland,2015,All,74
+Ireland,2015,Male,72
+Ireland,2015,Female,75
+Ireland,2011,All,73
+Ireland,2011,Male,72
+Ireland,2011,Female,73
+Ireland,2007,All,78
+Ireland,2007,Male,79
+Ireland,2007,Female,77
+Ireland,2003,All,88
+Ireland,2003,Male,86
+Ireland,2003,Female,90
+Israel,2009,All,50
+Israel,2009,Male,59.41
+Israel,2009,Female,40.63
+Israel,2005,All,49.4
+Israel,2005,Male,NA
+Israel,2005,Female,NA
+Israel,2001,All,47.3
+Israel,2001,Male,NA
+Israel,2001,Female,NA
+Italy,2015,All,84
+Italy,2015,Male,85
+Italy,2015,Female,84
+Italy,2011,All,79
+Italy,2011,Male,83
+Italy,2011,Female,75
+Italy,2007,All,81
+Italy,2007,Male,84
+Italy,2007,Female,79
+Italy,2003,All,82
+Italy,2003,Male,85
+Italy,2003,Female,80
+Jamaica,2016,All,49.6
+Jamaica,2016,Male,NA
+Jamaica,2016,Female,NA
+Latvia,2015,All,89
+Latvia,2015,Male,88
+Latvia,2015,Female,90
+Latvia,2011,All,87
+Latvia,2011,Male,85
+Latvia,2011,Female,90
+Latvia,2007,All,89
+Latvia,2007,Male,88
+Latvia,2007,Female,91
+Latvia,2003,All,87
+Latvia,2003,Male,86
+Latvia,2003,Female,88
+Lithuania,2015,All,87
+Lithuania,2015,Male,85
+Lithuania,2015,Female,89
+Lithuania,2011,All,85
+Lithuania,2011,Male,83
+Lithuania,2011,Female,87
+Lithuania,2007,All,87
+Lithuania,2007,Male,86
+Lithuania,2007,Female,89
+Lithuania,2003,All,94
+Lithuania,2003,Male,94
+Lithuania,2003,Female,94
+Malta,2015,All,86
+Malta,2015,Male,84
+Malta,2015,Female,88
+Malta,2011,All,86
+Malta,2011,Male,86
+Malta,2011,Female,86
+Malta,2007,All,87
+Malta,2007,Male,90
+Malta,2007,Female,86
+Malta,2003,All,90
+Malta,2003,Male,91
+Malta,2003,Female,89
+Monaco,2015,All,89
+Monaco,2015,Male,88
+Monaco,2015,Female,90
+Monaco,2011,All,89
+Monaco,2011,Male,87
+Monaco,2011,Female,92
+Monaco,2007,All,87
+Monaco,2007,Male,NA
+Monaco,2007,Female,NA
+Montenegro,2015,All,78
+Montenegro,2015,Male,83
+Montenegro,2015,Female,72
+Montenegro,2011,All,61
+Montenegro,2011,Male,70
+Montenegro,2011,Female,52
+Nepal,2000,All,21
+Nepal,2000,Male,NA
+Nepal,2000,Female,NA
+Netherlands,2015,All,73
+Netherlands,2015,Male,73
+Netherlands,2015,Female,73
+Netherlands,2007,All,84
+Netherlands,2007,Male,83
+Netherlands,2007,Female,86
+Netherlands,2003,All,85
+Netherlands,2003,Male,86
+Netherlands,2003,Female,85
+New Zealand,2004,All,55.7
+New Zealand,2004,Male,NA
+New Zealand,2004,Female,NA
+Nicaragua,2003,All,33.2
+Nicaragua,2003,Male,NA
+Nicaragua,2003,Female,NA
+Norway,2015,All,57
+Norway,2015,Male,56
+Norway,2015,Female,58
+Norway,2011,All,60
+Norway,2011,Male,58
+Norway,2011,Female,62
+Norway,2007,All,66
+Norway,2007,Male,63
+Norway,2007,Female,70
+Norway,2003,All,76
+Norway,2003,Male,74
+Norway,2003,Female,79
+Poland,2015,All,83
+Poland,2015,Male,84
+Poland,2015,Female,83
+Poland,2011,All,78
+Poland,2011,Male,80
+Poland,2011,Female,76
+Poland,2007,All,78
+Poland,2007,Male,79
+Poland,2007,Female,78
+Poland,2003,All,85
+Poland,2003,Male,88
+Poland,2003,Female,83
+Portugal,2015,All,71
+Portugal,2015,Male,73
+Portugal,2015,Female,70
+Portugal,2011,All,74
+Portugal,2011,Male,75
+Portugal,2011,Female,74
+Portugal,2007,All,79
+Portugal,2007,Male,80
+Portugal,2007,Female,79
+Portugal,2003,All,74
+Portugal,2003,Male,76
+Portugal,2003,Female,72
+Republic of Moldova,2015,All,82
+Republic of Moldova,2015,Male,86
+Republic of Moldova,2015,Female,78
+North Macedonia,2015,All,57
+North Macedonia,2015,Male,64
+North Macedonia,2015,Female,51
+Romania,2015,All,78
+Romania,2015,Male,84
+Romania,2015,Female,72
+Romania,2011,All,72
+Romania,2011,Male,76
+Romania,2011,Female,68
+Romania,2007,All,74
+Romania,2007,Male,83
+Romania,2007,Female,66
+Romania,2003,All,80
+Romania,2003,Male,84
+Romania,2003,Female,77
+Russian Federation,2011,All,71
+Russian Federation,2011,Male,67
+Russian Federation,2011,Female,74
+Russian Federation,2007,All,80
+Russian Federation,2007,Male,76
+Russian Federation,2007,Female,85
+Russian Federation,2003,All,86
+Russian Federation,2003,Male,82
+Russian Federation,2003,Female,89
+Saint Kitts and Nevis,2016,All,49.4
+Saint Kitts and Nevis,2016,Male,NA
+Saint Kitts and Nevis,2016,Female,NA
+Saint Lucia,2016,All,61
+Saint Lucia,2016,Male,NA
+Saint Lucia,2016,Female,NA
+Saint Lucia,2005,All,80.5
+Saint Lucia,2005,Male,NA
+Saint Lucia,2005,Female,NA
+Saint Vincent and the Grenadines,2016,All,67.1
+Saint Vincent and the Grenadines,2016,Male,NA
+Saint Vincent and the Grenadines,2016,Female,NA
+Serbia,2011,All,77
+Serbia,2011,Male,80
+Serbia,2011,Female,73
+Slovakia,2015,All,91
+Slovakia,2015,Male,90
+Slovakia,2015,Female,91
+Slovakia,2011,All,87
+Slovakia,2011,Male,85
+Slovakia,2011,Female,88
+Slovakia,2007,All,88
+Slovakia,2007,Male,87
+Slovakia,2007,Female,89
+Slovakia,2003,All,90
+Slovakia,2003,Male,90
+Slovakia,2003,Female,91
+Slovenia,2015,All,89
+Slovenia,2015,Male,90
+Slovenia,2015,Female,88
+Slovenia,2011,All,87
+Slovenia,2011,Male,88
+Slovenia,2011,Female,86
+Slovenia,2007,All,87
+Slovenia,2007,Male,86
+Slovenia,2007,Female,87
+Slovenia,2003,All,83
+Slovenia,2003,Male,85
+Slovenia,2003,Female,81
+South Africa,2003,All,17.6
+South Africa,2003,Male,20.8
+South Africa,2003,Female,12.6
+Spain,2015,All,78
+Spain,2015,Male,76
+Spain,2015,Female,80
+Spain,2011,All,73
+Spain,2011,Male,72
+Spain,2011,Female,74
+Sweden,2015,All,65
+Sweden,2015,Male,64
+Sweden,2015,Female,66
+Sweden,2011,All,65
+Sweden,2011,Male,63
+Sweden,2011,Female,66
+Sweden,2007,All,71
+Sweden,2007,Male,67
+Sweden,2007,Female,74
+Sweden,2003,All,77
+Sweden,2003,Male,77
+Sweden,2003,Female,77
+Switzerland,2007,All,85
+Switzerland,2007,Male,85
+Switzerland,2007,Female,84
+Switzerland,2003,All,88
+Switzerland,2003,Male,88
+Switzerland,2003,Female,87
+Trinidad and Tobago,2016,All,53.1
+Trinidad and Tobago,2016,Male,NA
+Trinidad and Tobago,2016,Female,NA
+Trinidad and Tobago,2006,All,76.6
+Trinidad and Tobago,2006,Male,NA
+Trinidad and Tobago,2006,Female,NA
+Ukraine,2015,All,84
+Ukraine,2015,Male,82
+Ukraine,2015,Female,86
+Ukraine,2011,All,79
+Ukraine,2011,Male,77
+Ukraine,2011,Female,82
+Ukraine,2007,All,83
+Ukraine,2007,Male,82
+Ukraine,2007,Female,85
+Ukraine,2003,All,84
+Ukraine,2003,Male,83
+Ukraine,2003,Female,85
+United Kingdom of Great Britain and Northern Ireland,2011,All,85
+United Kingdom of Great Britain and Northern Ireland,2011,Male,85
+United Kingdom of Great Britain and Northern Ireland,2011,Female,85
+United Kingdom of Great Britain and Northern Ireland,2007,All,88
+United Kingdom of Great Britain and Northern Ireland,2007,Male,88
+United Kingdom of Great Britain and Northern Ireland,2007,Female,88
+United Kingdom of Great Britain and Northern Ireland,2003,All,91
+United Kingdom of Great Britain and Northern Ireland,2003,Male,90
+United Kingdom of Great Britain and Northern Ireland,2003,Female,92
+United States of America,2015,All,47
+United States of America,2015,Male,44
+United States of America,2015,Female,50
+United States of America,2013,All,47.1
+United States of America,2013,Male,NA
+United States of America,2013,Female,NA
+United States of America,2012,All,48.5
+United States of America,2012,Male,NA
+United States of America,2012,Female,NA
+United States of America,2011,All,49.8
+United States of America,2011,Male,NA
+United States of America,2011,Female,NA
+United States of America,2010,All,52.1
+United States of America,2010,Male,NA
+United States of America,2010,Female,NA
+United States of America,2007,All,56.3
+United States of America,2007,Male,NA
+United States of America,2007,Female,NA
+United States of America,2006,All,55.8
+United States of America,2006,Male,NA
+United States of America,2006,Female,NA
+United States of America,2005,All,56.7
+United States of America,2005,Male,NA
+United States of America,2005,Female,NA
+United States of America,2004,All,58.2
+United States of America,2004,Male,NA
+United States of America,2004,Female,NA
+United States of America,2003,All,59.3
+United States of America,2003,Male,NA
+United States of America,2003,Female,NA
+United States of America,2002,All,60
+United States of America,2002,Male,NA
+United States of America,2002,Female,NA
+United States of America,2001,All,63.5
+United States of America,2001,Male,NA
+United States of America,2001,Female,NA
+United States of America,2000,All,65.3
+United States of America,2000,Male,NA
+United States of America,2000,Female,NA
+Uruguay,2009,All,78.2
+Uruguay,2009,Male,NA
+Uruguay,2009,Female,NA

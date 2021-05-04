@@ -1,0 +1,1165 @@
+country,year,type,limit
+Afghanistan,2016,sale_beer,Total ban
+Afghanistan,2016,sale_wine,Total ban
+Afghanistan,2016,sale_spirits,Total ban
+Afghanistan,2016,service_beer,Total ban
+Afghanistan,2016,service_wine,Total ban
+Afghanistan,2016,service_spirits,Total ban
+Albania,2016,sale_beer,18
+Albania,2016,sale_wine,18
+Albania,2016,sale_spirits,18
+Albania,2016,service_beer,18
+Albania,2016,service_wine,18
+Albania,2016,service_spirits,18
+Algeria,2016,sale_beer,18
+Algeria,2016,sale_wine,18
+Algeria,2016,sale_spirits,18
+Algeria,2016,service_beer,18
+Algeria,2016,service_wine,18
+Algeria,2016,service_spirits,18
+Andorra,2016,sale_beer,18
+Andorra,2016,sale_wine,18
+Andorra,2016,sale_spirits,18
+Andorra,2016,service_beer,18
+Andorra,2016,service_wine,18
+Andorra,2016,service_spirits,18
+Angola,2016,sale_beer,18
+Angola,2016,sale_wine,18
+Angola,2016,sale_spirits,18
+Angola,2016,service_beer,18
+Angola,2016,service_wine,18
+Angola,2016,service_spirits,18
+Antigua and Barbuda,2016,sale_beer,None
+Antigua and Barbuda,2016,sale_wine,None
+Antigua and Barbuda,2016,sale_spirits,None
+Antigua and Barbuda,2016,service_beer,16
+Antigua and Barbuda,2016,service_wine,16
+Antigua and Barbuda,2016,service_spirits,16
+Argentina,2016,sale_beer,18
+Argentina,2016,sale_wine,18
+Argentina,2016,sale_spirits,18
+Argentina,2016,service_beer,18
+Argentina,2016,service_wine,18
+Argentina,2016,service_spirits,18
+Armenia,2016,sale_beer,18
+Armenia,2016,sale_wine,18
+Armenia,2016,sale_spirits,18
+Armenia,2016,service_beer,18
+Armenia,2016,service_wine,18
+Armenia,2016,service_spirits,18
+Australia,2016,sale_beer,18
+Australia,2016,sale_wine,18
+Australia,2016,sale_spirits,18
+Australia,2016,service_beer,18
+Australia,2016,service_wine,18
+Australia,2016,service_spirits,18
+Austria,2016,sale_beer,Subnational
+Austria,2016,sale_wine,Subnational
+Austria,2016,sale_spirits,Subnational
+Austria,2016,service_beer,Subnational
+Austria,2016,service_wine,Subnational
+Austria,2016,service_spirits,Subnational
+Azerbaijan,2016,sale_beer,18
+Azerbaijan,2016,sale_wine,18
+Azerbaijan,2016,sale_spirits,18
+Azerbaijan,2016,service_beer,18
+Azerbaijan,2016,service_wine,18
+Azerbaijan,2016,service_spirits,18
+Bahamas,2016,sale_beer,18
+Bahamas,2016,sale_wine,18
+Bahamas,2016,sale_spirits,18
+Bahamas,2016,service_beer,18
+Bahamas,2016,service_wine,18
+Bahamas,2016,service_spirits,18
+Bahrain,2016,sale_beer,No data
+Bahrain,2016,sale_wine,No data
+Bahrain,2016,sale_spirits,No data
+Bahrain,2016,service_beer,No data
+Bahrain,2016,service_wine,No data
+Bahrain,2016,service_spirits,No data
+Bangladesh,2016,sale_beer,None
+Bangladesh,2016,sale_wine,None
+Bangladesh,2016,sale_spirits,None
+Bangladesh,2016,service_beer,None
+Bangladesh,2016,service_wine,None
+Bangladesh,2016,service_spirits,None
+Barbados,2016,sale_beer,None
+Barbados,2016,sale_wine,None
+Barbados,2016,sale_spirits,None
+Barbados,2016,service_beer,16
+Barbados,2016,service_wine,16
+Barbados,2016,service_spirits,16
+Belarus,2016,sale_beer,18
+Belarus,2016,sale_wine,18
+Belarus,2016,sale_spirits,18
+Belarus,2016,service_beer,18
+Belarus,2016,service_wine,18
+Belarus,2016,service_spirits,18
+Belgium,2016,sale_beer,16
+Belgium,2016,sale_wine,16
+Belgium,2016,sale_spirits,18
+Belgium,2016,service_beer,16
+Belgium,2016,service_wine,16
+Belgium,2016,service_spirits,18
+Belize,2016,sale_beer,18
+Belize,2016,sale_wine,18
+Belize,2016,sale_spirits,18
+Belize,2016,service_beer,18
+Belize,2016,service_wine,18
+Belize,2016,service_spirits,18
+Benin,2016,sale_beer,None
+Benin,2016,sale_wine,None
+Benin,2016,sale_spirits,None
+Benin,2016,service_beer,None
+Benin,2016,service_wine,None
+Benin,2016,service_spirits,None
+Bhutan,2016,sale_beer,18
+Bhutan,2016,sale_wine,18
+Bhutan,2016,sale_spirits,18
+Bhutan,2016,service_beer,18
+Bhutan,2016,service_wine,18
+Bhutan,2016,service_spirits,18
+Bolivia (Plurinational State of),2016,sale_beer,No data
+Bolivia (Plurinational State of),2016,sale_wine,No data
+Bolivia (Plurinational State of),2016,sale_spirits,No data
+Bolivia (Plurinational State of),2016,service_beer,No data
+Bolivia (Plurinational State of),2016,service_wine,No data
+Bolivia (Plurinational State of),2016,service_spirits,No data
+Bosnia and Herzegovina,2016,sale_beer,18
+Bosnia and Herzegovina,2016,sale_wine,18
+Bosnia and Herzegovina,2016,sale_spirits,18
+Bosnia and Herzegovina,2016,service_beer,18
+Bosnia and Herzegovina,2016,service_wine,18
+Bosnia and Herzegovina,2016,service_spirits,18
+Botswana,2016,sale_beer,18
+Botswana,2016,sale_wine,18
+Botswana,2016,sale_spirits,18
+Botswana,2016,service_beer,18
+Botswana,2016,service_wine,18
+Botswana,2016,service_spirits,18
+Brazil,2016,sale_beer,18
+Brazil,2016,sale_wine,18
+Brazil,2016,sale_spirits,18
+Brazil,2016,service_beer,18
+Brazil,2016,service_wine,18
+Brazil,2016,service_spirits,18
+Brunei Darussalam,2016,sale_beer,No data
+Brunei Darussalam,2016,sale_wine,No data
+Brunei Darussalam,2016,sale_spirits,No data
+Brunei Darussalam,2016,service_beer,No data
+Brunei Darussalam,2016,service_wine,No data
+Brunei Darussalam,2016,service_spirits,No data
+Bulgaria,2016,sale_beer,18
+Bulgaria,2016,sale_wine,18
+Bulgaria,2016,sale_spirits,18
+Bulgaria,2016,service_beer,18
+Bulgaria,2016,service_wine,18
+Bulgaria,2016,service_spirits,18
+Burkina Faso,2016,sale_beer,None
+Burkina Faso,2016,sale_wine,None
+Burkina Faso,2016,sale_spirits,None
+Burkina Faso,2016,service_beer,13
+Burkina Faso,2016,service_wine,13
+Burkina Faso,2016,service_spirits,13
+Burundi,2016,sale_beer,18
+Burundi,2016,sale_wine,18
+Burundi,2016,sale_spirits,18
+Burundi,2016,service_beer,18
+Burundi,2016,service_wine,18
+Burundi,2016,service_spirits,18
+Cabo Verde,2016,sale_beer,18
+Cabo Verde,2016,sale_wine,18
+Cabo Verde,2016,sale_spirits,18
+Cabo Verde,2016,service_beer,18
+Cabo Verde,2016,service_wine,18
+Cabo Verde,2016,service_spirits,18
+Cambodia,2016,sale_beer,None
+Cambodia,2016,sale_wine,None
+Cambodia,2016,sale_spirits,None
+Cambodia,2016,service_beer,None
+Cambodia,2016,service_wine,None
+Cambodia,2016,service_spirits,None
+Cameroon,2016,sale_beer,18
+Cameroon,2016,sale_wine,18
+Cameroon,2016,sale_spirits,18
+Cameroon,2016,service_beer,21
+Cameroon,2016,service_wine,21
+Cameroon,2016,service_spirits,21
+Canada,2016,sale_beer,subnational
+Canada,2016,sale_wine,subnational
+Canada,2016,sale_spirits,subnational
+Canada,2016,service_beer,subnational
+Canada,2016,service_wine,subnational
+Canada,2016,service_spirits,subnational
+Central African Republic,2016,sale_beer,None
+Central African Republic,2016,sale_wine,None
+Central African Republic,2016,sale_spirits,None
+Central African Republic,2016,service_beer,None
+Central African Republic,2016,service_wine,None
+Central African Republic,2016,service_spirits,None
+Chad,2016,sale_beer,16
+Chad,2016,sale_wine,16
+Chad,2016,sale_spirits,16
+Chad,2016,service_beer,16
+Chad,2016,service_wine,16
+Chad,2016,service_spirits,16
+Chile,2016,sale_beer,18
+Chile,2016,sale_wine,18
+Chile,2016,sale_spirits,18
+Chile,2016,service_beer,18
+Chile,2016,service_wine,18
+Chile,2016,service_spirits,18
+China,2016,sale_beer,None
+China,2016,sale_wine,None
+China,2016,sale_spirits,None
+China,2016,service_beer,None
+China,2016,service_wine,None
+China,2016,service_spirits,None
+Colombia,2016,sale_beer,18
+Colombia,2016,sale_wine,18
+Colombia,2016,sale_spirits,18
+Colombia,2016,service_beer,18
+Colombia,2016,service_wine,18
+Colombia,2016,service_spirits,18
+Comoros,2016,sale_beer,No data
+Comoros,2016,sale_wine,No data
+Comoros,2016,sale_spirits,No data
+Comoros,2016,service_beer,No data
+Comoros,2016,service_wine,No data
+Comoros,2016,service_spirits,No data
+Congo,2016,sale_beer,18
+Congo,2016,sale_wine,18
+Congo,2016,sale_spirits,18
+Congo,2016,service_beer,16
+Congo,2016,service_wine,16
+Congo,2016,service_spirits,16
+Cook Islands,2016,sale_beer,18
+Cook Islands,2016,sale_wine,18
+Cook Islands,2016,sale_spirits,18
+Cook Islands,2016,service_beer,18
+Cook Islands,2016,service_wine,18
+Cook Islands,2016,service_spirits,18
+Costa Rica,2016,sale_beer,18
+Costa Rica,2016,sale_wine,18
+Costa Rica,2016,sale_spirits,18
+Costa Rica,2016,service_beer,18
+Costa Rica,2016,service_wine,18
+Costa Rica,2016,service_spirits,18
+Côte d'Ivoire,2016,sale_beer,None
+Côte d'Ivoire,2016,sale_wine,18
+Côte d'Ivoire,2016,sale_spirits,18
+Côte d'Ivoire,2016,service_beer,14
+Côte d'Ivoire,2016,service_wine,14
+Côte d'Ivoire,2016,service_spirits,14
+Croatia,2016,sale_beer,18
+Croatia,2016,sale_wine,18
+Croatia,2016,sale_spirits,18
+Croatia,2016,service_beer,18
+Croatia,2016,service_wine,18
+Croatia,2016,service_spirits,18
+Cuba,2016,sale_beer,18
+Cuba,2016,sale_wine,18
+Cuba,2016,sale_spirits,18
+Cuba,2016,service_beer,18
+Cuba,2016,service_wine,18
+Cuba,2016,service_spirits,18
+Cyprus,2016,sale_beer,17
+Cyprus,2016,sale_wine,17
+Cyprus,2016,sale_spirits,17
+Cyprus,2016,service_beer,17
+Cyprus,2016,service_wine,17
+Cyprus,2016,service_spirits,17
+Czechia,2016,sale_beer,18
+Czechia,2016,sale_wine,18
+Czechia,2016,sale_spirits,18
+Czechia,2016,service_beer,18
+Czechia,2016,service_wine,18
+Czechia,2016,service_spirits,18
+Democratic People's Republic of Korea,2016,sale_beer,18
+Democratic People's Republic of Korea,2016,sale_wine,18
+Democratic People's Republic of Korea,2016,sale_spirits,18
+Democratic People's Republic of Korea,2016,service_beer,18
+Democratic People's Republic of Korea,2016,service_wine,18
+Democratic People's Republic of Korea,2016,service_spirits,18
+Democratic Republic of the Congo,2016,sale_beer,No data
+Democratic Republic of the Congo,2016,sale_wine,No data
+Democratic Republic of the Congo,2016,sale_spirits,No data
+Democratic Republic of the Congo,2016,service_beer,No data
+Democratic Republic of the Congo,2016,service_wine,No data
+Democratic Republic of the Congo,2016,service_spirits,No data
+Denmark,2016,sale_beer,18
+Denmark,2016,sale_wine,18
+Denmark,2016,sale_spirits,18
+Denmark,2016,service_beer,18
+Denmark,2016,service_wine,18
+Denmark,2016,service_spirits,18
+Djibouti,2016,sale_beer,None
+Djibouti,2016,sale_wine,None
+Djibouti,2016,sale_spirits,None
+Djibouti,2016,service_beer,None
+Djibouti,2016,service_wine,None
+Djibouti,2016,service_spirits,None
+Dominica,2016,sale_beer,16
+Dominica,2016,sale_wine,16
+Dominica,2016,sale_spirits,16
+Dominica,2016,service_beer,16
+Dominica,2016,service_wine,16
+Dominica,2016,service_spirits,16
+Dominican Republic,2016,sale_beer,18
+Dominican Republic,2016,sale_wine,18
+Dominican Republic,2016,sale_spirits,18
+Dominican Republic,2016,service_beer,18
+Dominican Republic,2016,service_wine,18
+Dominican Republic,2016,service_spirits,18
+Ecuador,2016,sale_beer,18
+Ecuador,2016,sale_wine,18
+Ecuador,2016,sale_spirits,18
+Ecuador,2016,service_beer,18
+Ecuador,2016,service_wine,18
+Ecuador,2016,service_spirits,18
+Egypt,2016,sale_beer,21
+Egypt,2016,sale_wine,21
+Egypt,2016,sale_spirits,21
+Egypt,2016,service_beer,21
+Egypt,2016,service_wine,21
+Egypt,2016,service_spirits,21
+El Salvador,2016,sale_beer,18
+El Salvador,2016,sale_wine,18
+El Salvador,2016,sale_spirits,18
+El Salvador,2016,service_beer,18
+El Salvador,2016,service_wine,18
+El Salvador,2016,service_spirits,18
+Equatorial Guinea,2016,sale_beer,18
+Equatorial Guinea,2016,sale_wine,18
+Equatorial Guinea,2016,sale_spirits,18
+Equatorial Guinea,2016,service_beer,18
+Equatorial Guinea,2016,service_wine,18
+Equatorial Guinea,2016,service_spirits,18
+Eritrea,2016,sale_beer,25
+Eritrea,2016,sale_wine,25
+Eritrea,2016,sale_spirits,25
+Eritrea,2016,service_beer,25
+Eritrea,2016,service_wine,25
+Eritrea,2016,service_spirits,25
+Estonia,2016,sale_beer,18
+Estonia,2016,sale_wine,18
+Estonia,2016,sale_spirits,18
+Estonia,2016,service_beer,18
+Estonia,2016,service_wine,18
+Estonia,2016,service_spirits,18
+Eswatini,2016,sale_beer,18
+Eswatini,2016,sale_wine,18
+Eswatini,2016,sale_spirits,18
+Eswatini,2016,service_beer,18
+Eswatini,2016,service_wine,18
+Eswatini,2016,service_spirits,18
+Ethiopia,2016,sale_beer,18
+Ethiopia,2016,sale_wine,18
+Ethiopia,2016,sale_spirits,18
+Ethiopia,2016,service_beer,18
+Ethiopia,2016,service_wine,18
+Ethiopia,2016,service_spirits,18
+Fiji,2016,sale_beer,No data
+Fiji,2016,sale_wine,No data
+Fiji,2016,sale_spirits,No data
+Fiji,2016,service_beer,No data
+Fiji,2016,service_wine,No data
+Fiji,2016,service_spirits,No data
+Finland,2016,sale_beer,18
+Finland,2016,sale_wine,18
+Finland,2016,sale_spirits,20
+Finland,2016,service_beer,18
+Finland,2016,service_wine,18
+Finland,2016,service_spirits,18
+France,2016,sale_beer,18
+France,2016,sale_wine,18
+France,2016,sale_spirits,18
+France,2016,service_beer,18
+France,2016,service_wine,18
+France,2016,service_spirits,18
+Gabon,2016,sale_beer,None
+Gabon,2016,sale_wine,None
+Gabon,2016,sale_spirits,None
+Gabon,2016,service_beer,18
+Gabon,2016,service_wine,18
+Gabon,2016,service_spirits,18
+Gambia,2016,sale_beer,18
+Gambia,2016,sale_wine,18
+Gambia,2016,sale_spirits,18
+Gambia,2016,service_beer,18
+Gambia,2016,service_wine,18
+Gambia,2016,service_spirits,18
+Georgia,2016,sale_beer,18
+Georgia,2016,sale_wine,18
+Georgia,2016,sale_spirits,18
+Georgia,2016,service_beer,18
+Georgia,2016,service_wine,18
+Georgia,2016,service_spirits,18
+Germany,2016,sale_beer,16
+Germany,2016,sale_wine,16
+Germany,2016,sale_spirits,18
+Germany,2016,service_beer,16
+Germany,2016,service_wine,16
+Germany,2016,service_spirits,18
+Ghana,2016,sale_beer,18
+Ghana,2016,sale_wine,18
+Ghana,2016,sale_spirits,18
+Ghana,2016,service_beer,18
+Ghana,2016,service_wine,18
+Ghana,2016,service_spirits,18
+Greece,2016,sale_beer,18
+Greece,2016,sale_wine,18
+Greece,2016,sale_spirits,18
+Greece,2016,service_beer,18
+Greece,2016,service_wine,18
+Greece,2016,service_spirits,18
+Grenada,2016,sale_beer,None
+Grenada,2016,sale_wine,None
+Grenada,2016,sale_spirits,None
+Grenada,2016,service_beer,16
+Grenada,2016,service_wine,16
+Grenada,2016,service_spirits,16
+Guatemala,2016,sale_beer,18
+Guatemala,2016,sale_wine,18
+Guatemala,2016,sale_spirits,18
+Guatemala,2016,service_beer,18
+Guatemala,2016,service_wine,18
+Guatemala,2016,service_spirits,18
+Guinea,2016,sale_beer,None
+Guinea,2016,sale_wine,None
+Guinea,2016,sale_spirits,None
+Guinea,2016,service_beer,None
+Guinea,2016,service_wine,None
+Guinea,2016,service_spirits,None
+Guinea-Bissau,2016,sale_beer,None
+Guinea-Bissau,2016,sale_wine,None
+Guinea-Bissau,2016,sale_spirits,None
+Guinea-Bissau,2016,service_beer,None
+Guinea-Bissau,2016,service_wine,None
+Guinea-Bissau,2016,service_spirits,None
+Guyana,2016,sale_beer,18
+Guyana,2016,sale_wine,18
+Guyana,2016,sale_spirits,18
+Guyana,2016,service_beer,16
+Guyana,2016,service_wine,16
+Guyana,2016,service_spirits,18
+Haiti,2016,sale_beer,No data
+Haiti,2016,sale_wine,No data
+Haiti,2016,sale_spirits,No data
+Haiti,2016,service_beer,No data
+Haiti,2016,service_wine,No data
+Haiti,2016,service_spirits,No data
+Honduras,2016,sale_beer,18
+Honduras,2016,sale_wine,18
+Honduras,2016,sale_spirits,18
+Honduras,2016,service_beer,18
+Honduras,2016,service_wine,18
+Honduras,2016,service_spirits,18
+Hungary,2016,sale_beer,18
+Hungary,2016,sale_wine,18
+Hungary,2016,sale_spirits,18
+Hungary,2016,service_beer,18
+Hungary,2016,service_wine,18
+Hungary,2016,service_spirits,18
+Iceland,2016,sale_beer,20
+Iceland,2016,sale_wine,20
+Iceland,2016,sale_spirits,20
+Iceland,2016,service_beer,20
+Iceland,2016,service_wine,20
+Iceland,2016,service_spirits,20
+India,2016,sale_beer,Subnational
+India,2016,sale_wine,Subnational
+India,2016,sale_spirits,Subnational
+India,2016,service_beer,Subnational
+India,2016,service_wine,Subnational
+India,2016,service_spirits,Subnational
+Indonesia,2016,sale_beer,21
+Indonesia,2016,sale_wine,21
+Indonesia,2016,sale_spirits,21
+Indonesia,2016,service_beer,21
+Indonesia,2016,service_wine,21
+Indonesia,2016,service_spirits,21
+Iran (Islamic Republic of),2016,sale_beer,Total ban
+Iran (Islamic Republic of),2016,sale_wine,Total ban
+Iran (Islamic Republic of),2016,sale_spirits,Total ban
+Iran (Islamic Republic of),2016,service_beer,Total ban
+Iran (Islamic Republic of),2016,service_wine,Total ban
+Iran (Islamic Republic of),2016,service_spirits,Total ban
+Iraq,2016,sale_beer,21
+Iraq,2016,sale_wine,21
+Iraq,2016,sale_spirits,21
+Iraq,2016,service_beer,21
+Iraq,2016,service_wine,21
+Iraq,2016,service_spirits,21
+Ireland,2016,sale_beer,18
+Ireland,2016,sale_wine,18
+Ireland,2016,sale_spirits,18
+Ireland,2016,service_beer,18
+Ireland,2016,service_wine,18
+Ireland,2016,service_spirits,18
+Israel,2016,sale_beer,18
+Israel,2016,sale_wine,18
+Israel,2016,sale_spirits,18
+Israel,2016,service_beer,18
+Israel,2016,service_wine,18
+Israel,2016,service_spirits,18
+Italy,2016,sale_beer,18
+Italy,2016,sale_wine,18
+Italy,2016,sale_spirits,18
+Italy,2016,service_beer,18
+Italy,2016,service_wine,18
+Italy,2016,service_spirits,18
+Jamaica,2016,sale_beer,18
+Jamaica,2016,sale_wine,18
+Jamaica,2016,sale_spirits,18
+Jamaica,2016,service_beer,18
+Jamaica,2016,service_wine,18
+Jamaica,2016,service_spirits,18
+Japan,2016,sale_beer,20
+Japan,2016,sale_wine,20
+Japan,2016,sale_spirits,20
+Japan,2016,service_beer,20
+Japan,2016,service_wine,20
+Japan,2016,service_spirits,20
+Jordan,2016,sale_beer,18
+Jordan,2016,sale_wine,18
+Jordan,2016,sale_spirits,18
+Jordan,2016,service_beer,18
+Jordan,2016,service_wine,18
+Jordan,2016,service_spirits,18
+Kazakhstan,2016,sale_beer,21
+Kazakhstan,2016,sale_wine,21
+Kazakhstan,2016,sale_spirits,21
+Kazakhstan,2016,service_beer,21
+Kazakhstan,2016,service_wine,21
+Kazakhstan,2016,service_spirits,21
+Kenya,2016,sale_beer,18
+Kenya,2016,sale_wine,18
+Kenya,2016,sale_spirits,18
+Kenya,2016,service_beer,18
+Kenya,2016,service_wine,18
+Kenya,2016,service_spirits,18
+Kiribati,2016,sale_beer,21
+Kiribati,2016,sale_wine,21
+Kiribati,2016,sale_spirits,21
+Kiribati,2016,service_beer,21
+Kiribati,2016,service_wine,21
+Kiribati,2016,service_spirits,21
+Kuwait,2016,sale_beer,No data
+Kuwait,2016,sale_wine,No data
+Kuwait,2016,sale_spirits,No data
+Kuwait,2016,service_beer,No data
+Kuwait,2016,service_wine,No data
+Kuwait,2016,service_spirits,No data
+Kyrgyzstan,2016,sale_beer,No data
+Kyrgyzstan,2016,sale_wine,No data
+Kyrgyzstan,2016,sale_spirits,No data
+Kyrgyzstan,2016,service_beer,No data
+Kyrgyzstan,2016,service_wine,No data
+Kyrgyzstan,2016,service_spirits,No data
+Lao People's Democratic Republic,2016,sale_beer,18
+Lao People's Democratic Republic,2016,sale_wine,18
+Lao People's Democratic Republic,2016,sale_spirits,18
+Lao People's Democratic Republic,2016,service_beer,18
+Lao People's Democratic Republic,2016,service_wine,18
+Lao People's Democratic Republic,2016,service_spirits,18
+Latvia,2016,sale_beer,18
+Latvia,2016,sale_wine,18
+Latvia,2016,sale_spirits,18
+Latvia,2016,service_beer,18
+Latvia,2016,service_wine,18
+Latvia,2016,service_spirits,18
+Lebanon,2016,sale_beer,18
+Lebanon,2016,sale_wine,18
+Lebanon,2016,sale_spirits,18
+Lebanon,2016,service_beer,18
+Lebanon,2016,service_wine,18
+Lebanon,2016,service_spirits,18
+Lesotho,2016,sale_beer,21
+Lesotho,2016,sale_wine,21
+Lesotho,2016,sale_spirits,21
+Lesotho,2016,service_beer,21
+Lesotho,2016,service_wine,21
+Lesotho,2016,service_spirits,21
+Liberia,2016,sale_beer,18
+Liberia,2016,sale_wine,18
+Liberia,2016,sale_spirits,18
+Liberia,2016,service_beer,18
+Liberia,2016,service_wine,18
+Liberia,2016,service_spirits,18
+Libya,2016,sale_beer,Total ban
+Libya,2016,sale_wine,Total ban
+Libya,2016,sale_spirits,Total ban
+Libya,2016,service_beer,Total ban
+Libya,2016,service_wine,Total ban
+Libya,2016,service_spirits,Total ban
+Lithuania,2016,sale_beer,18
+Lithuania,2016,sale_wine,18
+Lithuania,2016,sale_spirits,18
+Lithuania,2016,service_beer,18
+Lithuania,2016,service_wine,18
+Lithuania,2016,service_spirits,18
+Luxembourg,2016,sale_beer,16
+Luxembourg,2016,sale_wine,16
+Luxembourg,2016,sale_spirits,16
+Luxembourg,2016,service_beer,16
+Luxembourg,2016,service_wine,16
+Luxembourg,2016,service_spirits,16
+Madagascar,2016,sale_beer,18
+Madagascar,2016,sale_wine,18
+Madagascar,2016,sale_spirits,18
+Madagascar,2016,service_beer,18
+Madagascar,2016,service_wine,18
+Madagascar,2016,service_spirits,18
+Malawi,2016,sale_beer,18
+Malawi,2016,sale_wine,18
+Malawi,2016,sale_spirits,18
+Malawi,2016,service_beer,18
+Malawi,2016,service_wine,18
+Malawi,2016,service_spirits,18
+Malaysia,2016,sale_beer,21
+Malaysia,2016,sale_wine,21
+Malaysia,2016,sale_spirits,21
+Malaysia,2016,service_beer,21
+Malaysia,2016,service_wine,21
+Malaysia,2016,service_spirits,21
+Maldives,2016,sale_beer,Total ban
+Maldives,2016,sale_wine,Total ban
+Maldives,2016,sale_spirits,Total ban
+Maldives,2016,service_beer,Total ban
+Maldives,2016,service_wine,Total ban
+Maldives,2016,service_spirits,Total ban
+Mali,2016,sale_beer,15
+Mali,2016,sale_wine,15
+Mali,2016,sale_spirits,None
+Mali,2016,service_beer,15
+Mali,2016,service_wine,15
+Mali,2016,service_spirits,None
+Malta,2016,sale_beer,17
+Malta,2016,sale_wine,17
+Malta,2016,sale_spirits,17
+Malta,2016,service_beer,17
+Malta,2016,service_wine,17
+Malta,2016,service_spirits,17
+Marshall Islands,2016,sale_beer,21
+Marshall Islands,2016,sale_wine,21
+Marshall Islands,2016,sale_spirits,21
+Marshall Islands,2016,service_beer,21
+Marshall Islands,2016,service_wine,21
+Marshall Islands,2016,service_spirits,21
+Mauritania,2016,sale_beer,total ban
+Mauritania,2016,sale_wine,total ban
+Mauritania,2016,sale_spirits,total ban
+Mauritania,2016,service_beer,total ban
+Mauritania,2016,service_wine,total ban
+Mauritania,2016,service_spirits,total ban
+Mauritius,2016,sale_beer,18
+Mauritius,2016,sale_wine,18
+Mauritius,2016,sale_spirits,18
+Mauritius,2016,service_beer,18
+Mauritius,2016,service_wine,18
+Mauritius,2016,service_spirits,18
+Mexico,2016,sale_beer,18
+Mexico,2016,sale_wine,18
+Mexico,2016,sale_spirits,18
+Mexico,2016,service_beer,18
+Mexico,2016,service_wine,18
+Mexico,2016,service_spirits,18
+Micronesia (Federated States of),2016,sale_beer,No data
+Micronesia (Federated States of),2016,sale_wine,No data
+Micronesia (Federated States of),2016,sale_spirits,No data
+Micronesia (Federated States of),2016,service_beer,No data
+Micronesia (Federated States of),2016,service_wine,No data
+Micronesia (Federated States of),2016,service_spirits,No data
+Monaco,2016,sale_beer,18
+Monaco,2016,sale_wine,18
+Monaco,2016,sale_spirits,18
+Monaco,2016,service_beer,18
+Monaco,2016,service_wine,18
+Monaco,2016,service_spirits,18
+Mongolia,2016,sale_beer,21
+Mongolia,2016,sale_wine,21
+Mongolia,2016,sale_spirits,21
+Mongolia,2016,service_beer,21
+Mongolia,2016,service_wine,21
+Mongolia,2016,service_spirits,21
+Montenegro,2016,sale_beer,18
+Montenegro,2016,sale_wine,18
+Montenegro,2016,sale_spirits,18
+Montenegro,2016,service_beer,18
+Montenegro,2016,service_wine,18
+Montenegro,2016,service_spirits,18
+Morocco,2016,sale_beer,16
+Morocco,2016,sale_wine,16
+Morocco,2016,sale_spirits,16
+Morocco,2016,service_beer,16
+Morocco,2016,service_wine,16
+Morocco,2016,service_spirits,16
+Mozambique,2016,sale_beer,18
+Mozambique,2016,sale_wine,18
+Mozambique,2016,sale_spirits,18
+Mozambique,2016,service_beer,18
+Mozambique,2016,service_wine,18
+Mozambique,2016,service_spirits,18
+Myanmar,2016,sale_beer,18
+Myanmar,2016,sale_wine,18
+Myanmar,2016,sale_spirits,18
+Myanmar,2016,service_beer,18
+Myanmar,2016,service_wine,18
+Myanmar,2016,service_spirits,18
+Namibia,2016,sale_beer,18
+Namibia,2016,sale_wine,18
+Namibia,2016,sale_spirits,18
+Namibia,2016,service_beer,18
+Namibia,2016,service_wine,18
+Namibia,2016,service_spirits,18
+Nauru,2016,sale_beer,No data
+Nauru,2016,sale_wine,No data
+Nauru,2016,sale_spirits,No data
+Nauru,2016,service_beer,No data
+Nauru,2016,service_wine,No data
+Nauru,2016,service_spirits,No data
+Nepal,2016,sale_beer,No data
+Nepal,2016,sale_wine,No data
+Nepal,2016,sale_spirits,No data
+Nepal,2016,service_beer,No data
+Nepal,2016,service_wine,No data
+Nepal,2016,service_spirits,No data
+Netherlands,2016,sale_beer,18
+Netherlands,2016,sale_wine,18
+Netherlands,2016,sale_spirits,18
+Netherlands,2016,service_beer,18
+Netherlands,2016,service_wine,18
+Netherlands,2016,service_spirits,18
+New Zealand,2016,sale_beer,18
+New Zealand,2016,sale_wine,18
+New Zealand,2016,sale_spirits,18
+New Zealand,2016,service_beer,18
+New Zealand,2016,service_wine,18
+New Zealand,2016,service_spirits,18
+Nicaragua,2016,sale_beer,18
+Nicaragua,2016,sale_wine,18
+Nicaragua,2016,sale_spirits,18
+Nicaragua,2016,service_beer,18
+Nicaragua,2016,service_wine,18
+Nicaragua,2016,service_spirits,18
+Niger,2016,sale_beer,18
+Niger,2016,sale_wine,18
+Niger,2016,sale_spirits,18
+Niger,2016,service_beer,18
+Niger,2016,service_wine,18
+Niger,2016,service_spirits,18
+Nigeria,2016,sale_beer,None
+Nigeria,2016,sale_wine,None
+Nigeria,2016,sale_spirits,None
+Nigeria,2016,service_beer,None
+Nigeria,2016,service_wine,None
+Nigeria,2016,service_spirits,None
+Niue,2016,sale_beer,No data
+Niue,2016,sale_wine,No data
+Niue,2016,sale_spirits,No data
+Niue,2016,service_beer,No data
+Niue,2016,service_wine,No data
+Niue,2016,service_spirits,No data
+Norway,2016,sale_beer,18
+Norway,2016,sale_wine,18
+Norway,2016,sale_spirits,20
+Norway,2016,service_beer,18
+Norway,2016,service_wine,18
+Norway,2016,service_spirits,20
+Oman,2016,sale_beer,21
+Oman,2016,sale_wine,21
+Oman,2016,sale_spirits,21
+Oman,2016,service_beer,21
+Oman,2016,service_wine,21
+Oman,2016,service_spirits,21
+Pakistan,2016,sale_beer,Total ban
+Pakistan,2016,sale_wine,Total ban
+Pakistan,2016,sale_spirits,Total ban
+Pakistan,2016,service_beer,Total ban
+Pakistan,2016,service_wine,Total ban
+Pakistan,2016,service_spirits,Total ban
+Palau,2016,sale_beer,No data
+Palau,2016,sale_wine,No data
+Palau,2016,sale_spirits,No data
+Palau,2016,service_beer,No data
+Palau,2016,service_wine,No data
+Palau,2016,service_spirits,No data
+Panama,2016,sale_beer,18
+Panama,2016,sale_wine,18
+Panama,2016,sale_spirits,18
+Panama,2016,service_beer,18
+Panama,2016,service_wine,18
+Panama,2016,service_spirits,18
+Papua New Guinea,2016,sale_beer,No data
+Papua New Guinea,2016,sale_wine,No data
+Papua New Guinea,2016,sale_spirits,No data
+Papua New Guinea,2016,service_beer,No data
+Papua New Guinea,2016,service_wine,No data
+Papua New Guinea,2016,service_spirits,No data
+Paraguay,2016,sale_beer,20
+Paraguay,2016,sale_wine,20
+Paraguay,2016,sale_spirits,20
+Paraguay,2016,service_beer,20
+Paraguay,2016,service_wine,20
+Paraguay,2016,service_spirits,20
+Peru,2016,sale_beer,18
+Peru,2016,sale_wine,18
+Peru,2016,sale_spirits,18
+Peru,2016,service_beer,18
+Peru,2016,service_wine,18
+Peru,2016,service_spirits,18
+Philippines,2016,sale_beer,18
+Philippines,2016,sale_wine,18
+Philippines,2016,sale_spirits,18
+Philippines,2016,service_beer,18
+Philippines,2016,service_wine,18
+Philippines,2016,service_spirits,18
+Poland,2016,sale_beer,18
+Poland,2016,sale_wine,18
+Poland,2016,sale_spirits,18
+Poland,2016,service_beer,18
+Poland,2016,service_wine,18
+Poland,2016,service_spirits,18
+Portugal,2016,sale_beer,18
+Portugal,2016,sale_wine,18
+Portugal,2016,sale_spirits,18
+Portugal,2016,service_beer,18
+Portugal,2016,service_wine,18
+Portugal,2016,service_spirits,18
+Qatar,2016,sale_beer,No data
+Qatar,2016,sale_wine,No data
+Qatar,2016,sale_spirits,No data
+Qatar,2016,service_beer,No data
+Qatar,2016,service_wine,No data
+Qatar,2016,service_spirits,No data
+Republic of Korea,2016,sale_beer,19
+Republic of Korea,2016,sale_wine,19
+Republic of Korea,2016,sale_spirits,19
+Republic of Korea,2016,service_beer,19
+Republic of Korea,2016,service_wine,19
+Republic of Korea,2016,service_spirits,19
+Republic of Moldova,2016,sale_beer,18
+Republic of Moldova,2016,sale_wine,18
+Republic of Moldova,2016,sale_spirits,18
+Republic of Moldova,2016,service_beer,18
+Republic of Moldova,2016,service_wine,18
+Republic of Moldova,2016,service_spirits,18
+North Macedonia,2016,sale_beer,18
+North Macedonia,2016,sale_wine,18
+North Macedonia,2016,sale_spirits,18
+North Macedonia,2016,service_beer,18
+North Macedonia,2016,service_wine,18
+North Macedonia,2016,service_spirits,18
+Romania,2016,sale_beer,18
+Romania,2016,sale_wine,18
+Romania,2016,sale_spirits,18
+Romania,2016,service_beer,18
+Romania,2016,service_wine,18
+Romania,2016,service_spirits,18
+Russian Federation,2016,sale_beer,18
+Russian Federation,2016,sale_wine,18
+Russian Federation,2016,sale_spirits,18
+Russian Federation,2016,service_beer,18
+Russian Federation,2016,service_wine,18
+Russian Federation,2016,service_spirits,18
+Rwanda,2016,sale_beer,18
+Rwanda,2016,sale_wine,18
+Rwanda,2016,sale_spirits,18
+Rwanda,2016,service_beer,18
+Rwanda,2016,service_wine,18
+Rwanda,2016,service_spirits,18
+Saint Kitts and Nevis,2016,sale_beer,18
+Saint Kitts and Nevis,2016,sale_wine,18
+Saint Kitts and Nevis,2016,sale_spirits,18
+Saint Kitts and Nevis,2016,service_beer,18
+Saint Kitts and Nevis,2016,service_wine,18
+Saint Kitts and Nevis,2016,service_spirits,18
+Saint Lucia,2016,sale_beer,16
+Saint Lucia,2016,sale_wine,16
+Saint Lucia,2016,sale_spirits,16
+Saint Lucia,2016,service_beer,16
+Saint Lucia,2016,service_wine,16
+Saint Lucia,2016,service_spirits,16
+Saint Vincent and the Grenadines,2016,sale_beer,18
+Saint Vincent and the Grenadines,2016,sale_wine,18
+Saint Vincent and the Grenadines,2016,sale_spirits,18
+Saint Vincent and the Grenadines,2016,service_beer,18
+Saint Vincent and the Grenadines,2016,service_wine,18
+Saint Vincent and the Grenadines,2016,service_spirits,18
+Samoa,2016,sale_beer,21
+Samoa,2016,sale_wine,21
+Samoa,2016,sale_spirits,21
+Samoa,2016,service_beer,21
+Samoa,2016,service_wine,21
+Samoa,2016,service_spirits,21
+San Marino,2016,sale_beer,16
+San Marino,2016,sale_wine,16
+San Marino,2016,sale_spirits,16
+San Marino,2016,service_beer,16
+San Marino,2016,service_wine,16
+San Marino,2016,service_spirits,16
+Sao Tome and Principe,2016,sale_beer,18
+Sao Tome and Principe,2016,sale_wine,18
+Sao Tome and Principe,2016,sale_spirits,18
+Sao Tome and Principe,2016,service_beer,18
+Sao Tome and Principe,2016,service_wine,18
+Sao Tome and Principe,2016,service_spirits,18
+Saudi Arabia,2016,sale_beer,Total ban
+Saudi Arabia,2016,sale_wine,Total ban
+Saudi Arabia,2016,sale_spirits,Total ban
+Saudi Arabia,2016,service_beer,Total ban
+Saudi Arabia,2016,service_wine,Total ban
+Saudi Arabia,2016,service_spirits,Total ban
+Senegal,2016,sale_beer,18
+Senegal,2016,sale_wine,18
+Senegal,2016,sale_spirits,18
+Senegal,2016,service_beer,18
+Senegal,2016,service_wine,18
+Senegal,2016,service_spirits,18
+Serbia,2016,sale_beer,18
+Serbia,2016,sale_wine,18
+Serbia,2016,sale_spirits,18
+Serbia,2016,service_beer,18
+Serbia,2016,service_wine,18
+Serbia,2016,service_spirits,18
+Seychelles,2016,sale_beer,18
+Seychelles,2016,sale_wine,18
+Seychelles,2016,sale_spirits,18
+Seychelles,2016,service_beer,18
+Seychelles,2016,service_wine,18
+Seychelles,2016,service_spirits,18
+Sierra Leone,2016,sale_beer,18
+Sierra Leone,2016,sale_wine,18
+Sierra Leone,2016,sale_spirits,18
+Sierra Leone,2016,service_beer,18
+Sierra Leone,2016,service_wine,18
+Sierra Leone,2016,service_spirits,18
+Singapore,2016,sale_beer,18
+Singapore,2016,sale_wine,18
+Singapore,2016,sale_spirits,18
+Singapore,2016,service_beer,18
+Singapore,2016,service_wine,18
+Singapore,2016,service_spirits,18
+Slovakia,2016,sale_beer,18
+Slovakia,2016,sale_wine,18
+Slovakia,2016,sale_spirits,18
+Slovakia,2016,service_beer,18
+Slovakia,2016,service_wine,18
+Slovakia,2016,service_spirits,18
+Slovenia,2016,sale_beer,18
+Slovenia,2016,sale_wine,18
+Slovenia,2016,sale_spirits,18
+Slovenia,2016,service_beer,18
+Slovenia,2016,service_wine,18
+Slovenia,2016,service_spirits,18
+Solomon Islands,2016,sale_beer,No data
+Solomon Islands,2016,sale_wine,No data
+Solomon Islands,2016,sale_spirits,No data
+Solomon Islands,2016,service_beer,No data
+Solomon Islands,2016,service_wine,No data
+Solomon Islands,2016,service_spirits,No data
+Somalia,2016,sale_beer,Total ban
+Somalia,2016,sale_wine,Total ban
+Somalia,2016,sale_spirits,Total ban
+Somalia,2016,service_beer,Total ban
+Somalia,2016,service_wine,Total ban
+Somalia,2016,service_spirits,Total ban
+South Africa,2016,sale_beer,18
+South Africa,2016,sale_wine,18
+South Africa,2016,sale_spirits,18
+South Africa,2016,service_beer,18
+South Africa,2016,service_wine,18
+South Africa,2016,service_spirits,18
+South Sudan,2016,sale_beer,18
+South Sudan,2016,sale_wine,18
+South Sudan,2016,sale_spirits,18
+South Sudan,2016,service_beer,18
+South Sudan,2016,service_wine,18
+South Sudan,2016,service_spirits,18
+Spain,2016,sale_beer,18
+Spain,2016,sale_wine,18
+Spain,2016,sale_spirits,18
+Spain,2016,service_beer,18
+Spain,2016,service_wine,18
+Spain,2016,service_spirits,18
+Sri Lanka,2016,sale_beer,21
+Sri Lanka,2016,sale_wine,21
+Sri Lanka,2016,sale_spirits,21
+Sri Lanka,2016,service_beer,21
+Sri Lanka,2016,service_wine,21
+Sri Lanka,2016,service_spirits,21
+Sudan,2016,sale_beer,Total ban
+Sudan,2016,sale_wine,Total ban
+Sudan,2016,sale_spirits,Total ban
+Sudan,2016,service_beer,Total ban
+Sudan,2016,service_wine,Total ban
+Sudan,2016,service_spirits,Total ban
+Suriname,2016,sale_beer,16
+Suriname,2016,sale_wine,16
+Suriname,2016,sale_spirits,16
+Suriname,2016,service_beer,16
+Suriname,2016,service_wine,16
+Suriname,2016,service_spirits,16
+Sweden,2016,sale_beer,18
+Sweden,2016,sale_wine,20
+Sweden,2016,sale_spirits,20
+Sweden,2016,service_beer,18
+Sweden,2016,service_wine,18
+Sweden,2016,service_spirits,18
+Switzerland,2016,sale_beer,16
+Switzerland,2016,sale_wine,16
+Switzerland,2016,sale_spirits,18
+Switzerland,2016,service_beer,16
+Switzerland,2016,service_wine,16
+Switzerland,2016,service_spirits,18
+Syrian Arab Republic,2016,sale_beer,18
+Syrian Arab Republic,2016,sale_wine,18
+Syrian Arab Republic,2016,sale_spirits,18
+Syrian Arab Republic,2016,service_beer,18
+Syrian Arab Republic,2016,service_wine,18
+Syrian Arab Republic,2016,service_spirits,18
+Tajikistan,2016,sale_beer,18
+Tajikistan,2016,sale_wine,18
+Tajikistan,2016,sale_spirits,18
+Tajikistan,2016,service_beer,18
+Tajikistan,2016,service_wine,18
+Tajikistan,2016,service_spirits,18
+Thailand,2016,sale_beer,20
+Thailand,2016,sale_wine,20
+Thailand,2016,sale_spirits,20
+Thailand,2016,service_beer,20
+Thailand,2016,service_wine,20
+Thailand,2016,service_spirits,20
+Timor-Leste,2016,sale_beer,None
+Timor-Leste,2016,sale_wine,None
+Timor-Leste,2016,sale_spirits,None
+Timor-Leste,2016,service_beer,None
+Timor-Leste,2016,service_wine,None
+Timor-Leste,2016,service_spirits,None
+Togo,2016,sale_beer,None
+Togo,2016,sale_wine,None
+Togo,2016,sale_spirits,None
+Togo,2016,service_beer,18
+Togo,2016,service_wine,18
+Togo,2016,service_spirits,18
+Tonga,2016,sale_beer,No data
+Tonga,2016,sale_wine,No data
+Tonga,2016,sale_spirits,No data
+Tonga,2016,service_beer,No data
+Tonga,2016,service_wine,No data
+Tonga,2016,service_spirits,No data
+Trinidad and Tobago,2016,sale_beer,18
+Trinidad and Tobago,2016,sale_wine,18
+Trinidad and Tobago,2016,sale_spirits,18
+Trinidad and Tobago,2016,service_beer,18
+Trinidad and Tobago,2016,service_wine,18
+Trinidad and Tobago,2016,service_spirits,18
+Tunisia,2016,sale_beer,No data
+Tunisia,2016,sale_wine,No data
+Tunisia,2016,sale_spirits,No data
+Tunisia,2016,service_beer,No data
+Tunisia,2016,service_wine,No data
+Tunisia,2016,service_spirits,No data
+Turkey,2016,sale_beer,18
+Turkey,2016,sale_wine,18
+Turkey,2016,sale_spirits,18
+Turkey,2016,service_beer,18
+Turkey,2016,service_wine,18
+Turkey,2016,service_spirits,18
+Turkmenistan,2016,sale_beer,18
+Turkmenistan,2016,sale_wine,18
+Turkmenistan,2016,sale_spirits,18
+Turkmenistan,2016,service_beer,18
+Turkmenistan,2016,service_wine,18
+Turkmenistan,2016,service_spirits,18
+Tuvalu,2016,sale_beer,No data
+Tuvalu,2016,sale_wine,No data
+Tuvalu,2016,sale_spirits,No data
+Tuvalu,2016,service_beer,No data
+Tuvalu,2016,service_wine,No data
+Tuvalu,2016,service_spirits,No data
+Uganda,2016,sale_beer,18
+Uganda,2016,sale_wine,18
+Uganda,2016,sale_spirits,18
+Uganda,2016,service_beer,18
+Uganda,2016,service_wine,18
+Uganda,2016,service_spirits,18
+Ukraine,2016,sale_beer,18
+Ukraine,2016,sale_wine,18
+Ukraine,2016,sale_spirits,18
+Ukraine,2016,service_beer,18
+Ukraine,2016,service_wine,18
+Ukraine,2016,service_spirits,18
+United Arab Emirates,2016,sale_beer,No data
+United Arab Emirates,2016,sale_wine,No data
+United Arab Emirates,2016,sale_spirits,No data
+United Arab Emirates,2016,service_beer,No data
+United Arab Emirates,2016,service_wine,No data
+United Arab Emirates,2016,service_spirits,No data
+United Kingdom of Great Britain and Northern Ireland,2016,sale_beer,18
+United Kingdom of Great Britain and Northern Ireland,2016,sale_wine,18
+United Kingdom of Great Britain and Northern Ireland,2016,sale_spirits,18
+United Kingdom of Great Britain and Northern Ireland,2016,service_beer,18
+United Kingdom of Great Britain and Northern Ireland,2016,service_wine,18
+United Kingdom of Great Britain and Northern Ireland,2016,service_spirits,18
+United Republic of Tanzania,2016,sale_beer,18
+United Republic of Tanzania,2016,sale_wine,18
+United Republic of Tanzania,2016,sale_spirits,18
+United Republic of Tanzania,2016,service_beer,18
+United Republic of Tanzania,2016,service_wine,18
+United Republic of Tanzania,2016,service_spirits,18
+United States of America,2016,sale_beer,21
+United States of America,2016,sale_wine,21
+United States of America,2016,sale_spirits,21
+United States of America,2016,service_beer,21
+United States of America,2016,service_wine,21
+United States of America,2016,service_spirits,21
+Uruguay,2016,sale_beer,18
+Uruguay,2016,sale_wine,18
+Uruguay,2016,sale_spirits,18
+Uruguay,2016,service_beer,18
+Uruguay,2016,service_wine,18
+Uruguay,2016,service_spirits,18
+Uzbekistan,2016,sale_beer,20
+Uzbekistan,2016,sale_wine,20
+Uzbekistan,2016,sale_spirits,20
+Uzbekistan,2016,service_beer,20
+Uzbekistan,2016,service_wine,20
+Uzbekistan,2016,service_spirits,20
+Vanuatu,2016,sale_beer,None
+Vanuatu,2016,sale_wine,None
+Vanuatu,2016,sale_spirits,None
+Vanuatu,2016,service_beer,None
+Vanuatu,2016,service_wine,None
+Vanuatu,2016,service_spirits,None
+Venezuela (Bolivarian Republic of),2016,sale_beer,18
+Venezuela (Bolivarian Republic of),2016,sale_wine,18
+Venezuela (Bolivarian Republic of),2016,sale_spirits,18
+Venezuela (Bolivarian Republic of),2016,service_beer,18
+Venezuela (Bolivarian Republic of),2016,service_wine,18
+Venezuela (Bolivarian Republic of),2016,service_spirits,18
+Viet Nam,2016,sale_beer,18
+Viet Nam,2016,sale_wine,18
+Viet Nam,2016,sale_spirits,18
+Viet Nam,2016,service_beer,18
+Viet Nam,2016,service_wine,18
+Viet Nam,2016,service_spirits,18
+Yemen,2016,sale_beer,Total ban
+Yemen,2016,sale_wine,Total ban
+Yemen,2016,sale_spirits,Total ban
+Yemen,2016,service_beer,Total ban
+Yemen,2016,service_wine,Total ban
+Yemen,2016,service_spirits,Total ban
+Zambia,2016,sale_beer,18
+Zambia,2016,sale_wine,18
+Zambia,2016,sale_spirits,18
+Zambia,2016,service_beer,18
+Zambia,2016,service_wine,18
+Zambia,2016,service_spirits,18
+Zimbabwe,2016,sale_beer,18
+Zimbabwe,2016,sale_wine,18
+Zimbabwe,2016,sale_spirits,18
+Zimbabwe,2016,service_beer,18
+Zimbabwe,2016,service_wine,18
+Zimbabwe,2016,service_spirits,18

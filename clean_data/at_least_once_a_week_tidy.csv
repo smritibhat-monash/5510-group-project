@@ -1,0 +1,291 @@
+country,year,gender,percentage
+Albania,2014,Male,23
+Albania,2014,Female,10
+Armenia,2014,Male,18
+Armenia,2014,Female,7
+Armenia,2010,Male,27
+Armenia,2010,Female,11
+Austria,2014,Male,23
+Austria,2014,Female,11
+Austria,2010,Male,37
+Austria,2010,Female,28
+Austria,2006,Male,42
+Austria,2006,Female,35
+Austria,2005,Male,42
+Austria,2005,Female,35
+Belgium,2014,Male,18
+Belgium,2014,Female,11
+Belgium,2010,Male,29.5
+Belgium,2010,Female,18
+Belgium,2006,Male,39
+Belgium,2006,Female,23
+Belgium,2005,Male,39
+Belgium,2005,Female,23
+Bulgaria,2014,Male,32
+Bulgaria,2014,Female,17
+Bulgaria,2006,Male,45
+Bulgaria,2006,Female,33
+Bulgaria,2005,Male,45
+Bulgaria,2005,Female,33
+Canada,2014,Male,12
+Canada,2014,Female,8
+Canada,2010,Male,17
+Canada,2010,Female,13
+Canada,2006,Male,19
+Canada,2006,Female,16
+Canada,2005,Male,19
+Canada,2005,Female,16
+Croatia,2014,Male,33
+Croatia,2014,Female,13
+Croatia,2010,Male,43
+Croatia,2010,Female,27
+Croatia,2006,Male,44
+Croatia,2006,Female,29
+Croatia,2005,Male,44
+Croatia,2005,Female,29
+Czechia,2014,Male,20
+Czechia,2014,Female,14
+Czechia,2010,Male,44
+Czechia,2010,Female,33
+Czechia,2006,Male,39
+Czechia,2006,Female,27
+Czechia,2005,Male,39
+Czechia,2005,Female,27
+Denmark,2014,Male,20
+Denmark,2014,Female,12
+Denmark,2010,Male,26
+Denmark,2010,Female,17
+Denmark,2006,Male,37
+Denmark,2006,Female,26
+Denmark,2005,Male,37
+Denmark,2005,Female,26
+Estonia,2014,Male,12
+Estonia,2014,Female,7
+Estonia,2010,Male,20
+Estonia,2010,Female,13
+Estonia,2006,Male,27
+Estonia,2006,Female,17
+Estonia,2005,Male,27
+Estonia,2005,Female,17
+Finland,2014,Male,8
+Finland,2014,Female,4
+Finland,2010,Male,7
+Finland,2010,Female,8
+Finland,2006,Male,12
+Finland,2006,Female,8
+Finland,2005,Male,12
+Finland,2005,Female,8
+France,2014,Male,16
+France,2014,Female,8
+France,2010,Male,25
+France,2010,Female,13
+France,2006,Male,27
+France,2006,Female,15
+France,2005,Male,27
+France,2005,Female,15
+Germany,2014,Male,19
+Germany,2014,Female,8
+Germany,2010,Male,28
+Germany,2010,Female,15
+Germany,2006,Male,25
+Germany,2006,Female,15
+Germany,2005,Male,25
+Germany,2005,Female,15
+Greece,2014,Male,29
+Greece,2014,Female,18
+Greece,2010,Male,43
+Greece,2010,Female,34
+Greece,2006,Male,42
+Greece,2006,Female,24
+Greece,2005,Male,42
+Greece,2005,Female,24
+Hungary,2014,Male,29
+Hungary,2014,Female,18
+Hungary,2010,Male,32
+Hungary,2010,Female,20
+Hungary,2006,Male,35
+Hungary,2006,Female,24
+Hungary,2005,Male,35
+Hungary,2005,Female,24
+Iceland,2014,Male,3
+Iceland,2014,Female,2
+Iceland,2010,Male,8
+Iceland,2010,Female,5
+Iceland,2006,Male,15
+Iceland,2006,Female,11
+Iceland,2005,Male,15
+Iceland,2005,Female,11
+Ireland,2014,Male,6
+Ireland,2014,Female,4
+Ireland,2010,Male,13
+Ireland,2010,Female,9
+Ireland,2006,Male,19
+Ireland,2006,Female,19
+Ireland,2005,Male,19
+Ireland,2005,Female,19
+Israel,2014,Male,29
+Israel,2014,Female,11
+Israel,2010,Male,NA
+Israel,2010,Female,11
+Israel,2006,Male,22
+Israel,2006,Female,11
+Israel,2005,Male,22
+Israel,2005,Female,NA
+Italy,2014,Male,32
+Italy,2014,Female,18
+Italy,2010,Male,39
+Italy,2010,Female,26
+Italy,2006,Male,47
+Italy,2006,Female,30
+Italy,2005,Male,47
+Italy,2005,Female,30
+Latvia,2014,Male,10
+Latvia,2014,Female,4
+Latvia,2010,Male,26
+Latvia,2010,Female,21
+Latvia,2006,Male,31
+Latvia,2006,Female,24
+Latvia,2005,Male,31
+Latvia,2005,Female,24
+Lithuania,2014,Male,13
+Lithuania,2014,Female,6
+Lithuania,2010,Male,25
+Lithuania,2010,Female,17
+Lithuania,2006,Male,25
+Lithuania,2006,Female,20
+Lithuania,2005,Male,25
+Lithuania,2005,Female,20
+Luxembourg,2014,Male,14
+Luxembourg,2014,Female,9
+Luxembourg,2010,Male,26
+Luxembourg,2010,Female,15
+Luxembourg,2006,Male,30
+Luxembourg,2006,Female,19
+Luxembourg,2005,Male,30
+Luxembourg,2005,Female,19
+Malta,2014,Male,32
+Malta,2014,Female,26
+Malta,2006,Male,51
+Malta,2006,Female,39
+Malta,2005,Male,51
+Malta,2005,Female,39
+Netherlands,2014,Male,18
+Netherlands,2014,Female,13
+Netherlands,2010,Male,25
+Netherlands,2010,Female,18
+Netherlands,2006,Male,43
+Netherlands,2006,Female,31
+Netherlands,2005,Male,43
+Netherlands,2005,Female,31
+Norway,2014,Male,3
+Norway,2014,Female,4
+Norway,2010,Male,11
+Norway,2010,Female,9
+Norway,2006,Male,11
+Norway,2006,Female,10
+Norway,2005,Male,11
+Norway,2005,Female,10
+Poland,2014,Male,13
+Poland,2014,Female,9
+Poland,2010,Male,17
+Poland,2010,Female,11
+Poland,2006,Male,17
+Poland,2006,Female,7
+Poland,2005,Male,17
+Poland,2005,Female,7
+Portugal,2014,Male,11
+Portugal,2014,Female,4
+Portugal,2010,Male,12
+Portugal,2010,Female,6
+Portugal,2006,Male,19
+Portugal,2006,Female,8
+Portugal,2005,Male,19
+Portugal,2005,Female,8
+Republic of Moldova,2014,Male,24
+Republic of Moldova,2014,Female,13
+North Macedonia,2014,Male,18
+North Macedonia,2014,Female,9
+North Macedonia,2010,Male,23
+North Macedonia,2010,Female,12
+North Macedonia,2006,Male,28
+North Macedonia,2006,Female,15
+North Macedonia,2005,Male,28
+North Macedonia,2005,Female,15
+Romania,2014,Male,30
+Romania,2014,Female,10
+Romania,2010,Male,36
+Romania,2010,Female,11
+Romania,2006,Male,30
+Romania,2006,Female,9
+Romania,2005,Male,30
+Romania,2005,Female,9
+Russian Federation,2014,Male,12
+Russian Federation,2014,Female,6
+Russian Federation,2010,Male,13
+Russian Federation,2010,Female,9
+Russian Federation,2006,Male,27
+Russian Federation,2006,Female,21
+Russian Federation,2005,Male,27
+Russian Federation,2005,Female,21
+Slovakia,2014,Male,19
+Slovakia,2014,Female,11
+Slovakia,2010,Male,28
+Slovakia,2010,Female,16
+Slovakia,2006,Male,32
+Slovakia,2006,Female,20
+Slovakia,2005,Male,32
+Slovakia,2005,Female,20
+Slovenia,2014,Male,18
+Slovenia,2014,Female,11
+Slovenia,2010,Male,33
+Slovenia,2010,Female,20
+Slovenia,2006,Male,36
+Slovenia,2006,Female,21
+Slovenia,2005,Male,36
+Slovenia,2005,Female,21
+Spain,2014,Male,11
+Spain,2014,Female,8
+Spain,2010,Male,23
+Spain,2010,Female,22
+Spain,2006,Male,25
+Spain,2006,Female,25
+Spain,2005,Male,25
+Spain,2005,Female,25
+Sweden,2014,Male,5
+Sweden,2014,Female,4
+Sweden,2010,Male,11
+Sweden,2010,Female,9
+Sweden,2006,Male,15
+Sweden,2006,Female,9
+Sweden,2005,Male,15
+Sweden,2005,Female,9
+Switzerland,2014,Male,11
+Switzerland,2014,Female,6
+Switzerland,2010,Male,26
+Switzerland,2010,Female,13
+Switzerland,2006,Male,27
+Switzerland,2006,Female,16
+Switzerland,2005,Male,27
+Switzerland,2005,Female,16
+Ukraine,2014,Male,18
+Ukraine,2014,Female,10
+Ukraine,2010,Male,44
+Ukraine,2010,Female,30
+Ukraine,2006,Male,59
+Ukraine,2006,Female,47
+Ukraine,2005,Male,59
+Ukraine,2005,Female,47
+United Kingdom of Great Britain and Northern Ireland,2014,Male,14
+United Kingdom of Great Britain and Northern Ireland,2014,Female,11
+United Kingdom of Great Britain and Northern Ireland,2010,Male,31.7
+United Kingdom of Great Britain and Northern Ireland,2010,Female,25.3
+United Kingdom of Great Britain and Northern Ireland,2006,Male,40.7
+United Kingdom of Great Britain and Northern Ireland,2006,Female,37.3
+United Kingdom of Great Britain and Northern Ireland,2005,Male,40.7
+United Kingdom of Great Britain and Northern Ireland,2005,Female,37.3
+United States of America,2010,Male,11
+United States of America,2010,Female,9
+United States of America,2006,Male,14
+United States of America,2006,Female,12
+United States of America,2005,Male,14
+United States of America,2005,Female,12

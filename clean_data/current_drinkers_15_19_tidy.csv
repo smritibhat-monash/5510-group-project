@@ -1,0 +1,568 @@
+country,year,gender,drinker_percentage
+Afghanistan,2016,All,0.3
+Afghanistan,2016,Male,0.5
+Afghanistan,2016,Female,0.1
+Albania,2016,All,37.7
+Albania,2016,Male,50.5
+Albania,2016,Female,24.2
+Algeria,2016,All,1.5
+Algeria,2016,Male,2.3
+Algeria,2016,Female,0.7
+Andorra,2016,All,64.2
+Andorra,2016,Male,76.6
+Andorra,2016,Female,50.7
+Angola,2016,All,33.5
+Angola,2016,Male,46
+Angola,2016,Female,21.1
+Antigua and Barbuda,2016,All,35.3
+Antigua and Barbuda,2016,Male,47.9
+Antigua and Barbuda,2016,Female,22.4
+Argentina,2016,All,54.5
+Argentina,2016,Male,68.2
+Argentina,2016,Female,40.3
+Armenia,2016,All,16.3
+Armenia,2016,Male,23.5
+Armenia,2016,Female,8.8
+Australia,2016,All,69.3
+Australia,2016,Male,80.8
+Australia,2016,Female,57
+Austria,2016,All,68.1
+Austria,2016,Male,80
+Austria,2016,Female,55.7
+Azerbaijan,2016,All,12.8
+Azerbaijan,2016,Male,18.2
+Azerbaijan,2016,Female,6.5
+Bahamas,2016,All,29.8
+Bahamas,2016,Male,41.2
+Bahamas,2016,Female,18
+Bahrain,2016,All,3.8
+Bahrain,2016,Male,5.4
+Bahrain,2016,Female,1.8
+Bangladesh,2016,All,1.3
+Bangladesh,2016,Male,2.1
+Bangladesh,2016,Female,0.5
+Barbados,2016,All,37.5
+Barbados,2016,Male,50.4
+Barbados,2016,Female,24.2
+Belarus,2016,All,58
+Belarus,2016,Male,66.1
+Belarus,2016,Female,49.4
+Belgium,2016,All,66.2
+Belgium,2016,Male,78.5
+Belgium,2016,Female,53.4
+Belize,2016,All,27.3
+Belize,2016,Male,38.3
+Belize,2016,Female,16.3
+Benin,2016,All,15.3
+Benin,2016,Male,22.2
+Benin,2016,Female,8.4
+Bhutan,2016,All,16.8
+Bhutan,2016,Male,24.3
+Bhutan,2016,Female,9.2
+Bolivia (Plurinational State of),2016,All,31.3
+Bolivia (Plurinational State of),2016,Male,43.1
+Bolivia (Plurinational State of),2016,Female,19.2
+Bosnia and Herzegovina,2016,All,34.4
+Bosnia and Herzegovina,2016,Male,46.5
+Bosnia and Herzegovina,2016,Female,21.5
+Botswana,2016,All,19.3
+Botswana,2016,Male,27.7
+Botswana,2016,Female,10.7
+Brazil,2016,All,26.8
+Brazil,2016,Male,37.4
+Brazil,2016,Female,15.8
+Brunei Darussalam,2016,All,24.5
+Brunei Darussalam,2016,Male,29.7
+Brunei Darussalam,2016,Female,18.9
+Bulgaria,2016,All,54.1
+Bulgaria,2016,Male,67.7
+Bulgaria,2016,Female,39.6
+Burkina Faso,2016,All,24.4
+Burkina Faso,2016,Male,35.1
+Burkina Faso,2016,Female,13.3
+Burundi,2016,All,19.4
+Burundi,2016,Male,28.1
+Burundi,2016,Female,10.9
+Cabo Verde,2016,All,20.8
+Cabo Verde,2016,Male,29.5
+Cabo Verde,2016,Female,11.9
+Cambodia,2016,All,19.2
+Cambodia,2016,Male,27.5
+Cambodia,2016,Female,10.6
+Cameroon,2016,All,26.1
+Cameroon,2016,Male,37.6
+Cameroon,2016,Female,14.5
+Canada,2016,All,51.7
+Canada,2016,Male,65.4
+Canada,2016,Female,37.2
+Central African Republic,2016,All,24.4
+Central African Republic,2016,Male,34.6
+Central African Republic,2016,Female,14.3
+Chad,2016,All,13.3
+Chad,2016,Male,19.4
+Chad,2016,Female,7.1
+Chile,2016,All,54.4
+Chile,2016,Male,68.1
+Chile,2016,Female,40.1
+China,2016,All,41.2
+China,2016,Male,52.9
+China,2016,Female,27.9
+Colombia,2016,All,25
+Colombia,2016,Male,35.1
+Colombia,2016,Female,14.5
+Comoros,2016,All,2
+Comoros,2016,Male,3
+Comoros,2016,Female,0.9
+Congo,2016,All,36.9
+Congo,2016,Male,49.9
+Congo,2016,Female,23.8
+Cook Islands,2016,All,36
+Cook Islands,2016,Male,48.7
+Cook Islands,2016,Female,22.9
+Costa Rica,2016,All,23.7
+Costa Rica,2016,Male,33.4
+Costa Rica,2016,Female,13.6
+Côte d'Ivoire,2016,All,25.2
+Côte d'Ivoire,2016,Male,36.4
+Côte d'Ivoire,2016,Female,13.9
+Croatia,2016,All,47.4
+Croatia,2016,Male,61.1
+Croatia,2016,Female,33
+Cuba,2016,All,32.5
+Cuba,2016,Male,44.2
+Cuba,2016,Female,19.9
+Cyprus,2016,All,55.3
+Cyprus,2016,Male,68.8
+Cyprus,2016,Female,40.9
+Czechia,2016,All,64.6
+Czechia,2016,Male,77.1
+Czechia,2016,Female,51.3
+Democratic People's Republic of Korea,2016,All,27.4
+Democratic People's Republic of Korea,2016,Male,37.5
+Democratic People's Republic of Korea,2016,Female,16.8
+Democratic Republic of the Congo,2016,All,23.6
+Democratic Republic of the Congo,2016,Male,33.5
+Democratic Republic of the Congo,2016,Female,13.7
+Denmark,2016,All,63.9
+Denmark,2016,Male,76.5
+Denmark,2016,Female,50.6
+Djibouti,2016,All,11
+Djibouti,2016,Male,16.1
+Djibouti,2016,Female,5.7
+Dominica,2016,All,31.3
+Dominica,2016,Male,42.9
+Dominica,2016,Female,19.1
+Dominican Republic,2016,All,29.1
+Dominican Republic,2016,Male,40.4
+Dominican Republic,2016,Female,17.5
+Ecuador,2016,All,32.2
+Ecuador,2016,Male,44.1
+Ecuador,2016,Female,19.8
+Egypt,2016,All,1.4
+Egypt,2016,Male,2.1
+Egypt,2016,Female,0.7
+El Salvador,2016,All,19
+El Salvador,2016,Male,27.4
+El Salvador,2016,Female,10.6
+Equatorial Guinea,2016,All,59.3
+Equatorial Guinea,2016,Male,72.8
+Equatorial Guinea,2016,Female,45.6
+Eritrea,2016,All,11.5
+Eritrea,2016,Male,16.8
+Eritrea,2016,Female,6
+Estonia,2016,All,62.3
+Estonia,2016,Male,75.2
+Estonia,2016,Female,48.8
+Eswatini,2016,All,17.6
+Eswatini,2016,Male,25.4
+Eswatini,2016,Female,9.7
+Ethiopia,2016,All,13.3
+Ethiopia,2016,Male,19.5
+Ethiopia,2016,Female,7.1
+Fiji,2016,All,9.9
+Fiji,2016,Male,14.4
+Fiji,2016,Female,5
+Finland,2016,All,61.9
+Finland,2016,Male,74.9
+Finland,2016,Female,48.3
+France,2016,All,65.4
+France,2016,Male,77.8
+France,2016,Female,52.4
+Gabon,2016,All,52.3
+Gabon,2016,Male,66.3
+Gabon,2016,Female,38.1
+Gambia,2016,All,15.9
+Gambia,2016,Male,23.1
+Gambia,2016,Female,8.8
+Georgia,2016,All,23.6
+Georgia,2016,Male,33
+Georgia,2016,Female,13.4
+Germany,2016,All,70.2
+Germany,2016,Male,81.6
+Germany,2016,Female,58.2
+Ghana,2016,All,15.4
+Ghana,2016,Male,22.2
+Ghana,2016,Female,8.3
+Greece,2016,All,53.4
+Greece,2016,Male,67.2
+Greece,2016,Female,39.1
+Grenada,2016,All,34.9
+Grenada,2016,Male,47.2
+Grenada,2016,Female,21.9
+Guatemala,2016,All,16.9
+Guatemala,2016,Male,24.4
+Guatemala,2016,Female,9.2
+Guinea,2016,All,12.6
+Guinea,2016,Male,18.3
+Guinea,2016,Female,6.7
+Guinea-Bissau,2016,All,17.2
+Guinea-Bissau,2016,Male,24.8
+Guinea-Bissau,2016,Female,9.6
+Guyana,2016,All,26.1
+Guyana,2016,Male,36.7
+Guyana,2016,Female,15.4
+Haiti,2016,All,22.4
+Haiti,2016,Male,31.9
+Haiti,2016,Female,12.8
+Honduras,2016,All,18.3
+Honduras,2016,Male,26.3
+Honduras,2016,Female,10.1
+Hungary,2016,All,54.6
+Hungary,2016,Male,68.2
+Hungary,2016,Female,40.2
+Iceland,2016,All,59.2
+Iceland,2016,Male,72.5
+Iceland,2016,Female,45.3
+India,2016,All,25.2
+India,2016,Male,34.9
+India,2016,Female,14.4
+Indonesia,2016,All,13.1
+Indonesia,2016,Male,18.9
+Indonesia,2016,Female,6.8
+Iran (Islamic Republic of),2016,All,1.7
+Iran (Islamic Republic of),2016,Male,2.8
+Iran (Islamic Republic of),2016,Female,0.5
+Iraq,2016,All,1.5
+Iraq,2016,Male,2.3
+Iraq,2016,Female,0.7
+Ireland,2016,All,71.4
+Ireland,2016,Male,82.5
+Ireland,2016,Female,59.7
+Israel,2016,All,41.4
+Israel,2016,Male,54.6
+Israel,2016,Female,27.4
+Italy,2016,All,50.8
+Italy,2016,Male,64.5
+Italy,2016,Female,36.3
+Jamaica,2016,All,22.7
+Jamaica,2016,Male,32
+Jamaica,2016,Female,12.9
+Japan,2016,All,45.5
+Japan,2016,Male,59.1
+Japan,2016,Female,31.2
+Jordan,2016,All,1.5
+Jordan,2016,Male,2.2
+Jordan,2016,Female,0.7
+Kazakhstan,2016,All,26.4
+Kazakhstan,2016,Male,36.8
+Kazakhstan,2016,Female,15.5
+Kenya,2016,All,13.8
+Kenya,2016,Male,20.2
+Kenya,2016,Female,7.4
+Kiribati,2016,All,6.6
+Kiribati,2016,Male,9.8
+Kiribati,2016,Female,3.3
+Kuwait,2016,All,0.2
+Kuwait,2016,Male,0.3
+Kuwait,2016,Female,0.1
+Kyrgyzstan,2016,All,15.3
+Kyrgyzstan,2016,Male,22.1
+Kyrgyzstan,2016,Female,8.2
+Lao People's Democratic Republic,2016,All,26.4
+Lao People's Democratic Republic,2016,Male,37
+Lao People's Democratic Republic,2016,Female,15.6
+Latvia,2016,All,65.3
+Latvia,2016,Male,77.7
+Latvia,2016,Female,52.2
+Lebanon,2016,All,3
+Lebanon,2016,Male,4.7
+Lebanon,2016,Female,1.5
+Lesotho,2016,All,10
+Lesotho,2016,Male,14.8
+Lesotho,2016,Female,5.2
+Liberia,2016,All,18.7
+Liberia,2016,Male,26.7
+Liberia,2016,Female,10.4
+Libya,2016,All,0.1
+Libya,2016,Male,0.1
+Libya,2016,Female,0
+Lithuania,2016,All,70.6
+Lithuania,2016,Male,81.9
+Lithuania,2016,Female,58.7
+Luxembourg,2016,All,86.4
+Luxembourg,2016,Male,92.7
+Luxembourg,2016,Female,79.9
+Madagascar,2016,All,12
+Madagascar,2016,Male,17.7
+Madagascar,2016,Female,6.3
+Malawi,2016,All,14
+Malawi,2016,Male,20.5
+Malawi,2016,Female,7.5
+Malaysia,2016,All,17.5
+Malaysia,2016,Male,25.7
+Malaysia,2016,Female,9.8
+Maldives,2016,All,3.8
+Maldives,2016,Male,5.7
+Maldives,2016,Female,1.8
+Mali,2016,All,12.9
+Mali,2016,Male,18.7
+Mali,2016,Female,6.8
+Malta,2016,All,49.4
+Malta,2016,Male,64.2
+Malta,2016,Female,36
+Mauritania,2016,All,0.5
+Mauritania,2016,Male,0.7
+Mauritania,2016,Female,0.2
+Mauritius,2016,All,19.6
+Mauritius,2016,Male,28.1
+Mauritius,2016,Female,10.9
+Mexico,2016,All,28.7
+Mexico,2016,Male,39.8
+Mexico,2016,Female,17.2
+Micronesia (Federated States of),2016,All,8.5
+Micronesia (Federated States of),2016,Male,12.5
+Micronesia (Federated States of),2016,Female,4.3
+Mongolia,2016,All,20.4
+Mongolia,2016,Male,29.2
+Mongolia,2016,Female,11.5
+Montenegro,2016,All,40.6
+Montenegro,2016,Male,53.6
+Montenegro,2016,Female,26.6
+Morocco,2016,All,1.3
+Morocco,2016,Male,1.9
+Morocco,2016,Female,0.6
+Mozambique,2016,All,12.5
+Mozambique,2016,Male,18.4
+Mozambique,2016,Female,6.6
+Myanmar,2016,All,16.2
+Myanmar,2016,Male,23.6
+Myanmar,2016,Female,8.8
+Namibia,2016,All,18.7
+Namibia,2016,Male,27
+Namibia,2016,Female,10.4
+Nauru,2016,All,12.8
+Nauru,2016,Male,18.7
+Nauru,2016,Female,6.7
+Nepal,2016,All,17.1
+Nepal,2016,Male,24.6
+Nepal,2016,Female,9.3
+Netherlands,2016,All,60.9
+Netherlands,2016,Male,74
+Netherlands,2016,Female,47.2
+New Zealand,2016,All,63.8
+New Zealand,2016,Male,76.4
+New Zealand,2016,Female,50.5
+Nicaragua,2016,All,20.5
+Nicaragua,2016,Male,29
+Nicaragua,2016,Female,11.4
+Niger,2016,All,11.8
+Niger,2016,Male,17.3
+Niger,2016,Female,6.3
+Nigeria,2016,All,37.3
+Nigeria,2016,Male,51.7
+Nigeria,2016,Female,22.2
+Niue,2016,All,20.9
+Niue,2016,Male,29.8
+Niue,2016,Female,11.7
+Norway,2016,All,68.8
+Norway,2016,Male,80.5
+Norway,2016,Female,56.5
+Oman,2016,All,3.3
+Oman,2016,Male,4.7
+Oman,2016,Female,1.5
+Pakistan,2016,All,0.6
+Pakistan,2016,Male,0.9
+Pakistan,2016,Female,0.3
+Panama,2016,All,33.2
+Panama,2016,Male,45.3
+Panama,2016,Female,20.7
+Papua New Guinea,2016,All,7.4
+Papua New Guinea,2016,Male,10.8
+Papua New Guinea,2016,Female,3.7
+Paraguay,2016,All,23
+Paraguay,2016,Male,32.5
+Paraguay,2016,Female,13.1
+Peru,2016,All,38.5
+Peru,2016,Male,51.3
+Peru,2016,Female,24.9
+Philippines,2016,All,20.8
+Philippines,2016,Male,29.5
+Philippines,2016,Female,11.6
+Poland,2016,All,55.6
+Poland,2016,Male,69.1
+Poland,2016,Female,41.3
+Portugal,2016,All,58
+Portugal,2016,Male,71.7
+Portugal,2016,Female,44.3
+Qatar,2016,All,25.5
+Qatar,2016,Male,32
+Qatar,2016,Female,12.9
+Republic of Korea,2016,All,50.5
+Republic of Korea,2016,Male,64
+Republic of Korea,2016,Female,35.8
+Republic of Moldova,2016,All,52.9
+Republic of Moldova,2016,Male,66.6
+Republic of Moldova,2016,Female,38.5
+North Macedonia,2016,All,39.4
+North Macedonia,2016,Male,52.5
+North Macedonia,2016,Female,25.7
+Romania,2016,All,55.2
+Romania,2016,Male,68.7
+Romania,2016,Female,40.8
+Russian Federation,2016,All,39.5
+Russian Federation,2016,Male,44.5
+Russian Federation,2016,Female,34.2
+Rwanda,2016,All,22.6
+Rwanda,2016,Male,32.3
+Rwanda,2016,Female,13
+Saint Kitts and Nevis,2016,All,40.4
+Saint Kitts and Nevis,2016,Male,53.6
+Saint Kitts and Nevis,2016,Female,26.6
+Saint Lucia,2016,All,35.3
+Saint Lucia,2016,Male,48.1
+Saint Lucia,2016,Female,22.6
+Saint Vincent and the Grenadines,2016,All,32
+Saint Vincent and the Grenadines,2016,Male,44
+Saint Vincent and the Grenadines,2016,Female,19.8
+Samoa,2016,All,9.1
+Samoa,2016,Male,13.1
+Samoa,2016,Female,4.5
+Sao Tome and Principe,2016,All,21.1
+Sao Tome and Principe,2016,Male,30
+Sao Tome and Principe,2016,Female,12.1
+Saudi Arabia,2016,All,2.5
+Saudi Arabia,2016,Male,3.3
+Saudi Arabia,2016,Female,1.6
+Senegal,2016,All,12.4
+Senegal,2016,Male,18.1
+Senegal,2016,Female,6.6
+Serbia,2016,All,47.3
+Serbia,2016,Male,60.9
+Serbia,2016,Female,32.9
+Seychelles,2016,All,39.4
+Seychelles,2016,Male,52.4
+Seychelles,2016,Female,25.7
+Sierra Leone,2016,All,18.7
+Sierra Leone,2016,Male,27
+Sierra Leone,2016,Female,10.6
+Singapore,2016,All,57.2
+Singapore,2016,Male,70.6
+Singapore,2016,Female,43
+Slovakia,2016,All,56.5
+Slovakia,2016,Male,70
+Slovakia,2016,Female,42.3
+Slovenia,2016,All,59.6
+Slovenia,2016,Male,72.7
+Slovenia,2016,Female,45.6
+Solomon Islands,2016,All,7.4
+Solomon Islands,2016,Male,10.9
+Solomon Islands,2016,Female,3.7
+Somalia,2016,All,0.3
+Somalia,2016,Male,0.5
+Somalia,2016,Female,0.2
+South Africa,2016,All,19.5
+South Africa,2016,Male,27.3
+South Africa,2016,Female,10.5
+Spain,2016,All,56.6
+Spain,2016,Male,70.1
+Spain,2016,Female,42.3
+Sri Lanka,2016,All,18
+Sri Lanka,2016,Male,26
+Sri Lanka,2016,Female,9.9
+Sudan,2016,All,1.1
+Sudan,2016,Male,1.7
+Sudan,2016,Female,0.5
+Suriname,2016,All,28.2
+Suriname,2016,Male,39.2
+Suriname,2016,Female,16.9
+Sweden,2016,All,62
+Sweden,2016,Male,74.9
+Sweden,2016,Female,48.3
+Switzerland,2016,All,72
+Switzerland,2016,Male,83
+Switzerland,2016,Female,60.4
+Syrian Arab Republic,2016,All,1
+Syrian Arab Republic,2016,Male,1.7
+Syrian Arab Republic,2016,Female,0.3
+Tajikistan,2016,All,11.7
+Tajikistan,2016,Male,17.1
+Tajikistan,2016,Female,6.1
+Thailand,2016,All,27.3
+Thailand,2016,Male,38.1
+Thailand,2016,Female,16.2
+Timor-Leste,2016,All,12.9
+Timor-Leste,2016,Male,18.7
+Timor-Leste,2016,Female,6.7
+Togo,2016,All,15
+Togo,2016,Male,21.7
+Togo,2016,Female,8.2
+Tonga,2016,All,8.2
+Tonga,2016,Male,11.9
+Tonga,2016,Female,4.1
+Trinidad and Tobago,2016,All,43.9
+Trinidad and Tobago,2016,Male,57.6
+Trinidad and Tobago,2016,Female,29.9
+Tunisia,2016,All,2.6
+Tunisia,2016,Male,4.4
+Tunisia,2016,Female,0.8
+Turkey,2016,All,3.5
+Turkey,2016,Male,5.5
+Turkey,2016,Female,1.5
+Turkmenistan,2016,All,18.4
+Turkmenistan,2016,Male,26.4
+Turkmenistan,2016,Female,10.1
+Tuvalu,2016,All,7.9
+Tuvalu,2016,Male,11.6
+Tuvalu,2016,Female,4
+Uganda,2016,All,23.6
+Uganda,2016,Male,33.5
+Uganda,2016,Female,13.6
+Ukraine,2016,All,45.2
+Ukraine,2016,Male,53.2
+Ukraine,2016,Female,36.8
+United Arab Emirates,2016,All,7.9
+United Arab Emirates,2016,Male,10.6
+United Arab Emirates,2016,Female,3.6
+United Kingdom of Great Britain and Northern Ireland,2016,All,62.3
+United Kingdom of Great Britain and Northern Ireland,2016,Male,75.2
+United Kingdom of Great Britain and Northern Ireland,2016,Female,48.8
+United Republic of Tanzania,2016,All,23.6
+United Republic of Tanzania,2016,Male,33.5
+United Republic of Tanzania,2016,Female,13.6
+United States of America,2016,All,59.9
+United States of America,2016,Male,73.1
+United States of America,2016,Female,46
+Uruguay,2016,All,57.1
+Uruguay,2016,Male,70.6
+Uruguay,2016,Female,43
+Uzbekistan,2016,All,11.8
+Uzbekistan,2016,Male,17.2
+Uzbekistan,2016,Female,6.1
+Vanuatu,2016,All,7.4
+Vanuatu,2016,Male,10.9
+Vanuatu,2016,Female,3.7
+Venezuela (Bolivarian Republic of),2016,All,24.7
+Venezuela (Bolivarian Republic of),2016,Male,34.7
+Venezuela (Bolivarian Republic of),2016,Female,14.3
+Viet Nam,2016,All,23.4
+Viet Nam,2016,Male,32.9
+Viet Nam,2016,Female,13.3
+Yemen,2016,All,0.3
+Yemen,2016,Male,0.5
+Yemen,2016,Female,0.2
+Zambia,2016,All,16.5
+Zambia,2016,Male,23.9
+Zambia,2016,Female,9
+Zimbabwe,2016,All,9.8
+Zimbabwe,2016,Male,14.5
+Zimbabwe,2016,Female,5.1

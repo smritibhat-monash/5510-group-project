@@ -1,0 +1,223 @@
+---
+title: "Youth and Alcohol"
+author: "Kexin Xu"
+date: "2021/5/3"
+output: html_document
+---
+
+```{r setup, include = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Research Question No. 5
+
+**Do drinking age restrictions and legal blood alcohol concentration (BAC) limits for young drivers have any effect on adolescents’ drinking among countries?**
+
+_Researcher: Kexin Xu_
+
+## Description of Data
+All data sets below are downloaded from [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) in WHO.  
+
+1. BAC limits
+  - The data describes legal blood alcohol concentration (BAC) limits for young/novice drivers.
+  - The data contains BAC restrictions in each country in year 2016.
+
+2. Age limits
+  - The data shows age limits for both alcohol sales and alcohol service.
+  - The data contains age restrictions on selling and serving different types of alcohol in each country in year 2016.
+  
+3. Current drinkers 15-19
+  - The data tells the percentage of current drinkers between 15 and 19 years old.
+  - The data is consist of percentage of current young drinkers across gender in each country in year 2016.
+
+4. Heavy drinkers 15-19
+  - The data represents the percentage of heavy episodic drinkers among drinkers between 15 and 19 years old.
+  - The data is consist of percentage of heavy drinkers among young drinkers across gender in each country in year 2016.
+
+## Reading in Data
+```{r}
+BAC_limits_raw <- read_csv(here::here("data/Legal_blood_alcohol_concentration_(BAC)_limits_for_youngnovice_drivers.csv"))
+```
+
+```{r}
+Age_limits_raw <- read_csv(here::here("data/Age_limits_Alcohol_servicesales.csv"))
+```
+
+```{r}
+current_drinkers_15_19_raw <- read_csv(here::here("data/15-19_years_old_current_drinkers_(%).csv"))
+```
+
+```{r}
+heavy_drinkers_15_19_raw <- read_csv(here::here("data/15-19_years_old_heavy_episodic_drinking_drinkers_only_past_30_days.csv"))
+```
+
+
+## Cleaning the Data
+```{r}
+BAC_limits_tidy <- BAC_limits_raw[-1,] %>% 
+  rename("country" = X1, 
+         "year" = X2, 
+         "BAC_limits" = 'Legal blood alcohol concentration (BAC) limits') %>% 
+  filter(!(BAC_limits == "."))
+```
+
+```{r}
+Age_limits_tidy <- Age_limits_raw[-1,] %>% 
+   rename("country" = X1, 
+          "year" = X2, 
+          "sale_beer" = 'Age limits off-premise sales',
+          "sale_wine" = 'Age limits off-premise sales_1',
+          "sale_spirits" = 'Age limits off-premise sales_2',
+          "service_beer" = 'Age limits on-premise service',
+          "service_wine" = 'Age limits on-premise service_1',
+          "service_spirits" = 'Age limits on-premise service_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "type", values_to = "limit")
+```
+
+```{r}
+current_drinkers_15_19_tidy <- current_drinkers_15_19_raw[-1,] %>% 
+  rename("country" = X1, 
+          "year" = X2, 
+          "All" = '15-19 years old, current drinkers (%)',
+          "Male" = '15-19 years old, current drinkers (%)_1',
+          "Female" = '15-19 years old, current drinkers (%)_2') %>% 
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage") %>% 
+  separate(col = percentage, into = c("drinker_percentage", "range"), " ")
+current_drinkers_15_19_tidy <- current_drinkers_15_19_tidy[,-5]
+```
+
+```{r}
+heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_raw[-1,] %>% 
+  rename("country" = X1, 
+          "year" = X2, 
+          "All" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)',
+          "Male" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)_1',
+          "Female" = 'Heavy episodic drinking (youth 15 -19 years), drinkers only, past 30 days (%)_2') %>% 
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage") %>% 
+  separate(col = percentage, into = c("heavy_drinker_percentage", "range"), " ")
+heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_tidy[,-5]
+```
+
+## Storing Cleaned Data Set
+```{r}
+write_csv(BAC_limits_tidy, "../clean_data/BAC_limits_tidy.csv")
+```
+
+```{r}
+write_csv(Age_limits_tidy, "../clean_data/Age_limits_tidy.csv")
+```
+
+```{r}
+write_csv(current_drinkers_15_19_tidy, "../clean_data/current_drinkers_15_19_tidy.csv")
+```
+
+```{r}
+write_csv(heavy_drinkers_15_19_tidy, "../clean_data/heavy_drinkers_15_19_tidy.csv")
+```
+
+
+
+# Research Question No. 6
+
+**What are the trends in youth drinking issues over the years?**
+
+_Researcher: Kexin Xu_
+
+## Description of Data
+All data sets below are downloaded from [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) in WHO.  
+Age of 15 is taken on behalf of youth here. The following data sets describe different drinking issues based on 15-year-old teenagers.  
+
+1. Drink at least once a week
+  - The data shows the percentage of whom has any alcoholic beverage at least once a week.
+  - The data contains the percentage of 15-year-old adolescents who drinks alcoholic beverage at least once a week across gender in each country in different years.
+
+2. First drink earlier than 13
+  - The data describes the percentage of whose first drink at 13 years old or younger.
+  - The data contains the percentage of 15-year-old adolescents who first drinks alcoholic beverage earlier than 13 across gender in each country in different years.
+  
+3. Any alcohol in past 12 months
+  - The data represents the percentage of whom has any alcohol in past 12 months.
+  - The data is consist of percentage of 15-year-old adolescents who any alcoholic beverage in the past year across gender in each country in different years.
+
+4. Any alcohol in past 30 days
+  - The data represents the percentage of whom has any alcohol in past 30 days.
+  - The data is consist of percentage of 15-year-old adolescents who any alcoholic beverage in the past month across gender in each country in different years.
+
+## Reading in Data
+```{r}
+at_least_once_a_week_raw <- read_csv(here::here("data/15_years_old_any_alcoholic_beverage_at_least_once_a_week_(%).csv"))
+```
+
+```{r}
+first_drink_earlier_than_13_raw <- read_csv(here::here("data/15_years_old_first_drink_at_13_years_or_younger_(%).csv"))
+```
+
+```{r}
+any_alcohol_in_past_12_months_raw <- read_csv(here::here("data/15_years_old_any_alcoholic_beverage_in_past_12_months_(%).csv"))
+```
+
+```{r}
+any_alcohol_in_past_30_days_raw <- read_csv(here::here("data/15_years_old_any_alcoholic_beverage_in_past_30_days_(%).csv"))
+```
+
+## Cleaning the Data
+```{r}
+at_least_once_a_week_tidy <- at_least_once_a_week_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "Male" = '15-years old, any alcoholic beverage consumed at least once a week, (%)',
+          "Female" = '15-years old, any alcoholic beverage consumed at least once a week, (%)_1') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+first_drink_earlier_than_13_tidy <- first_drink_earlier_than_13_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old first drink at 13 years or younger, (%)',
+          "Male" = '15-years old first drink at 13 years or younger, (%)_1',
+          "Female" = '15-years old first drink at 13 years or younger, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+any_alcohol_in_past_12_months_tidy <- any_alcohol_in_past_12_months_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old any alcoholic beverage consumed in past 12 months, (%)',
+          "Male" = '15-years old any alcoholic beverage consumed in past 12 months, (%)_1',
+          "Female" = '15-years old any alcoholic beverage consumed in past 12 months, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+```{r}
+any_alcohol_in_past_30_days_tidy <- any_alcohol_in_past_30_days_raw[-1,-2] %>% 
+  rename("country" = X1, 
+          "year" = X3, 
+          "All" = '15-years old any alcoholic beverage consumed in past 30 days, (%)',
+          "Male" = '15-years old any alcoholic beverage consumed in past 30 days, (%)_1',
+          "Female" = '15-years old any alcoholic beverage consumed in past 30 days, (%)_2') %>%
+  pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
+```
+
+## Storing Cleaned Data Set
+```{r}
+write_csv(at_least_once_a_week_tidy, "../clean_data/at_least_once_a_week_tidy.csv")
+```
+
+```{r}
+write_csv(first_drink_earlier_than_13_tidy, "../clean_data/first_drink_earlier_than_13_tidy.csv")
+```
+
+```{r}
+write_csv(any_alcohol_in_past_12_months_tidy, "../clean_data/any_alcohol_in_past_12_months_tidy.csv")
+```
+
+```{r}
+write_csv(any_alcohol_in_past_30_days_tidy, "../clean_data/any_alcohol_in_past_30_days_tidy.csv")
+```
+
+
+
+
