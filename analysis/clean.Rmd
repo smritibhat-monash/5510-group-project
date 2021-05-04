@@ -16,18 +16,18 @@ Does alcohol take more lives in traffic crashes or illnesses and which countries
 ## Reading the data
 
 ```{r}
-cancer_alcohol <- read_csv("data/cancer_alcohol.csv")
-liver_alcohol <- read_csv("data/liver_alcohol.csv")
-traffic_alcohol <- read_csv("data/traffic_alcohol.csv")
-cancer_death <- read_csv("data/cancer_death.csv")
-liver_death <- read_csv("data/liver_death.csv")
-traffic_death <- read_csv("data/traffic_death.csv")
+cancer_alcohol <- read_csv("../data/cancer_alcohol.csv")
+liver_alcohol <- read_csv("../data/liver_alcohol.csv")
+traffic_alcohol <- read_csv("../data/traffic_alcohol.csv")
+cancer_death <- read_csv("../data/cancer_death.csv")
+liver_death <- read_csv("../data/liver_death.csv")
+traffic_death <- read_csv("../data/traffic_death.csv")
 ```
 
 
 ## Cleaning the data
 
-### Alcohol-attrivuted deaths
+### Alcohol-attributed deaths
 
 ```{r clean-cancer-alcohol}
 cancer_a <- tail(cancer_alcohol, -2) %>% 
