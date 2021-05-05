@@ -1,0 +1,367 @@
+Country,gender,alc-attri-death-cancer
+Afghanistan,male,0.5
+Afghanistan,female,0.1
+Albania,male,4.9
+Albania,female,2.4
+Algeria,male,1.1
+Algeria,female,0.2
+Angola,male,8.1
+Angola,female,2.4
+Antigua and Barbuda,male,3.7
+Antigua and Barbuda,female,2.4
+Argentina,male,6.5
+Argentina,female,2.7
+Armenia,male,5
+Armenia,female,1.8
+Australia,male,7.1
+Australia,female,3.7
+Austria,male,8.2
+Austria,female,3.6
+Azerbaijan,male,3.2
+Azerbaijan,female,1
+Bahamas,male,5.2
+Bahamas,female,1.8
+Bahrain,male,2.1
+Bahrain,female,0.5
+Bangladesh,male,1.1
+Bangladesh,female,0.3
+Barbados,male,5.9
+Barbados,female,2.2
+Belarus,male,11.2
+Belarus,female,4.2
+Belgium,male,7.7
+Belgium,female,4.2
+Belize,male,5.3
+Belize,female,2.1
+Benin,male,3.3
+Benin,female,1.1
+Bhutan,male,2.3
+Bhutan,female,0.6
+Bolivia (Plurinational State of),male,2.7
+Bolivia (Plurinational State of),female,0.9
+Bosnia and Herzegovina,male,6.9
+Bosnia and Herzegovina,female,2.7
+Botswana,male,10.6
+Botswana,female,2.1
+Brazil,male,8.7
+Brazil,female,2.2
+Brunei Darussalam,male,3.4
+Brunei Darussalam,female,0.8
+Bulgaria,male,9.1
+Bulgaria,female,3.4
+Burkina Faso,male,7.4
+Burkina Faso,female,2.4
+Burundi,male,8.6
+Burundi,female,1.9
+Cabo Verde,male,7.4
+Cabo Verde,female,2.5
+Cambodia,male,5.4
+Cambodia,female,1.6
+Cameroon,male,6.8
+Cameroon,female,2.3
+Canada,male,7.2
+Canada,female,2.5
+Central African Republic,male,4
+Central African Republic,female,1.4
+Chad,male,5.3
+Chad,female,1.6
+Chile,male,4.7
+Chile,female,2.2
+China,male,4.4
+China,female,1
+Colombia,male,3.8
+Colombia,female,1.4
+Comoros,male,1.3
+Comoros,female,0.1
+Congo,male,4
+Congo,female,2.2
+Costa Rica,male,4
+Costa Rica,female,1.4
+Côte d'Ivoire,male,6.6
+Côte d'Ivoire,female,2.5
+Croatia,male,9.2
+Croatia,female,3
+Cuba,male,5.7
+Cuba,female,1.3
+Cyprus,male,4.8
+Cyprus,female,3.4
+Czechia,male,9.1
+Czechia,female,3.9
+Democratic People's Republic of Korea,male,3.6
+Democratic People's Republic of Korea,female,0.8
+Democratic Republic of the Congo,male,2.5
+Democratic Republic of the Congo,female,0.9
+Denmark,male,7.5
+Denmark,female,3.5
+Djibouti,male,2.1
+Djibouti,female,0.6
+Dominican Republic,male,5
+Dominican Republic,female,2.2
+Ecuador,male,2.8
+Ecuador,female,1.3
+Egypt,male,2
+Egypt,female,0.3
+El Salvador,male,2.4
+El Salvador,female,1
+Equatorial Guinea,male,8.6
+Equatorial Guinea,female,2.5
+Eritrea,male,2.7
+Eritrea,female,0.8
+Estonia,male,7.7
+Estonia,female,3.7
+Eswatini,male,6.3
+Eswatini,female,1.1
+Ethiopia,male,2.6
+Ethiopia,female,0.8
+Fiji,male,4
+Fiji,female,0.9
+Finland,male,6.3
+Finland,female,3.6
+France,male,8.1
+France,female,4
+Gabon,male,9.9
+Gabon,female,2.9
+Gambia,male,6.6
+Gambia,female,2
+Georgia,male,6.4
+Georgia,female,2.2
+Germany,male,8
+Germany,female,4
+Ghana,male,6
+Ghana,female,1.4
+Greece,male,5.5
+Greece,female,3.5
+Grenada,male,8
+Grenada,female,2.6
+Guatemala,male,3.8
+Guatemala,female,1.9
+Guinea,male,1.9
+Guinea,female,1
+Guinea-Bissau,male,5.4
+Guinea-Bissau,female,1.7
+Guyana,male,4.9
+Guyana,female,1.6
+Haiti,male,4.1
+Haiti,female,1.5
+Honduras,male,3.3
+Honduras,female,1.4
+Hungary,male,11.4
+Hungary,female,4
+Iceland,male,5.5
+Iceland,female,2.3
+India,male,6.5
+India,female,0.8
+Indonesia,male,1.7
+Indonesia,female,0.5
+Iran (Islamic Republic of),male,0.7
+Iran (Islamic Republic of),female,0.1
+Iraq,male,0.7
+Iraq,female,0.1
+Ireland,male,8.4
+Ireland,female,4.6
+Israel,male,4.2
+Israel,female,1
+Italy,male,6.1
+Italy,female,2.5
+Jamaica,male,2.3
+Jamaica,female,1
+Japan,male,6.9
+Japan,female,2.4
+Jordan,male,1.5
+Jordan,female,0.2
+Kazakhstan,male,10.3
+Kazakhstan,female,3.1
+Kenya,male,5.9
+Kenya,female,1.4
+Kiribati,male,4.5
+Kiribati,female,1.5
+Kuwait,male,1
+Kuwait,female,0.1
+Kyrgyzstan,male,9.1
+Kyrgyzstan,female,3.5
+Lao People's Democratic Republic,male,8.2
+Lao People's Democratic Republic,female,3.3
+Latvia,male,9.3
+Latvia,female,3.7
+Lebanon,male,1.5
+Lebanon,female,0.4
+Lesotho,male,7.4
+Lesotho,female,1.5
+Liberia,male,6.6
+Liberia,female,2.4
+Libya,male,0.2
+Libya,female,0
+Lithuania,male,9.7
+Lithuania,female,4.4
+Luxembourg,male,6.7
+Luxembourg,female,4.1
+Madagascar,male,3
+Madagascar,female,0.5
+Malawi,male,3.8
+Malawi,female,0.7
+Malaysia,male,2.2
+Malaysia,female,0.6
+Maldives,male,3.9
+Maldives,female,0.4
+Mali,male,1.5
+Mali,female,0.3
+Malta,male,6.2
+Malta,female,2.4
+Mauritania,male,0.8
+Mauritania,female,0.1
+Mauritius,male,6.1
+Mauritius,female,1.6
+Mexico,male,4.5
+Mexico,female,1.8
+Micronesia (Federated States of),male,3.2
+Micronesia (Federated States of),female,1.1
+Mongolia,male,8.2
+Mongolia,female,4.2
+Montenegro,male,7.1
+Montenegro,female,2.6
+Morocco,male,1.1
+Morocco,female,0.2
+Mozambique,male,1.5
+Mozambique,female,0.4
+Myanmar,male,4.7
+Myanmar,female,0.9
+Namibia,male,5.9
+Namibia,female,1.8
+Nepal,male,3.2
+Nepal,female,0.4
+Netherlands,male,6.8
+Netherlands,female,3.1
+New Zealand,male,6.6
+New Zealand,female,3.1
+Nicaragua,male,4.1
+Nicaragua,female,1.6
+Niger,male,1.2
+Niger,female,0.3
+Nigeria,male,6.6
+Nigeria,female,5.1
+Norway,male,5.1
+Norway,female,2.4
+Oman,male,1.9
+Oman,female,0.3
+Pakistan,male,0.9
+Pakistan,female,0.1
+Panama,male,4.6
+Panama,female,1.6
+Papua New Guinea,male,4.2
+Papua New Guinea,female,0.8
+Paraguay,male,5.1
+Paraguay,female,1.7
+Peru,male,3.2
+Peru,female,1.5
+Philippines,male,6.3
+Philippines,female,2.1
+Poland,male,8.2
+Poland,female,2.9
+Portugal,male,9.8
+Portugal,female,4.2
+Qatar,male,2.2
+Qatar,female,0.6
+Republic of Korea,male,8.3
+Republic of Korea,female,3.1
+Republic of Moldova,male,14.5
+Republic of Moldova,female,6.7
+North Macedonia,male,6.5
+North Macedonia,female,2.3
+Romania,male,11.8
+Romania,female,4.8
+Russian Federation,male,10.1
+Russian Federation,female,5.5
+Rwanda,male,10
+Rwanda,female,2.8
+Saint Lucia,male,7.2
+Saint Lucia,female,3.3
+Saint Vincent and the Grenadines,male,5.1
+Saint Vincent and the Grenadines,female,1.3
+Samoa,male,3.1
+Samoa,female,0.8
+Sao Tome and Principe,male,4.6
+Sao Tome and Principe,female,1.4
+Saudi Arabia,male,0.4
+Saudi Arabia,female,0.1
+Senegal,male,1.6
+Senegal,female,0.6
+Serbia,male,8.5
+Serbia,female,3.1
+Seychelles,male,10.7
+Seychelles,female,2
+Sierra Leone,male,7.2
+Sierra Leone,female,2.5
+Singapore,male,4.2
+Singapore,female,1.5
+Slovakia,male,11.8
+Slovakia,female,3.3
+Slovenia,male,8.3
+Slovenia,female,3.3
+Solomon Islands,male,2.9
+Solomon Islands,female,0.8
+Somalia,male,0.8
+Somalia,female,0.1
+South Africa,male,7.7
+South Africa,female,2.8
+South Sudan,male,5.4
+South Sudan,female,1.5
+Spain,male,8.3
+Spain,female,3.9
+Sri Lanka,male,5.2
+Sri Lanka,female,0.9
+Sudan,male,1.4
+Sudan,female,0.2
+Suriname,male,4.1
+Suriname,female,1.4
+Sweden,male,6
+Sweden,female,2.3
+Switzerland,male,7
+Switzerland,female,3.7
+Syrian Arab Republic,male,0.7
+Syrian Arab Republic,female,0.1
+Tajikistan,male,6.6
+Tajikistan,female,1.5
+Thailand,male,8.4
+Thailand,female,2.6
+Timor-Leste,male,1.4
+Timor-Leste,female,0.4
+Togo,male,4.5
+Togo,female,1.2
+Tonga,male,2.9
+Tonga,female,1.4
+Trinidad and Tobago,male,4.4
+Trinidad and Tobago,female,2
+Tunisia,male,1.4
+Tunisia,female,0.2
+Turkey,male,1.5
+Turkey,female,0.3
+Turkmenistan,male,10.5
+Turkmenistan,female,2.4
+Uganda,male,8.4
+Uganda,female,3.1
+Ukraine,male,11.6
+Ukraine,female,4.6
+United Arab Emirates,male,2.6
+United Arab Emirates,female,0.7
+United Kingdom of Great Britain and Northern Ireland,male,8
+United Kingdom of Great Britain and Northern Ireland,female,4.1
+United Republic of Tanzania,male,8.6
+United Republic of Tanzania,female,2.3
+United States of America,male,7
+United States of America,female,2.6
+Uruguay,male,5.6
+Uruguay,female,2.2
+Uzbekistan,male,7.8
+Uzbekistan,female,1.8
+Vanuatu,male,2.9
+Vanuatu,female,1
+Venezuela (Bolivarian Republic of),male,5.5
+Venezuela (Bolivarian Republic of),female,2.4
+Viet Nam,male,4.7
+Viet Nam,female,2
+Yemen,male,0.3
+Yemen,female,0.1
+Zambia,male,3.4
+Zambia,female,0.8
+Zimbabwe,male,2.7
+Zimbabwe,female,0.6

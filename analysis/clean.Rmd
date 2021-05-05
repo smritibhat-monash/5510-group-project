@@ -1,15 +1,588 @@
 ---
-title: "Youth and Alcohol"
-author: "Kexin Xu"
-date: "2021/5/3"
+title: "Cleaning the Data"
+author: "Hayaku"
+date: "03/05/2021"
 output: html_document
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE,  warning = FALSE, message = FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
 library(tidyverse)
 library(unglue)
 ```
+
+
+# Research Question No. 3
+Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?
+
+_Researcher: Yin Shan Ho_
+
+## Description of Data
+
+The data sets are downloaded from the GISAH tool of the WHO.
+
+The data sets are separated into two parts:
+
+1. The age-standardized death rate in:
+- [cancer](https://apps.who.int/gho/data/node.gisah.A1110?lang=en&showonly=GISAH), 
+[liver cirrhosis](https://apps.who.int/gho/data/node.gisah.A1092?lang=en&showonly=GISAH),
+[road traffic injuries](https://apps.who.int/gho/data/node.gisah.A1077?lang=en&showonly=GISAH).
+
+- The data contains the global observation of the death rate per 100,000 population caused by road injuries, cancers, liver cirrhosis for 194 countries in 2016.
+
+2. The death rate of alcohol attributed cases in: 
+- [cancer](https://apps.who.int/gho/data/node.gisah.A1098?lang=en&showonly=GISAH), 
+[liver cirrhosis](https://apps.who.int/gho/data/node.gisah.A1094?lang=en&showonly=GISAH),
+[road traffic crash](https://apps.who.int/gho/data/node.gisah.A1077?lang=en&showonly=GISAH).
+
+- The data indicates the death rate of alcohol-related road injuries, cancers, liver cirrhosis for 194 countries in 2016.
+
+
+## Reading the data
+
+This section contains the code to read in data of the number of deaths per 100,000 population and the rate of alcohol attributed deaths caused by cancers, liver cirrhosis and traffic crashes in 2016. 
+
+```{r}
+cancer_alcohol <- read_csv("../data/cancer_alcohol.csv")
+liver_alcohol <- read_csv("../data/liver_alcohol.csv")
+traffic_alcohol <- read_csv("../data/traffic_alcohol.csv")
+cancer_death <- read_csv("../data/cancer_death.csv")
+liver_death <- read_csv("../data/liver_death.csv")
+traffic_death <- read_csv("../data/traffic_death.csv")
+```
+
+
+## Cleaning the data
+
+### Alcohol-attributed deaths
+
+As the research question aims to compare whether alcohol cause more deaths in illnesses or road traffic crashes, several manipulations were done to get the rate of alcohol-attributed deaths. The steps are as follow:
+
+1. Rename the variables 
+
+2. Filter the cells which contain "No data"
+
+3. Pivot longer is used to make data sets longer and to combine the separated variables on gender into one for future calculations. 
+
+```{r clean-cancer-alcohol}
+cancer_a <- tail(cancer_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), cancer deaths`,
+         female = `Alcohol-attributable fractions (15+), cancer deaths_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+cancer_a_clean <- pivot_longer(cancer_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-cancer")
+```
+
+
+```{r clean-liver-alcohol}
+liver_a <- tail(liver_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), liver cirrhosis deaths (%)`,
+         female = `Alcohol-attributable fractions (15+), liver cirrhosis deaths (%)_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+liver_a_clean <- pivot_longer(liver_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-liver")
+```
+
+
+```{r clean-traffic-alcohol}
+traffic_a <- tail(traffic_alcohol, -2) %>% 
+  rename(Country = X1, 
+         male = `Alcohol-attributable fractions (15+), road traffic crash deaths (%)`,
+         female = `Alcohol-attributable fractions (15+), road traffic crash deaths (%)_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+traffic_a_clean <- pivot_longer(traffic_a, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "alc-attri-death-traffic")
+```
+
+
+### Number of death per 100,000 population  
+
+To calculate the number of alcohol attributed deaths, the total number of deaths in these three aspects needed to be extracted. 
+The way to manipulate this data set is exactly the same as the previous one. 
+
+```{r clean-cancer-death}
+cancer_d <- tail(cancer_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Cancer, age-standardized death rates (15+), per 100,000 population`,
+         female = `Cancer, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+cancer_d_clean <- pivot_longer(cancer_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "cancer-death-population")
+```
+
+
+```{r clean-liver-death}
+liver_d <- tail(liver_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Liver cirrhosis, age-standardized death rates (15+), per 100,000 population`,
+         female = `Liver cirrhosis, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+liver_d_clean <- pivot_longer(liver_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "liver-cirrhosis-death-population")
+```
+
+
+```{r clean-traffic-death}
+traffic_d <- tail(traffic_death, -2) %>% 
+  rename(Country = X1, 
+         male = `Road traffic injuries, age-standardized death rates (15+), per 100,000 population`,
+         female = `Road traffic injuries, age-standardized death rates (15+), per 100,000 population_1`) %>% 
+  filter(!str_detect(male, "No data"))
+
+traffic_d_clean <- pivot_longer(traffic_d, cols = c("male", "female"),
+                                 names_to = "gender",
+                                 values_to = "road-traffic-death-population")
+```
+
+## Storing the cleaned Data Sets
+
+Saving the data sets into csv:
+
+```{r}
+write_csv(cancer_a_clean, "../clean_data/cancer_a_clean.csv")
+write_csv(cancer_d_clean, "../clean_data/cancer_d_clean.csv")
+write_csv(liver_a_clean, "../clean_data/liver_a_clean.csv")
+write_csv(liver_d_clean, "../clean_data/liver_d_clean.csv")
+write_csv(traffic_a_clean, "../clean_data/traffic_a_clean.csv")
+write_csv(traffic_d_clean, "../clean_data/traffic_d_clean.csv")
+```
+
+
+# Research Question No. 4
+
+**What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?**
+
+_Researcher: Smriti Vinayak Bhat_
+
+## Description of Data
+
+There are multiple data sets downloaded from the GISAH tool of WHO.
+
+It is split into two main parts:
+
+1. Consumption pattern data -
+  - This data has been downloaded from Levels of Consumption^[https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH] section of the GISAH tool.
+  - This conists of alcohol per capita consumption from 2010 onward by country, type of beverage and alcohol, recorded per capita (15+ years) consumption (in litres of pure alcohol).
+
+2. Alcohol policy timeline database -
+  - This data contains Alcohol Policy Timeline Database of WHO African Region^[https://apps.who.int/gho/data/node.gisah.A1700?lang=en&showonly=GISAH], WHO Region of the Americas^[https://apps.who.int/gho/data/node.gisah.A1600?lang=en&showonly=GISAH], WHO European Region^[https://apps.who.int/gho/data/node.gisah.A1500?lang=en&showonly=GISAH], WHO Eastern Mediterranean Region^[https://apps.who.int/gho/data/node.gisah.A1800?lang=en&showonly=GISAH], WHO South-East Asian Region^[https://apps.who.int/gho/data/node.gisah.A2000?lang=en&showonly=GISAH] and WHO Western Pacific Region^[https://apps.who.int/gho/data/node.gisah.A1900?lang=en&showonly=GISAH].
+  - It contains the country, action area and policy changes done in each country according to year.
+  
+**Both these sets of data are being used to track the trend from 2010-2016**
+
+
+## Reading in Data
+
+### Reading in Data of Policy Responses Worldwide
+
+This section contains the code to read in data of policy responses to the problem of alcoholism from different parts of the world for the years 2010-2016.
+
+```{r}
+file_path <- ("../data/{geo}/")
+csv_africa_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("africa"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_asia_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("asia"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_americas_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("americas"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_europe_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("europe"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_med_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("med"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+csv_pacific_paths <- glue::glue(file_path, "{geo}_{alpha}.csv", 
+                        geo = c("pacific"), 
+                        alpha = c("2010", "2011", "2012","2013","2014","2015","2016"))
+
+africa_2010 <- read_csv(csv_africa_paths[1])
+africa_2011 <- read_csv(csv_africa_paths[2])
+africa_2012 <- read_csv(csv_africa_paths[3])
+africa_2013 <- read_csv(csv_africa_paths[4])
+africa_2014 <- read_csv(csv_africa_paths[5])
+africa_2015 <- read_csv(csv_africa_paths[6])
+africa_2016 <- read_csv(csv_africa_paths[7])
+
+americas_2010 <- read_csv(csv_americas_paths[1])
+americas_2011 <- read_csv(csv_americas_paths[2])
+americas_2012 <- read_csv(csv_americas_paths[3])
+americas_2013 <- read_csv(csv_americas_paths[4])
+americas_2014 <- read_csv(csv_americas_paths[5])
+americas_2015 <- read_csv(csv_americas_paths[6])
+americas_2016 <- read_csv(csv_americas_paths[7])
+
+europe_2010 <- read_csv(csv_europe_paths[1])
+europe_2011 <- read_csv(csv_europe_paths[2])
+europe_2012 <- read_csv(csv_europe_paths[3])
+europe_2013 <- read_csv(csv_europe_paths[4])
+europe_2014 <- read_csv(csv_europe_paths[5])
+europe_2015 <- read_csv(csv_europe_paths[6])
+europe_2016 <- read_csv(csv_europe_paths[7])
+
+asia_2010 <- read_csv(csv_asia_paths[1])
+asia_2011 <- read_csv(csv_asia_paths[2])
+asia_2012 <- read_csv(csv_asia_paths[3])
+asia_2013 <- read_csv(csv_asia_paths[4])
+asia_2014 <- read_csv(csv_asia_paths[5])
+asia_2015 <- read_csv(csv_asia_paths[6])
+asia_2016 <- read_csv(csv_asia_paths[7])
+
+med_2010 <- read_csv(csv_med_paths[1])
+med_2011 <- read_csv(csv_med_paths[2])
+med_2012 <- read_csv(csv_med_paths[3])
+med_2013 <- read_csv(csv_med_paths[4])
+med_2014 <- read_csv(csv_med_paths[5])
+med_2015 <- read_csv(csv_med_paths[6])
+med_2016 <- read_csv(csv_med_paths[7])
+
+pacific_2010 <- read_csv(csv_pacific_paths[1])
+pacific_2011 <- read_csv(csv_pacific_paths[2])
+pacific_2012 <- read_csv(csv_pacific_paths[3])
+pacific_2013 <- read_csv(csv_pacific_paths[4])
+pacific_2014 <- read_csv(csv_pacific_paths[5])
+pacific_2015 <- read_csv(csv_pacific_paths[6])
+pacific_2016 <- read_csv(csv_pacific_paths[7])
+```
+
+### Reading in Data Required to Check Consumption of Alcohol
+
+This section contains the code to read in data which will help track worldwide consumption of alcohol
+
+```{r}
+consumption_pattern <- read_csv("../data/consumption_pattern.csv")
+```
+
+## Cleaning the data
+
+### Cleaning Data Pertaining to Policy Responses
+
+Since the research question aims to only look at changes due to policy responses, in this step the code will be written to remove all values where no policy response has been done or the data is not available.
+
+The below code cleans data for Africa. 
+```{r}
+africa_2010 <- africa_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+africa_2011 <- africa_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+africa_2012 <- africa_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+africa_2013 <- africa_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+africa_2014 <- africa_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+africa_2015 <- africa_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+africa_2016 <- africa_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code cleans data for the Americas. 
+```{r}
+americas_2010 <- americas_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+americas_2011 <- americas_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+americas_2012 <- americas_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+americas_2013 <- americas_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+americas_2014 <- americas_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+americas_2015 <- americas_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+americas_2016 <- americas_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code cleans data for Asia. 
+```{r}
+asia_2010 <- asia_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+asia_2011 <- asia_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+asia_2012 <- asia_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+asia_2013 <- asia_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+asia_2014 <- asia_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+asia_2015 <- asia_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+asia_2016 <- asia_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code cleans data for Europe. 
+```{r}
+europe_2010 <- europe_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2011 <- europe_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2012 <- europe_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2013 <- europe_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2014 <- europe_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2015 <- europe_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+
+europe_2016 <- europe_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  select(-`Data Source`) %>%
+  na.omit()
+```
+
+The below code cleans data for Mediterranean. 
+```{r}
+med_2010 <- med_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+med_2011 <- med_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+med_2012 <- med_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+med_2013 <- med_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+med_2014 <- med_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+med_2015 <- med_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+med_2016 <- med_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code cleans data for the Pacific region. 
+```{r}
+pacific_2010 <- pacific_2010 %>%
+  filter(!(`2010` == "No data")) %>%
+  na.omit()
+
+pacific_2011 <- pacific_2011 %>%
+  filter(!(`2011` == "No data")) %>%
+  na.omit()
+
+pacific_2012 <- pacific_2012 %>%
+  filter(!(`2012` == "No data")) %>%
+  na.omit()
+
+pacific_2013 <- pacific_2013 %>%
+  filter(!(`2013` == "No data")) %>%
+  na.omit()
+
+pacific_2014 <- pacific_2014 %>%
+  filter(!(`2014` == "No data")) %>%
+  na.omit()
+
+pacific_2015 <- pacific_2015 %>%
+  filter(!(`2015` == "No data")) %>%
+  na.omit()
+
+pacific_2016 <- pacific_2016 %>%
+  filter(!(`2016` == "No data")) %>%
+  na.omit()
+```
+
+The below code chunk combines the data from all countries year wise.
+
+```{r}
+policy_pattern_africa <- full_join(africa_2010,africa_2011,by=c("Country","Action Area")) %>%
+  full_join(africa_2012,by=c("Country","Action Area")) %>%
+  full_join(africa_2013,by=c("Country","Action Area")) %>%
+  full_join(africa_2014,by=c("Country","Action Area")) %>%
+  full_join(africa_2015,by=c("Country","Action Area")) %>%
+  full_join(africa_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_americas <- full_join(americas_2010,americas_2011,by=c("Country","Action Area")) %>%
+  full_join(americas_2012,by=c("Country","Action Area")) %>%
+  full_join(americas_2013,by=c("Country","Action Area")) %>%
+  full_join(americas_2014,by=c("Country","Action Area")) %>%
+  full_join(americas_2015,by=c("Country","Action Area")) %>%
+  full_join(americas_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_asia <- full_join(asia_2010,asia_2011,by=c("Country","Action Area")) %>%
+  full_join(asia_2012,by=c("Country","Action Area")) %>%
+  full_join(asia_2013,by=c("Country","Action Area")) %>%
+  full_join(asia_2014,by=c("Country","Action Area")) %>%
+  full_join(asia_2015,by=c("Country","Action Area")) %>%
+  full_join(asia_2016,by=c("Country","Action Area")) %>%
+  arrange(Country)
+
+policy_pattern_europe <- full_join(europe_2010,europe_2011,by=c("Country","Action Area")) %>%
+  full_join(europe_2012,by=c("Country","Action Area")) %>%
+  full_join(europe_2013,by=c("Country","Action Area")) %>%
+  full_join(europe_2014,by=c("Country","Action Area")) %>%
+  full_join(europe_2015,by=c("Country","Action Area")) %>%
+  full_join(europe_2016,by=c("Country","Action Area")) %>%
+  arrange(Country)
+
+policy_pattern_med <- full_join(med_2010,med_2011,by=c("Country","Action Area")) %>%
+  full_join(med_2012,by=c("Country","Action Area")) %>%
+  full_join(med_2013,by=c("Country","Action Area")) %>%
+  full_join(med_2014,by=c("Country","Action Area")) %>%
+  full_join(med_2015,by=c("Country","Action Area")) %>%
+  full_join(med_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+
+policy_pattern_pacific <- full_join(pacific_2010,pacific_2011,by=c("Country","Action Area")) %>%
+  full_join(pacific_2012,by=c("Country","Action Area")) %>%
+  full_join(pacific_2013,by=c("Country","Action Area")) %>%
+  full_join(pacific_2014,by=c("Country","Action Area")) %>%
+  full_join(pacific_2015,by=c("Country","Action Area")) %>%
+  full_join(pacific_2016,by=c("Country","Action Area")) %>%
+  arrange(Country) 
+```
+
+The below code binds all the countries' policy pattern together.
+
+```{r}
+policy_pattern <- rbind(policy_pattern_africa,
+                        policy_pattern_americas,
+                        policy_pattern_asia,
+                        policy_pattern_europe,
+                        policy_pattern_med,
+                        policy_pattern_pacific) %>%
+  arrange(Country)
+```
+
+
+### Cleaning the Data Pertaining to Trend of Consumption of Alcohol
+
+1. The code renames the columns for convenience.
+
+```{r}
+
+consumption_pattern <- consumption_pattern %>%
+  rename(Country = X1,
+         `Beverage Types` = X3, 
+         "2018" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "2017" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "2016" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "2015" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "2014" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "2013" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "2012" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "2011" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "2010" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`)
+```
+
+2. The code chunk drops the variables X2 and 2018 as we don't need data source or the trend past 2017. Since our final set of policy data dates back to 2016, we need to retain the figures of 2017 to see their effect.
+
+```{r}
+consumption_pattern <- consumption_pattern %>%
+  select(-c(X2, "2018"))
+```
+
+3. The code chunk drops the first row as it is a repeat of the heading.
+
+```{r}
+consumption_pattern <- consumption_pattern %>%
+  filter(!str_detect(Country,"Country"))
+```
+
+4. The code chunk removes countries for whom policy data is not present.
+
+```{r}
+consumption_pattern <- semi_join(consumption_pattern,
+                                 policy_pattern,
+                                 by="Country")
+```
+
+## Storing Cleaned Data Set
+
+Saving both cleaned sets of data back into csv:
+
+```{r}
+write_csv(policy_pattern,"../clean_data/policy_pattern.csv")
+write_csv(consumption_pattern,"../clean_data/consumption_pattern.csv")
+```
+
 
 # Research Question No. 5
 
@@ -220,7 +793,3 @@ write_csv(any_alcohol_in_past_12_months_tidy, "../clean_data/any_alcohol_in_past
 ```{r}
 write_csv(any_alcohol_in_past_30_days_tidy, "../clean_data/any_alcohol_in_past_30_days_tidy.csv")
 ```
-
-
-
-
