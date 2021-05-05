@@ -5,9 +5,10 @@ date: "2021/5/3"
 output: html_document
 ---
 
-```{r setup, include = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE,  warning = FALSE, message = FALSE)
 library(tidyverse)
+library(unglue)
 ```
 
 # Research Question No. 5
@@ -72,7 +73,9 @@ Age_limits_tidy <- Age_limits_raw[-1,] %>%
           "service_beer" = 'Age limits on-premise service',
           "service_wine" = 'Age limits on-premise service_1',
           "service_spirits" = 'Age limits on-premise service_2') %>%
-  pivot_longer(cols = c(-country, -year), names_to = "type", values_to = "limit")
+  pivot_longer(cols = c(-country, -year), names_to = "type", values_to = "limit") %>%
+  unglue_unnest(type,
+                "{Service}_{Alcohol_Type}")
 ```
 
 ```{r}
