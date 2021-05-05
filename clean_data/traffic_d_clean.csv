@@ -1,0 +1,367 @@
+Country,gender,road-traffic-death-population
+Afghanistan,male,34.9
+Afghanistan,female,7.4
+Albania,male,24.7
+Albania,female,6.8
+Algeria,male,47.7
+Algeria,female,12.7
+Angola,male,44.2
+Angola,female,13.9
+Antigua and Barbuda,male,9.6
+Antigua and Barbuda,female,3
+Argentina,male,28
+Argentina,female,7
+Armenia,male,31.2
+Armenia,female,5.4
+Australia,male,8.6
+Australia,female,3.2
+Austria,male,8.2
+Austria,female,2.8
+Azerbaijan,male,21.3
+Azerbaijan,female,5.5
+Bahamas,male,18.4
+Bahamas,female,4.8
+Bahrain,male,14.3
+Bahrain,female,4.6
+Bangladesh,male,30.6
+Bangladesh,female,5.7
+Barbados,male,16.4
+Barbados,female,4.5
+Belarus,male,22.2
+Belarus,female,6.6
+Belgium,male,10.9
+Belgium,female,3.3
+Belize,male,49.5
+Belize,female,11.7
+Benin,male,58.2
+Benin,female,29.1
+Bhutan,male,24.2
+Bhutan,female,12.5
+Bolivia (Plurinational State of),male,47.4
+Bolivia (Plurinational State of),female,14.7
+Bosnia and Herzegovina,male,26.9
+Bosnia and Herzegovina,female,5.7
+Botswana,male,37
+Botswana,female,21
+Brazil,male,44.1
+Brazil,female,8.8
+Brunei Darussalam,male,13.1
+Brunei Darussalam,female,6.2
+Bulgaria,male,13.4
+Bulgaria,female,3.4
+Burkina Faso,male,75.9
+Burkina Faso,female,36.4
+Burundi,male,79.1
+Burundi,female,24.2
+Cabo Verde,male,48
+Cabo Verde,female,22.2
+Cambodia,male,42.4
+Cambodia,female,19
+Cameroon,male,63.4
+Cameroon,female,21.9
+Canada,male,9.1
+Canada,female,4.1
+Central African Republic,male,52.2
+Central African Republic,female,19.9
+Chad,male,53.1
+Chad,female,20.3
+Chile,male,21.5
+Chile,female,5.1
+China,male,29.7
+China,female,14.1
+Colombia,male,47.3
+Colombia,female,9.6
+Comoros,male,68
+Comoros,female,36.9
+Congo,male,49.9
+Congo,female,21.4
+Costa Rica,male,31.6
+Costa Rica,female,6.5
+Côte d'Ivoire,male,53.9
+Côte d'Ivoire,female,22.4
+Croatia,male,14.6
+Croatia,female,3.1
+Cuba,male,12.5
+Cuba,female,3.6
+Cyprus,male,10.2
+Cyprus,female,3.2
+Czechia,male,9
+Czechia,female,2.6
+Democratic People's Republic of Korea,male,39.1
+Democratic People's Republic of Korea,female,12.4
+Democratic Republic of the Congo,male,58.4
+Democratic Republic of the Congo,female,20.2
+Denmark,male,5
+Denmark,female,1.7
+Djibouti,male,49
+Djibouti,female,22.9
+Dominican Republic,male,60
+Dominican Republic,female,11.7
+Ecuador,male,50.8
+Ecuador,female,11.9
+Egypt,male,34
+Egypt,female,7
+El Salvador,male,42.2
+El Salvador,female,8.5
+Equatorial Guinea,male,36.6
+Equatorial Guinea,female,14.3
+Eritrea,male,68.4
+Eritrea,female,27
+Estonia,male,9.9
+Estonia,female,3.5
+Eswatini,male,47.3
+Eswatini,female,20
+Ethiopia,male,64
+Ethiopia,female,25.5
+Fiji,male,12.1
+Fiji,female,3.6
+Finland,male,6.7
+Finland,female,2.3
+France,male,8
+France,female,2.4
+Gabon,male,39.2
+Gabon,female,14.3
+Gambia,male,82.7
+Gambia,female,35.1
+Georgia,male,24.7
+Georgia,female,4.3
+Germany,male,6
+Germany,female,2.4
+Ghana,male,66.3
+Ghana,female,31.4
+Greece,male,15.6
+Greece,female,3.7
+Grenada,male,16.7
+Grenada,female,2.3
+Guatemala,male,40.8
+Guatemala,female,7.8
+Guinea,male,61.3
+Guinea,female,31.6
+Guinea-Bissau,male,62.9
+Guinea-Bissau,female,26.2
+Guyana,male,36.8
+Guyana,female,6.8
+Haiti,male,25.2
+Haiti,female,7.9
+Honduras,male,30.6
+Honduras,female,14.6
+Hungary,male,12.6
+Hungary,female,3.3
+Iceland,male,6.7
+Iceland,female,1.5
+India,male,50.3
+India,female,10.3
+Indonesia,male,31.8
+Indonesia,female,13.9
+Iran (Islamic Republic of),male,54.8
+Iran (Islamic Republic of),female,17.7
+Iraq,male,33.3
+Iraq,female,16.8
+Ireland,male,5.8
+Ireland,female,2.1
+Israel,male,6.6
+Israel,female,1.4
+Italy,male,8.1
+Italy,female,2.3
+Jamaica,male,15
+Jamaica,female,5.1
+Japan,male,4.5
+Japan,female,1.5
+Jordan,male,46.8
+Jordan,female,17.2
+Kazakhstan,male,48.8
+Kazakhstan,female,16
+Kenya,male,76.4
+Kenya,female,22.6
+Kiribati,male,3.9
+Kiribati,female,1.3
+Kuwait,male,47.1
+Kuwait,female,8.6
+Kyrgyzstan,male,38.3
+Kyrgyzstan,female,12.1
+Lao People's Democratic Republic,male,26.3
+Lao People's Democratic Republic,female,14.3
+Latvia,male,17.5
+Latvia,female,4.4
+Lebanon,male,38.1
+Lebanon,female,9.6
+Lesotho,male,46.3
+Lesotho,female,21.8
+Liberia,male,84.6
+Liberia,female,40.9
+Libya,male,58.5
+Libya,female,13.4
+Lithuania,male,15.2
+Lithuania,female,3.4
+Luxembourg,male,10.1
+Luxembourg,female,2.6
+Madagascar,male,72.7
+Madagascar,female,31.8
+Malawi,male,103.7
+Malawi,female,32.4
+Malaysia,male,47.8
+Malaysia,female,12.6
+Maldives,male,6.8
+Maldives,female,4.3
+Mali,male,57.6
+Mali,female,28.1
+Malta,male,4.4
+Malta,female,2.5
+Mauritania,male,54.5
+Mauritania,female,27.9
+Mauritius,male,27.6
+Mauritius,female,3.2
+Mexico,male,25.6
+Mexico,female,6
+Micronesia (Federated States of),male,4.7
+Micronesia (Federated States of),female,2.8
+Mongolia,male,43.5
+Mongolia,female,11
+Montenegro,male,15.9
+Montenegro,female,4.3
+Morocco,male,37.9
+Morocco,female,10
+Mozambique,male,73.7
+Mozambique,female,24.5
+Myanmar,male,26.3
+Myanmar,female,25.9
+Namibia,male,53.3
+Namibia,female,18.7
+Nepal,male,38.3
+Nepal,female,16
+Netherlands,male,5
+Netherlands,female,1.7
+New Zealand,male,10.9
+New Zealand,female,4.2
+Nicaragua,male,34.7
+Nicaragua,female,5.8
+Niger,male,61
+Niger,female,26.1
+Nigeria,male,48.9
+Nigeria,female,22.7
+Norway,male,4.9
+Norway,female,1.6
+Oman,male,50
+Oman,female,14
+Pakistan,male,25.4
+Pakistan,female,12.7
+Panama,male,27.1
+Panama,female,5.3
+Papua New Guinea,male,32.2
+Papua New Guinea,female,13.8
+Paraguay,male,53.9
+Paraguay,female,14.9
+Peru,male,27.4
+Peru,female,8.2
+Philippines,male,22.4
+Philippines,female,6.1
+Poland,male,16.4
+Poland,female,4.1
+Portugal,male,12.2
+Portugal,female,2.7
+Qatar,male,22.8
+Qatar,female,4.4
+Republic of Korea,male,15.9
+Republic of Korea,female,5.2
+Republic of Moldova,male,16.5
+Republic of Moldova,female,4
+North Macedonia,male,9.9
+North Macedonia,female,2.4
+Romania,male,15.7
+Romania,female,4.2
+Russian Federation,male,32.3
+Russian Federation,female,9.6
+Rwanda,male,85.1
+Rwanda,female,30.8
+Saint Lucia,male,30.9
+Saint Lucia,female,6.2
+Saint Vincent and the Grenadines,male,19.5
+Saint Vincent and the Grenadines,female,5.4
+Samoa,male,30.9
+Samoa,female,12.2
+Sao Tome and Principe,male,89.7
+Sao Tome and Principe,female,25.4
+Saudi Arabia,male,66.3
+Saudi Arabia,female,17
+Senegal,male,74.8
+Senegal,female,29
+Serbia,male,11.3
+Serbia,female,3.1
+Seychelles,male,14.6
+Seychelles,female,4
+Sierra Leone,male,68.3
+Sierra Leone,female,28.1
+Singapore,male,6.1
+Singapore,female,1.5
+Slovakia,male,11.7
+Slovakia,female,3.6
+Slovenia,male,9.6
+Slovenia,female,2.8
+Solomon Islands,male,31.1
+Solomon Islands,female,16.3
+Somalia,male,54.8
+Somalia,female,27.3
+South Africa,male,42.2
+South Africa,female,13.5
+South Sudan,male,66.7
+South Sudan,female,30.3
+Spain,male,5.6
+Spain,female,1.6
+Sri Lanka,male,35.4
+Sri Lanka,female,9.3
+Sudan,male,51.9
+Sudan,female,11.6
+Suriname,male,40.4
+Suriname,female,10.1
+Sweden,male,4.6
+Sweden,female,1.3
+Switzerland,male,4.6
+Switzerland,female,1.4
+Syrian Arab Republic,male,45.3
+Syrian Arab Republic,female,16.7
+Tajikistan,male,41
+Tajikistan,female,11.8
+Thailand,male,64.3
+Thailand,female,15.3
+Timor-Leste,male,33.2
+Timor-Leste,female,17.1
+Togo,male,75.9
+Togo,female,39.1
+Tonga,male,11.8
+Tonga,female,3.9
+Trinidad and Tobago,male,35.8
+Trinidad and Tobago,female,7.3
+Tunisia,male,46.2
+Tunisia,female,11.7
+Turkey,male,17.2
+Turkey,female,3.8
+Turkmenistan,male,36.6
+Turkmenistan,female,8.8
+Uganda,male,74.9
+Uganda,female,27.2
+Ukraine,male,19.1
+Ukraine,female,4.6
+United Arab Emirates,male,24.9
+United Arab Emirates,female,8
+United Kingdom of Great Britain and Northern Ireland,male,4.8
+United Kingdom of Great Britain and Northern Ireland,female,1.4
+United Republic of Tanzania,male,82.7
+United Republic of Tanzania,female,33.3
+United States of America,male,20.3
+United States of America,female,7.9
+Uruguay,male,27.7
+Uruguay,female,6.4
+Uzbekistan,male,20
+Uzbekistan,female,4.5
+Vanuatu,male,26
+Vanuatu,female,12
+Venezuela (Bolivarian Republic of),male,91.2
+Venezuela (Bolivarian Republic of),female,15.3
+Viet Nam,male,50.2
+Viet Nam,female,11.8
+Yemen,male,53.8
+Yemen,female,15.9
+Zambia,male,62
+Zambia,female,24.6
+Zimbabwe,male,101.7
+Zimbabwe,female,47.1
