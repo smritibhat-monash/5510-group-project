@@ -14,13 +14,13 @@ library(unglue)
 
 
 # Research Question No. 3
-Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?
+**Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
 
 _Researcher: Yin Shan Ho_
 
 ## Description of Data
 
-The data sets are downloaded from the GISAH tool of the WHO.
+The data sets are downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of the WHO.
 
 The data sets are separated into two parts:
 
@@ -169,16 +169,16 @@ _Researcher: Smriti Vinayak Bhat_
 
 ## Description of Data
 
-There are multiple data sets downloaded from the GISAH tool of WHO.
+There are multiple data sets downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of WHO.
 
 It is split into two main parts:
 
 1. Consumption pattern data -
-  - This data has been downloaded from Levels of Consumption^[https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH] section of the GISAH tool.
+  - This data has been downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH tool.
   - This conists of alcohol per capita consumption from 2010 onward by country, type of beverage and alcohol, recorded per capita (15+ years) consumption (in litres of pure alcohol).
 
 2. Alcohol policy timeline database -
-  - This data contains Alcohol Policy Timeline Database of WHO African Region^[https://apps.who.int/gho/data/node.gisah.A1700?lang=en&showonly=GISAH], WHO Region of the Americas^[https://apps.who.int/gho/data/node.gisah.A1600?lang=en&showonly=GISAH], WHO European Region^[https://apps.who.int/gho/data/node.gisah.A1500?lang=en&showonly=GISAH], WHO Eastern Mediterranean Region^[https://apps.who.int/gho/data/node.gisah.A1800?lang=en&showonly=GISAH], WHO South-East Asian Region^[https://apps.who.int/gho/data/node.gisah.A2000?lang=en&showonly=GISAH] and WHO Western Pacific Region^[https://apps.who.int/gho/data/node.gisah.A1900?lang=en&showonly=GISAH].
+  - This data contains Alcohol Policy Timeline Database of [WHO African Region](@https://apps.who.int/gho/data/node.gisah.A1700?lang=en&showonly=GISAH,) [WHO Region of the Americas](@https://apps.who.int/gho/data/node.gisah.A1600?lang=en&showonly=GISAH), [WHO European Region](@https://apps.who.int/gho/data/node.gisah.A1500?lang=en&showonly=GISAH), [WHO Eastern Mediterranean Region](@https://apps.who.int/gho/data/node.gisah.A1800?lang=en&showonly=GISAH), [WHO South-East Asian Region](@https://apps.who.int/gho/data/node.gisah.A2000?lang=en&showonly=GISAH) and [WHO Western Pacific Region](@https://apps.who.int/gho/data/node.gisah.A1900?lang=en&showonly=GISAH).
   - It contains the country, action area and policy changes done in each country according to year.
   
 **Both these sets of data are being used to track the trend from 2010-2016**
