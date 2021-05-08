@@ -6,45 +6,20 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(dplyr)
 library(tidyverse)
 library(unglue)
 ```
 
 
-# Research Question No. 1
+# Research Question 1
+_Question has been changed from before. Questions 1 and 2 from previous document have been merged._
+
 
 **How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
 
 _Researcher: Yalong Liu_
-
-## Description of Data
-
-All data sets are downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of the WHO.
-
-This research question contains two main parts:
-
-1. Levels of alcohol consumption by countries overtime
-
-  - Data sets are downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH, and the recorded timelines include [2010-2018](https://apps.who.int/gho/data/node.gisah.A1039?lang=en&showonly=GISAH),
-  [2000-2009](https://apps.who.int/gho/data/node.gisah.A1026?lang=en&showonly=GISAH),
-  [1980-1999](https://apps.who.int/gho/data/node.gisah.A1024?lang=en&showonly=GISAH),
-  [1960-1979](https://apps.who.int/gho/data/node.gisah.A1025?lang=en&showonly=GISAH).
-  
-  - These data sets record the per capita (15+ years) alcohol consumption (in litres of pure alcohol) of each type of alcohol and alcoholic beverages in countries around the world from 1960 to 2018.
-  
-2. Changes in the types of popular alcoholic beverages
-
-  - Data set [Total consumption](https://apps.who.int/gho/data/node.gisah.A1029SDG3?lang=en&showonly=GISAH) is downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH.
-
-  - This data set records the total per capita consumption (15+ years) of alcoholic beverages (in pure alcohol as a unit) from 2000 to 2018.
-
-## Reading the Data
-
-### Reading the data to obtain each periods of consumption of alcohol
-
-This section contains the code to read in data of the consumption of different alcoholic beverages per capita in the world for the years 1960-2018.
 
 ```{r}
 consumption_2010_2018_r <- read_csv("../data/consumption_2010-2018.csv")
@@ -53,21 +28,13 @@ consumption_1980_1999_r <- read_csv("../data/consumption_1980-1999.csv")
 consumption_1960_1979_r <- read_csv("../data/consumption_1960-1979.csv")
 ```
 
-### Reading the data to acquire total consumption of alcohol
-
-This section contains the code to read in data of the total consumption of alcoholic beverages per capita by country and gender from 2000 to 2018.
-
 ```{r}
 consumption_gender_r <- read_csv("../data/consumption_gender.csv")
 ```
 
-## Cleaning the Data
+### Data of all recorded timelines
 
-### Cleaning the data of all recorded timelines
-
-The question to be researched is the trend of each type of alcohol in different countries. We need to connect the timelines of different data sets for observation.
-
-1. Cleaning the raw data set of consumption from 2010 to 2018.
+We need to connect the timelines of different data sets for observation. The raw data set of consumption from 1960 to 2018 is cleaned.
 
 ```{r}
 consumption_2010_2018_t <- consumption_2010_2018_r %>%
@@ -87,8 +54,6 @@ consumption_2010_2018_t <- consumption_2010_2018_r %>%
   select(-"Data_sourse")
 ```
 
-2. Cleaning the raw data set of consumption from 2000 to 2009.
-
 ```{r}
 consumption_2000_2009_t <- consumption_2000_2009_r %>%
   rename("Country" = X1,
@@ -107,8 +72,6 @@ consumption_2000_2009_t <- consumption_2000_2009_r %>%
   filter(!str_detect(Country,"Country")) %>%
   select(-"Data_sourse")
 ```
-
-3. Cleaning the raw data set of consumption from 1980 to 1999.
 
 ```{r}
 consumption_1980_1999_t <- consumption_1980_1999_r %>%
@@ -139,8 +102,6 @@ consumption_1980_1999_t <- consumption_1980_1999_r %>%
   select(-"Data_sourse")
 ```
 
-4. Cleaning the raw data set of consumption from 1960 to 1979.
-
 ```{r}
 consumption_1960_1979_t <- consumption_1960_1979_r %>%
   rename("Country" = X1,
@@ -169,9 +130,6 @@ consumption_1960_1979_t <- consumption_1960_1979_r %>%
   filter(!str_detect(Country,"Country")) %>%
   select(-"Data_sourse")
 ```
-
-5. Combining all time periods and making null values consistent.
-
 ```{r}
 consumption_join <- full_join(consumption_2010_2018_t,
                                    consumption_2000_2009_t,
@@ -185,7 +143,7 @@ consumption_join <- full_join(consumption_2010_2018_t,
 consumption_join[is.na(consumption_join)] <- 0
 ```
 
-### Cleaning the data by gender
+### Data by gender
 
 This data is used to view the total alcohol consumption per capita of different genders in various countries in recent years, so it is necessary to meet the requirements of screening by gender and timeline at the same time.
 
@@ -259,42 +217,15 @@ consumption_gender <- full_join(consumption_g18,
 
 Combine this data set with the data set in the first part to explore whether alcoholic beverages are substituted.
 
-## Storing Cleaned Data Sets
-
 ```{r}
 write_csv(consumption_join, "../clean_data/consumption_join.csv")
 write_csv(consumption_gender, "../clean_data/consumption_gender.csv")
 ```
 
-# Research Question No. 2
-**Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
+# Research Question 2
+**Q3 from doc**
 
 _Researcher: Yin Shan Ho_
-
-## Description of Data
-
-The data sets are downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of the WHO.
-
-The data sets are separated into two parts:
-
-1. The age-standardized death rate in:
-- [cancer](https://apps.who.int/gho/data/node.gisah.A1110?lang=en&showonly=GISAH), 
-[liver cirrhosis](https://apps.who.int/gho/data/node.gisah.A1092?lang=en&showonly=GISAH),
-[road traffic injuries](https://apps.who.int/gho/data/node.gisah.A1077?lang=en&showonly=GISAH).
-
-- The data contains the global observation of the death rate per 100,000 population caused by road injuries, cancers, liver cirrhosis for 194 countries in 2016.
-
-2. The death rate of alcohol attributed cases in: 
-- [cancer](https://apps.who.int/gho/data/node.gisah.A1098?lang=en&showonly=GISAH), 
-[liver cirrhosis](https://apps.who.int/gho/data/node.gisah.A1094?lang=en&showonly=GISAH),
-[road traffic crash](https://apps.who.int/gho/data/node.gisah.A1077?lang=en&showonly=GISAH).
-
-- The data indicates the death rate of alcohol-related road injuries, cancers, liver cirrhosis for 194 countries in 2016.
-
-
-## Reading the data
-
-This section contains the code to read in data of the number of deaths per 100,000 population and the rate of alcohol attributed deaths caused by cancers, liver cirrhosis and traffic crashes in 2016. 
 
 ```{r}
 cancer_alcohol <- read_csv("../data/cancer_alcohol.csv")
@@ -306,17 +237,9 @@ traffic_death <- read_csv("../data/traffic_death.csv")
 ```
 
 
-## Cleaning the data
-
 ### Alcohol-attributed deaths
 
-As the research question aims to compare whether alcohol cause more deaths in illnesses or road traffic crashes, several manipulations were done to get the rate of alcohol-attributed deaths. The steps are as follow:
-
-1. Rename the variables 
-
-2. Filter the cells which contain "No data"
-
-3. Pivot longer is used to make data sets longer and to combine the separated variables on gender into one for future calculations. 
+Variables are renamed and "no data" values are filtered out. Pivot longer is used to combine the separated variables on gender into one for future calculations. 
 
 ```{r clean-cancer-alcohol}
 cancer_a <- tail(cancer_alcohol, -2) %>% 
@@ -359,7 +282,6 @@ traffic_a_clean <- pivot_longer(traffic_a, cols = c("male", "female"),
 
 ### Number of death per 100,000 population  
 
-To calculate the number of alcohol attributed deaths, the total number of deaths in these three aspects needed to be extracted. 
 The way to manipulate this data set is exactly the same as the previous one. 
 
 ```{r clean-cancer-death}
@@ -400,9 +322,6 @@ traffic_d_clean <- pivot_longer(traffic_d, cols = c("male", "female"),
                                  values_to = "road-traffic-death-population")
 ```
 
-## Storing the cleaned Data Sets
-
-Saving the data sets into csv:
 
 ```{r}
 write_csv(cancer_a_clean, "../clean_data/cancer_a_clean.csv")
@@ -414,34 +333,11 @@ write_csv(traffic_d_clean, "../clean_data/traffic_d_clean.csv")
 ```
 
 
-# Research Question No. 3
+# Research Question 3
 
-**What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?**
+**Q4 from doc**
 
 _Researcher: Smriti Vinayak Bhat_
-
-## Description of Data
-
-There are multiple data sets downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of WHO.
-
-It is split into two main parts:
-
-1. Consumption pattern data -
-  - This data has been downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH tool.
-  - This conists of alcohol per capita consumption from 2010 onward by country, type of beverage and alcohol, recorded per capita (15+ years) consumption (in litres of pure alcohol).
-
-2. Alcohol policy timeline database -
-  - This data contains Alcohol Policy Timeline Database of [WHO African Region](@https://apps.who.int/gho/data/node.gisah.A1700?lang=en&showonly=GISAH,) [WHO Region of the Americas](@https://apps.who.int/gho/data/node.gisah.A1600?lang=en&showonly=GISAH), [WHO European Region](@https://apps.who.int/gho/data/node.gisah.A1500?lang=en&showonly=GISAH), [WHO Eastern Mediterranean Region](@https://apps.who.int/gho/data/node.gisah.A1800?lang=en&showonly=GISAH), [WHO South-East Asian Region](@https://apps.who.int/gho/data/node.gisah.A2000?lang=en&showonly=GISAH) and [WHO Western Pacific Region](@https://apps.who.int/gho/data/node.gisah.A1900?lang=en&showonly=GISAH).
-  - It contains the country, action area and policy changes done in each country according to year.
-  
-**Both these sets of data are being used to track the trend from 2010-2016**
-
-
-## Reading in Data
-
-### Reading in Data of Policy Responses Worldwide
-
-This section contains the code to read in data of policy responses to the problem of alcoholism from different parts of the world for the years 2010-2016.
 
 ```{r}
 file_path <- ("../data/{geo}/")
@@ -513,21 +409,15 @@ pacific_2015 <- read_csv(csv_pacific_paths[6])
 pacific_2016 <- read_csv(csv_pacific_paths[7])
 ```
 
-### Reading in Data Required to Check Consumption of Alcohol
-
-This section contains the code to read in data which will help track worldwide consumption of alcohol
 
 ```{r}
 consumption_pattern <- read_csv("../data/consumption_pattern.csv")
 ```
 
-## Cleaning the data
+### Data Pertaining to Policy Responses
 
-### Cleaning Data Pertaining to Policy Responses
+This filters out columns with no data for the regions of Africa, Americas, Asia, Europe, Mediterranean and the Pacific. The data from all countries is then combined by year as well as action area using a full join. Finally all the countries' policy pattern together are bound together using rbind.
 
-Since the research question aims to only look at changes due to policy responses, in this step the code will be written to remove all values where no policy response has been done or the data is not available.
-
-The below code cleans data for Africa. 
 ```{r}
 africa_2010 <- africa_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -557,8 +447,6 @@ africa_2016 <- africa_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
-
-The below code cleans data for the Americas. 
 ```{r}
 americas_2010 <- americas_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -588,8 +476,6 @@ americas_2016 <- americas_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
-
-The below code cleans data for Asia. 
 ```{r}
 asia_2010 <- asia_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -619,8 +505,6 @@ asia_2016 <- asia_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
-
-The below code cleans data for Europe. 
 ```{r}
 europe_2010 <- europe_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -657,8 +541,6 @@ europe_2016 <- europe_2016 %>%
   select(-`Data Source`) %>%
   na.omit()
 ```
-
-The below code cleans data for Mediterranean. 
 ```{r}
 med_2010 <- med_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -688,8 +570,6 @@ med_2016 <- med_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
-
-The below code cleans data for the Pacific region. 
 ```{r}
 pacific_2010 <- pacific_2010 %>%
   filter(!(`2010` == "No data")) %>%
@@ -719,9 +599,6 @@ pacific_2016 <- pacific_2016 %>%
   filter(!(`2016` == "No data")) %>%
   na.omit()
 ```
-
-The below code chunk combines the data from all countries year wise.
-
 ```{r}
 policy_pattern_africa <- full_join(africa_2010,africa_2011,by=c("Country","Action Area")) %>%
   full_join(africa_2012,by=c("Country","Action Area")) %>%
@@ -771,9 +648,6 @@ policy_pattern_pacific <- full_join(pacific_2010,pacific_2011,by=c("Country","Ac
   full_join(pacific_2016,by=c("Country","Action Area")) %>%
   arrange(Country) 
 ```
-
-The below code binds all the countries' policy pattern together.
-
 ```{r}
 policy_pattern <- rbind(policy_pattern_africa,
                         policy_pattern_americas,
@@ -785,10 +659,9 @@ policy_pattern <- rbind(policy_pattern_africa,
 ```
 
 
-### Cleaning the Data Pertaining to Trend of Consumption of Alcohol
+### Data Pertaining to Trend of Consumption of Alcohol
 
-1. The code renames the columns for convenience.
-
+The columns are renamed for convenience.The variables X2 and 2018 are dropped as we don't need data source or the trend past 2017. Since our final set of policy data dates back to 2016, we need to retain the figures of 2017 to see their effect. The first row is dropped as it is a repeat of the heading. Then countries are filtered out for whom policy data is not present.
 ```{r}
 
 consumption_pattern <- consumption_pattern %>%
@@ -804,32 +677,19 @@ consumption_pattern <- consumption_pattern %>%
          "2011" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
          "2010" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`)
 ```
-
-2. The code chunk drops the variables X2 and 2018 as we don't need data source or the trend past 2017. Since our final set of policy data dates back to 2016, we need to retain the figures of 2017 to see their effect.
-
 ```{r}
 consumption_pattern <- consumption_pattern %>%
   select(-c(X2, "2018"))
 ```
-
-3. The code chunk drops the first row as it is a repeat of the heading.
-
 ```{r}
 consumption_pattern <- consumption_pattern %>%
   filter(!str_detect(Country,"Country"))
 ```
-
-4. The code chunk removes countries for whom policy data is not present.
-
 ```{r}
 consumption_pattern <- semi_join(consumption_pattern,
                                  policy_pattern,
                                  by="Country")
 ```
-
-## Storing Cleaned Data Set
-
-Saving both cleaned sets of data back into csv:
 
 ```{r}
 write_csv(policy_pattern,"../clean_data/policy_pattern.csv")
@@ -837,32 +697,12 @@ write_csv(consumption_pattern,"../clean_data/consumption_pattern.csv")
 ```
 
 
-# Research Question No. 4
+# Research Question 4
 
-**Do drinking age restrictions and legal blood alcohol concentration (BAC) limits for young drivers have any effect on adolescents’ drinking among countries?**
+**Q5 from doc**
 
 _Researcher: Kexin Xu_
 
-## Description of Data
-All data sets below are downloaded from [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) in WHO.  
-
-1. BAC limits
-  - The data describes legal blood alcohol concentration (BAC) limits for young/novice drivers.
-  - The data contains BAC restrictions in each country in year 2016.
-
-2. Age limits
-  - The data shows age limits for both alcohol sales and alcohol service.
-  - The data contains age restrictions on selling and serving different types of alcohol in each country in year 2016.
-  
-3. Current drinkers 15-19
-  - The data tells the percentage of current drinkers between 15 and 19 years old.
-  - The data is consist of percentage of current young drinkers across gender in each country in year 2016.
-
-4. Heavy drinkers 15-19
-  - The data represents the percentage of heavy episodic drinkers among drinkers between 15 and 19 years old.
-  - The data is consist of percentage of heavy drinkers among young drinkers across gender in each country in year 2016.
-
-## Reading in Data
 ```{r}
 BAC_limits_raw <- read_csv(here::here("data/Legal_blood_alcohol_concentration_(BAC)_limits_for_youngnovice_drivers.csv"))
 ```
@@ -880,7 +720,10 @@ heavy_drinkers_15_19_raw <- read_csv(here::here("data/15-19_years_old_heavy_epis
 ```
 
 
-## Cleaning the Data
+### Cleaning the Data
+
+First row is dropped for containing redundant values and variables are renamed appropriately according to value for all data. This is then pivoted into long form and unnested  or seperated to get correct variables. 
+
 ```{r}
 BAC_limits_tidy <- BAC_limits_raw[-1,] %>% 
   rename("country" = X1, 
@@ -928,52 +771,23 @@ heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_raw[-1,] %>%
 heavy_drinkers_15_19_tidy <- heavy_drinkers_15_19_tidy[,-5]
 ```
 
-## Storing Cleaned Data Set
+
 ```{r}
 write_csv(BAC_limits_tidy, "../clean_data/BAC_limits_tidy.csv")
-```
-
-```{r}
 write_csv(Age_limits_tidy, "../clean_data/Age_limits_tidy.csv")
-```
-
-```{r}
 write_csv(current_drinkers_15_19_tidy, "../clean_data/current_drinkers_15_19_tidy.csv")
-```
-
-```{r}
 write_csv(heavy_drinkers_15_19_tidy, "../clean_data/heavy_drinkers_15_19_tidy.csv")
 ```
 
 
 
-# Research Question No. 5
 
-**What are the trends in youth drinking issues over the years?**
+# Research Question 5
+
+**Q6 from doc**
 
 _Researcher: Kexin Xu_
 
-## Description of Data
-All data sets below are downloaded from [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) in WHO.  
-Age of 15 is taken on behalf of youth here. The following data sets describe different drinking issues based on 15-year-old teenagers.  
-
-1. Drink at least once a week
-  - The data shows the percentage of whom has any alcoholic beverage at least once a week.
-  - The data contains the percentage of 15-year-old adolescents who drinks alcoholic beverage at least once a week across gender in each country in different years.
-
-2. First drink earlier than 13
-  - The data describes the percentage of whose first drink at 13 years old or younger.
-  - The data contains the percentage of 15-year-old adolescents who first drinks alcoholic beverage earlier than 13 across gender in each country in different years.
-  
-3. Any alcohol in past 12 months
-  - The data represents the percentage of whom has any alcohol in past 12 months.
-  - The data is consist of percentage of 15-year-old adolescents who any alcoholic beverage in the past year across gender in each country in different years.
-
-4. Any alcohol in past 30 days
-  - The data represents the percentage of whom has any alcohol in past 30 days.
-  - The data is consist of percentage of 15-year-old adolescents who any alcoholic beverage in the past month across gender in each country in different years.
-
-## Reading in Data
 ```{r}
 at_least_once_a_week_raw <- read_csv(here::here("data/15_years_old_any_alcoholic_beverage_at_least_once_a_week_(%).csv"))
 ```
@@ -990,7 +804,10 @@ any_alcohol_in_past_12_months_raw <- read_csv(here::here("data/15_years_old_any_
 any_alcohol_in_past_30_days_raw <- read_csv(here::here("data/15_years_old_any_alcoholic_beverage_in_past_30_days_(%).csv"))
 ```
 
-## Cleaning the Data
+### Cleaning the Data
+
+The trend data is converted into a cleaner table by removing redundant rows and appropriate renaming. This is then pivoted into long form where all the variables except country and year are placed into gender variable with values in percentage.
+
 ```{r}
 at_least_once_a_week_tidy <- at_least_once_a_week_raw[-1,-2] %>% 
   rename("country" = X1, 
@@ -1030,7 +847,7 @@ any_alcohol_in_past_30_days_tidy <- any_alcohol_in_past_30_days_raw[-1,-2] %>%
   pivot_longer(cols = c(-country, -year), names_to = "gender", values_to = "percentage")
 ```
 
-## Storing Cleaned Data Set
+
 ```{r}
 write_csv(at_least_once_a_week_tidy, "../clean_data/at_least_once_a_week_tidy.csv")
 ```
