@@ -259,6 +259,13 @@ consumption_gender <- full_join(consumption_g18,
 
 Combine this data set with the data set in the first part to explore whether alcoholic beverages are substituted.
 
+## Storing Cleaned Data Sets
+
+```{r}
+write_csv(consumption_join, "../clean_data/consumption_join.csv")
+write_csv(consumption_gender, "../clean_data/consumption_gender.csv")
+```
+
 # Research Question No. 3
 **Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
 
