@@ -13,6 +13,145 @@ library(unglue)
 ```
 
 
+# Research Question No. 1
+
+**How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
+
+_Researcher: Yalong Liu_
+
+## Description of Data
+
+## Reading the Data
+
+```{r}
+consumption_2010_2018_r <- read_csv("../data/consumption_2010-2018.csv")
+consumption_2000_2009_r <- read_csv("../data/consumption_2000-2009.csv")
+consumption_1980_1999_r <- read_csv("../data/consumption_1980-1999.csv")
+consumption_1960_1979_r <- read_csv("../data/consumption_1960-1979.csv")
+consumption_gender_r <- read_csv("../data/consumption_gender.csv")
+```
+
+## Cleaning the Data
+
+1. Cleaning the raw data set of consumption from 2010 to 2018.
+
+```{r}
+consumption_2010_2018_t <- consumption_2010_2018_r %>%
+  rename("Country" = X1,
+         "Data_sourse" = X2,
+         "Beverage_Types" = X3, 
+         "2018" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "2017" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "2016" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "2015" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "2014" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "2013" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "2012" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "2011" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "2010" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`) %>%
+  filter(!str_detect(Country,"Country")) %>%
+  select(-"Data_sourse")
+```
+
+2. Cleaning the raw data set of consumption from 2000 to 2009.
+
+```{r}
+consumption_2000_2009_t <- consumption_2000_2009_r %>%
+  rename("Country" = X1,
+         "Data_sourse" = X2,
+         "Beverage_Types" = X3, 
+         "2009" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "2008" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "2007" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "2006" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "2005" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "2004" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "2003" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "2002" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "2001" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         "2000" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`) %>%
+  filter(!str_detect(Country,"Country")) %>%
+  select(-"Data_sourse")
+```
+
+3. Cleaning the raw data set of consumption from 1980 to 1999.
+
+```{r}
+consumption_1980_1999_t <- consumption_1980_1999_r %>%
+  rename("Country" = X1,
+         "Data_sourse" = X2,
+         "Beverage_Types" = X3, 
+         "1999" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "1998" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "1997" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "1996" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "1995" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "1994" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "1993" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "1992" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "1991" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         "1990" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`,
+         "1989" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_10`,
+         "1988" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_11`,
+         "1987" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_12`,
+         "1986" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_13`,
+         "1985" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_14`,
+         "1984" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_15`,
+         "1983" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_16`,
+         "1982" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_17`,
+         "1981" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_18`,
+         "1980" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_19`) %>%
+  filter(!str_detect(Country,"Country")) %>%
+  select(-"Data_sourse")
+```
+
+4. Cleaning the raw data set of consumption from 1960 to 1979.
+
+```{r}
+consumption_1960_1979_t <- consumption_1960_1979_r %>%
+  rename("Country" = X1,
+         "Data_sourse" = X2,
+         "Beverage_Types" = X3, 
+         "1979" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         "1978" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         "1977" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         "1976" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         "1975" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         "1974" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         "1973" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         "1972" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         "1971" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         "1970" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`,
+         "1969" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_10`,
+         "1968" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_11`,
+         "1967" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_12`,
+         "1966" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_13`,
+         "1965" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_14`,
+         "1964" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_15`,
+         "1963" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_16`,
+         "1962" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_17`,
+         "1961" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_18`,
+         "1960" = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_19`) %>%
+  filter(!str_detect(Country,"Country")) %>%
+  select(-"Data_sourse")
+```
+
+5. Combining all time periods and making null values consistent.
+
+```{r}
+consumption_join <- full_join(consumption_2010_2018_t,
+                                   consumption_2000_2009_t,
+                                   by=c("Country", "Beverage_Types")) %>%
+  full_join(consumption_1980_1999_t,by=c("Country", "Beverage_Types")) %>%
+  full_join(consumption_1960_1979_t,by=c("Country", "Beverage_Types")) %>%
+  arrange(Country)
+```
+
+```{r}
+consumption_join[consumption_join == 0] = NA
+```
+
+
 # Research Question No. 3
 **Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
 
