@@ -1,8 +1,11 @@
 ---
-title: "Cleaning the Data"
-author: "Hayaku"
-date: "03/05/2021"
-output: html_document
+title: \vspace{-1.5cm}Cleaning the Data
+author: Hayaku
+date: 03/05/2021
+output: pdf_document
+fontsize: 10pt
+geometry: margin=0.5in
+linestretch: 0.3
 ---
 
 ```{r setup, include=FALSE}
