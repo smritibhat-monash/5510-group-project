@@ -320,7 +320,7 @@ consumption_1960_1979_r &lt;- read_csv(&quot;../data/consumption_1960-1979.csv&q
   full_join(consumption_1980_1999_t,by=c(&quot;Country&quot;, &quot;Beverage_Types&quot;)) %&gt;%
   full_join(consumption_1960_1979_t,by=c(&quot;Country&quot;, &quot;Beverage_Types&quot;)) %&gt;%
   arrange(Country)</code></pre>
-<pre class="r"><code>consumption_join[consumption_join == 0] = NA</code></pre>
+<pre class="r"><code>consumption_join[is.na(consumption_join)] &lt;- 0</code></pre>
 </div>
 <div id="cleaning-the-data-by-gender" class="section level3">
 <h3>Cleaning the data by gender</h3>
@@ -386,6 +386,11 @@ consumption_g00 &lt;- consumption_gender_t[,c(1,14,15,16)] %&gt;%
   arrange(Country)</code></pre>
 <p>Combine this data set with the data set in the first part to explore whether alcoholic beverages are substituted.</p>
 </div>
+</div>
+<div id="storing-cleaned-data-sets" class="section level2">
+<h2>Storing Cleaned Data Sets</h2>
+<pre class="r"><code>write_csv(consumption_join, &quot;../clean_data/consumption_join.csv&quot;)
+write_csv(consumption_gender, &quot;../clean_data/consumption_gender.csv&quot;)</code></pre>
 </div>
 </div>
 <div id="research-question-no.-3" class="section level1">
