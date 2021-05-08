@@ -21,17 +21,51 @@ _Researcher: Yalong Liu_
 
 ## Description of Data
 
+All data sets are downloaded from the [**Global Information System on Alcohol and Health (GISAH)**](https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH) tool of the WHO.
+
+This research question contains two main parts:
+
+1. Levels of alcohol consumption by countries overtime
+
+  - Data sets are downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH, and the recorded timelines include [2010-2018](https://apps.who.int/gho/data/node.gisah.A1039?lang=en&showonly=GISAH),
+  [2000-2009](https://apps.who.int/gho/data/node.gisah.A1026?lang=en&showonly=GISAH),
+  [1980-1999](https://apps.who.int/gho/data/node.gisah.A1024?lang=en&showonly=GISAH),
+  [1960-1979](https://apps.who.int/gho/data/node.gisah.A1025?lang=en&showonly=GISAH).
+  
+  - These data sets record the per capita (15+ years) alcohol consumption (in litres of pure alcohol) of each type of alcohol and alcoholic beverages in countries around the world from 1960 to 2018.
+  
+2. Changes in the types of popular alcoholic beverages
+
+  - Data set [Total consumption](https://apps.who.int/gho/data/node.gisah.A1029SDG3?lang=en&showonly=GISAH) is downloaded from [Levels of Consumption](@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&showonly=GISAH) section of the GISAH.
+
+  - This data set records the total per capita consumption (15+ years) of alcoholic beverages (in pure alcohol as a unit) from 2000 to 2018.
+
 ## Reading the Data
+
+### Reading the data to obtain each periods of consumption of alcohol
+
+This section contains the code to read in data of the consumption of different alcoholic beverages per capita in the world for the years 1960-2018.
 
 ```{r}
 consumption_2010_2018_r <- read_csv("../data/consumption_2010-2018.csv")
 consumption_2000_2009_r <- read_csv("../data/consumption_2000-2009.csv")
 consumption_1980_1999_r <- read_csv("../data/consumption_1980-1999.csv")
 consumption_1960_1979_r <- read_csv("../data/consumption_1960-1979.csv")
-consumption_gender_r <- read_csv("../data/consumption_gender.csv")
+```
+
+### Reading the data to acquire total consumption of alcohol
+
+This section contains the code to read in data of the total consumption of alcoholic beverages per capita by country and gender from 2000 to 2018.
+
+```{r}
+consumption_gender_r <- read_csv("data/consumption_gender.csv")
 ```
 
 ## Cleaning the Data
+
+### Cleaning the data of all recorded timelines
+
+The question to be researched is the trend of each type of alcohol in different countries. We need to connect the timelines of different data sets for observation.
 
 1. Cleaning the raw data set of consumption from 2010 to 2018.
 
