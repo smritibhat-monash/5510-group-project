@@ -14,7 +14,7 @@ library(unglue)
 
 
 # Research Question 1
-_Question has been changed from before. Questions 1 and 2 from previous document have been merged._
+_Questions changed to:_
 
 
 **How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
@@ -223,7 +223,7 @@ write_csv(consumption_gender, "../clean_data/consumption_gender.csv")
 ```
 
 # Research Question 2
-**Q3 from doc**
+**Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
 
 _Researcher: Yin Shan Ho_
 
@@ -237,7 +237,7 @@ traffic_death <- read_csv("../data/traffic_death.csv")
 ```
 
 
-### Alcohol-attributed deaths
+### Alcohol-attributed deaths & Number of death per 100,000 population  
 
 Variables are renamed and "no data" values are filtered out. Pivot longer is used to combine the separated variables on gender into one for future calculations. 
 
@@ -280,9 +280,7 @@ traffic_a_clean <- pivot_longer(traffic_a, cols = c("male", "female"),
 ```
 
 
-### Number of death per 100,000 population  
 
-The way to manipulate this data set is exactly the same as the previous one. 
 
 ```{r clean-cancer-death}
 cancer_d <- tail(cancer_death, -2) %>% 
@@ -335,7 +333,7 @@ write_csv(traffic_d_clean, "../clean_data/traffic_d_clean.csv")
 
 # Research Question 3
 
-**Q4 from doc**
+**What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?**
 
 _Researcher: Smriti Vinayak Bhat_
 
@@ -416,7 +414,7 @@ consumption_pattern <- read_csv("../data/consumption_pattern.csv")
 
 ### Data Pertaining to Policy Responses
 
-This filters out columns with no data for the regions of Africa, Americas, Asia, Europe, Mediterranean and the Pacific. The data from all countries is then combined by year as well as action area using a full join. Finally all the countries' policy pattern together are bound together using rbind.
+This filters out columns for the regions with no data. The data from all countries is then combined by year and action area using a full join. Finally all the countries’ policy pattern together are bound together using rbind.
 
 ```{r}
 africa_2010 <- africa_2010 %>%
@@ -661,7 +659,8 @@ policy_pattern <- rbind(policy_pattern_africa,
 
 ### Data Pertaining to Trend of Consumption of Alcohol
 
-The columns are renamed for convenience.The variables X2 and 2018 are dropped as we don't need data source or the trend past 2017. Since our final set of policy data dates back to 2016, we need to retain the figures of 2017 to see their effect. The first row is dropped as it is a repeat of the heading. Then countries are filtered out for whom policy data is not present.
+The columns are renamed for convenience.The variables X2 and 2018 are dropped as considered not necessary for the report. The first row is dropped as it is a repeat of the heading. Then countries are filtered out for whom policy data is not present.
+
 ```{r}
 
 consumption_pattern <- consumption_pattern %>%
@@ -699,7 +698,7 @@ write_csv(consumption_pattern,"../clean_data/consumption_pattern.csv")
 
 # Research Question 4
 
-**Q5 from doc**
+**Do drinking age restrictions and legal blood alcohol concentration (BAC) limits for young drivers have any effect on adolescents’ drinking among countries?**
 
 _Researcher: Kexin Xu_
 
@@ -722,7 +721,7 @@ heavy_drinkers_15_19_raw <- read_csv(here::here("data/15-19_years_old_heavy_epis
 
 ### Cleaning the Data
 
-First row is dropped for containing redundant values and variables are renamed appropriately according to value for all data. This is then pivoted into long form and unnested  or seperated to get correct variables. 
+First row is dropped for containing redundant values and variables are renamed appropriately according to value for all data. This is then pivoted into long form and unnested or seperated to get correct variables. 
 
 ```{r}
 BAC_limits_tidy <- BAC_limits_raw[-1,] %>% 
@@ -784,7 +783,7 @@ write_csv(heavy_drinkers_15_19_tidy, "../clean_data/heavy_drinkers_15_19_tidy.cs
 
 # Research Question 5
 
-**Q6 from doc**
+**What are the trends in youth drinking issues over the years?**
 
 _Researcher: Kexin Xu_
 
@@ -806,7 +805,7 @@ any_alcohol_in_past_30_days_raw <- read_csv(here::here("data/15_years_old_any_al
 
 ### Cleaning the Data
 
-The trend data is converted into a cleaner table by removing redundant rows and appropriate renaming. This is then pivoted into long form where all the variables except country and year are placed into gender variable with values in percentage.
+The trend data is cleaned by removing redundant rows and appropriate renaming. Then it pivoted longer into where all the variables except country and year are placed into gender variable with values in percentage.
 
 ```{r}
 at_least_once_a_week_tidy <- at_least_once_a_week_raw[-1,-2] %>% 
