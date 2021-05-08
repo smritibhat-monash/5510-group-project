@@ -58,7 +58,7 @@ consumption_1960_1979_r <- read_csv("../data/consumption_1960-1979.csv")
 This section contains the code to read in data of the total consumption of alcoholic beverages per capita by country and gender from 2000 to 2018.
 
 ```{r}
-consumption_gender_r <- read_csv("data/consumption_gender.csv")
+consumption_gender_r <- read_csv("../data/consumption_gender.csv")
 ```
 
 ## Cleaning the Data
@@ -185,6 +185,79 @@ consumption_join <- full_join(consumption_2010_2018_t,
 consumption_join[consumption_join == 0] = NA
 ```
 
+### Cleaning the data by gender
+
+This data is used to view the total alcohol consumption per capita of different genders in various countries in recent years, so it is necessary to meet the requirements of screening by gender and timeline at the same time.
+
+```{r}
+consumption_gender_t <- consumption_gender_r %>%
+  rename("Country" = X1,
+         "Both_18" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)`,
+         "Male_18" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_1`,
+         "Female_18" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_2`,
+         "Both_15" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_3`,
+         "Male_15" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_4`,
+         "Female_15" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_5`,
+         "Both_10" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_6`,
+         "Male_10" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_7`,
+         "Female_10" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_8`,
+         "Both_05" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_9`,
+         "Male_05" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_10`,
+         "Female_05" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_11`,
+         "Both_00" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_12`,
+         "Male_00" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_13`,
+         "Female_00" = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_14`) %>%
+  filter(!(Country == c("NA", "Country")))
+```
+
+```{r}
+consumption_g18 <- consumption_gender_t[,c(1,2,3,4)] %>%
+  pivot_longer(cols = c("Both_18", "Male_18", "Female_18"),
+               names_to = "Gender",
+               values_to = "2018") %>%
+  separate(col = Gender, into = c("Gender", "Year"), "_") %>%
+  select(-Year)
+
+consumption_g15 <- consumption_gender_t[,c(1,5,6,7)] %>%
+  pivot_longer(cols = c("Both_15", "Male_15", "Female_15"),
+               names_to = "Gender",
+               values_to = "2015")  %>%
+  separate(col = Gender, into = c("Gender", "Year"), "_") %>%
+  select(-Year)
+
+consumption_g10 <- consumption_gender_t[,c(1,8,9,10)] %>%
+  pivot_longer(cols = c("Both_10", "Male_10", "Female_10"),
+               names_to = "Gender",
+               values_to = "2010")  %>%
+  separate(col = Gender, into = c("Gender", "Year"), "_") %>%
+  select(-Year)
+
+consumption_g05 <- consumption_gender_t[,c(1,11,12,13)] %>%
+  pivot_longer(cols = c("Both_05", "Male_05", "Female_05"),
+               names_to = "Gender",
+               values_to = "2005")  %>%
+  separate(col = Gender, into = c("Gender", "Year"), "_") %>%
+  select(-Year)
+
+consumption_g00 <- consumption_gender_t[,c(1,14,15,16)] %>%
+  pivot_longer(cols = c("Both_00", "Male_00", "Female_00"),
+               names_to = "Gender",
+               values_to = "2000")  %>%
+  separate(col = Gender, into = c("Gender", "Year"), "_") %>%
+  select(-Year)
+```
+
+```{r}
+consumption_gender <- full_join(consumption_g18,
+                                   consumption_g15,
+                                   by=c("Country", "Gender"))%>%
+  full_join(consumption_g10,by=c("Country", "Gender")) %>%
+  full_join(consumption_g05,by=c("Country", "Gender")) %>%
+  full_join(consumption_g00,by=c("Country", "Gender")) %>%
+  arrange(Country)
+```
+
+Combine this data set with the data set in the first part to explore whether alcoholic beverages are substituted.
 
 # Research Question No. 3
 **Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**

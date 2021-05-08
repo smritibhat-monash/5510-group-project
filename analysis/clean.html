@@ -172,11 +172,227 @@ pre code {
 </div>
 
 
+<div id="research-question-no.-1" class="section level1">
+<h1>Research Question No. 1</h1>
+<p><strong>How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?</strong></p>
+<p><em>Researcher: Yalong Liu</em></p>
+<div id="description-of-data" class="section level2">
+<h2>Description of Data</h2>
+<p>All data sets are downloaded from the <a href="https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH"><strong>Global Information System on Alcohol and Health (GISAH)</strong></a> tool of the WHO.</p>
+<p>This research question contains two main parts:</p>
+<ol style="list-style-type: decimal">
+<li>Levels of alcohol consumption by countries overtime</li>
+</ol>
+<ul>
+<li><p>Data sets are downloaded from <a href="@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&amp;showonly=GISAH">Levels of Consumption</a> section of the GISAH, and the recorded timelines include <a href="https://apps.who.int/gho/data/node.gisah.A1039?lang=en&amp;showonly=GISAH">2010-2018</a>, <a href="https://apps.who.int/gho/data/node.gisah.A1026?lang=en&amp;showonly=GISAH">2000-2009</a>, <a href="https://apps.who.int/gho/data/node.gisah.A1024?lang=en&amp;showonly=GISAH">1980-1999</a>, <a href="https://apps.who.int/gho/data/node.gisah.A1025?lang=en&amp;showonly=GISAH">1960-1979</a>.</p></li>
+<li><p>These data sets record the per capita (15+ years) alcohol consumption (in litres of pure alcohol) of each type of alcohol and alcoholic beverages in countries around the world from 1960 to 2018.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Changes in the types of popular alcoholic beverages</li>
+</ol>
+<ul>
+<li><p>Data set <a href="https://apps.who.int/gho/data/node.gisah.A1029SDG3?lang=en&amp;showonly=GISAH">Total consumption</a> is downloaded from <a href="@https://apps.who.int/gho/data/node.gisah.A1022?lang=en&amp;showonly=GISAH">Levels of Consumption</a> section of the GISAH.</p></li>
+<li><p>This data set records the total per capita consumption (15+ years) of alcoholic beverages (in pure alcohol as a unit) from 2000 to 2018.</p></li>
+</ul>
+</div>
+<div id="reading-the-data" class="section level2">
+<h2>Reading the Data</h2>
+<div id="reading-the-data-to-obtain-each-periods-of-consumption-of-alcohol" class="section level3">
+<h3>Reading the data to obtain each periods of consumption of alcohol</h3>
+<p>This section contains the code to read in data of the consumption of different alcoholic beverages per capita in the world for the years 1960-2018.</p>
+<pre class="r"><code>consumption_2010_2018_r &lt;- read_csv(&quot;../data/consumption_2010-2018.csv&quot;)
+consumption_2000_2009_r &lt;- read_csv(&quot;../data/consumption_2000-2009.csv&quot;)
+consumption_1980_1999_r &lt;- read_csv(&quot;../data/consumption_1980-1999.csv&quot;)
+consumption_1960_1979_r &lt;- read_csv(&quot;../data/consumption_1960-1979.csv&quot;)</code></pre>
+</div>
+<div id="reading-the-data-to-acquire-total-consumption-of-alcohol" class="section level3">
+<h3>Reading the data to acquire total consumption of alcohol</h3>
+<p>This section contains the code to read in data of the total consumption of alcoholic beverages per capita by country and gender from 2000 to 2018.</p>
+<pre class="r"><code>consumption_gender_r &lt;- read_csv(&quot;../data/consumption_gender.csv&quot;)</code></pre>
+</div>
+</div>
+<div id="cleaning-the-data" class="section level2">
+<h2>Cleaning the Data</h2>
+<div id="cleaning-the-data-of-all-recorded-timelines" class="section level3">
+<h3>Cleaning the data of all recorded timelines</h3>
+<p>The question to be researched is the trend of each type of alcohol in different countries. We need to connect the timelines of different data sets for observation.</p>
+<ol style="list-style-type: decimal">
+<li>Cleaning the raw data set of consumption from 2010 to 2018.</li>
+</ol>
+<pre class="r"><code>consumption_2010_2018_t &lt;- consumption_2010_2018_r %&gt;%
+  rename(&quot;Country&quot; = X1,
+         &quot;Data_sourse&quot; = X2,
+         &quot;Beverage_Types&quot; = X3, 
+         &quot;2018&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         &quot;2017&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         &quot;2016&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         &quot;2015&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         &quot;2014&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         &quot;2013&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         &quot;2012&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         &quot;2011&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         &quot;2010&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`) %&gt;%
+  filter(!str_detect(Country,&quot;Country&quot;)) %&gt;%
+  select(-&quot;Data_sourse&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Cleaning the raw data set of consumption from 2000 to 2009.</li>
+</ol>
+<pre class="r"><code>consumption_2000_2009_t &lt;- consumption_2000_2009_r %&gt;%
+  rename(&quot;Country&quot; = X1,
+         &quot;Data_sourse&quot; = X2,
+         &quot;Beverage_Types&quot; = X3, 
+         &quot;2009&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         &quot;2008&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         &quot;2007&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         &quot;2006&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         &quot;2005&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         &quot;2004&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         &quot;2003&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         &quot;2002&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         &quot;2001&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         &quot;2000&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`) %&gt;%
+  filter(!str_detect(Country,&quot;Country&quot;)) %&gt;%
+  select(-&quot;Data_sourse&quot;)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Cleaning the raw data set of consumption from 1980 to 1999.</li>
+</ol>
+<pre class="r"><code>consumption_1980_1999_t &lt;- consumption_1980_1999_r %&gt;%
+  rename(&quot;Country&quot; = X1,
+         &quot;Data_sourse&quot; = X2,
+         &quot;Beverage_Types&quot; = X3, 
+         &quot;1999&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         &quot;1998&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         &quot;1997&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         &quot;1996&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         &quot;1995&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         &quot;1994&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         &quot;1993&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         &quot;1992&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         &quot;1991&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         &quot;1990&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`,
+         &quot;1989&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_10`,
+         &quot;1988&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_11`,
+         &quot;1987&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_12`,
+         &quot;1986&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_13`,
+         &quot;1985&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_14`,
+         &quot;1984&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_15`,
+         &quot;1983&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_16`,
+         &quot;1982&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_17`,
+         &quot;1981&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_18`,
+         &quot;1980&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_19`) %&gt;%
+  filter(!str_detect(Country,&quot;Country&quot;)) %&gt;%
+  select(-&quot;Data_sourse&quot;)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Cleaning the raw data set of consumption from 1960 to 1979.</li>
+</ol>
+<pre class="r"><code>consumption_1960_1979_t &lt;- consumption_1960_1979_r %&gt;%
+  rename(&quot;Country&quot; = X1,
+         &quot;Data_sourse&quot; = X2,
+         &quot;Beverage_Types&quot; = X3, 
+         &quot;1979&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)`, 
+         &quot;1978&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_1`,
+         &quot;1977&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_2`,
+         &quot;1976&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_3`,
+         &quot;1975&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_4`,
+         &quot;1974&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_5`,
+         &quot;1973&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_6`,
+         &quot;1972&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_7`,
+         &quot;1971&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_8`,
+         &quot;1970&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_9`,
+         &quot;1969&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_10`,
+         &quot;1968&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_11`,
+         &quot;1967&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_12`,
+         &quot;1966&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_13`,
+         &quot;1965&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_14`,
+         &quot;1964&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_15`,
+         &quot;1963&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_16`,
+         &quot;1962&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_17`,
+         &quot;1961&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_18`,
+         &quot;1960&quot; = `Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)_19`) %&gt;%
+  filter(!str_detect(Country,&quot;Country&quot;)) %&gt;%
+  select(-&quot;Data_sourse&quot;)</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Combining all time periods and making null values consistent.</li>
+</ol>
+<pre class="r"><code>consumption_join &lt;- full_join(consumption_2010_2018_t,
+                                   consumption_2000_2009_t,
+                                   by=c(&quot;Country&quot;, &quot;Beverage_Types&quot;)) %&gt;%
+  full_join(consumption_1980_1999_t,by=c(&quot;Country&quot;, &quot;Beverage_Types&quot;)) %&gt;%
+  full_join(consumption_1960_1979_t,by=c(&quot;Country&quot;, &quot;Beverage_Types&quot;)) %&gt;%
+  arrange(Country)</code></pre>
+<pre class="r"><code>consumption_join[consumption_join == 0] = NA</code></pre>
+</div>
+<div id="cleaning-the-data-by-gender" class="section level3">
+<h3>Cleaning the data by gender</h3>
+<p>This data is used to view the total alcohol consumption per capita of different genders in various countries in recent years, so it is necessary to meet the requirements of screening by gender and timeline at the same time.</p>
+<pre class="r"><code>consumption_gender_t &lt;- consumption_gender_r %&gt;%
+  rename(&quot;Country&quot; = X1,
+         &quot;Both_18&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)`,
+         &quot;Male_18&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_1`,
+         &quot;Female_18&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_2`,
+         &quot;Both_15&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_3`,
+         &quot;Male_15&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_4`,
+         &quot;Female_15&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_5`,
+         &quot;Both_10&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_6`,
+         &quot;Male_10&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_7`,
+         &quot;Female_10&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_8`,
+         &quot;Both_05&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_9`,
+         &quot;Male_05&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_10`,
+         &quot;Female_05&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_11`,
+         &quot;Both_00&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_12`,
+         &quot;Male_00&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_13`,
+         &quot;Female_00&quot; = `Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)_14`) %&gt;%
+  filter(!(Country == c(&quot;NA&quot;, &quot;Country&quot;)))</code></pre>
+<pre class="r"><code>consumption_g18 &lt;- consumption_gender_t[,c(1,2,3,4)] %&gt;%
+  pivot_longer(cols = c(&quot;Both_18&quot;, &quot;Male_18&quot;, &quot;Female_18&quot;),
+               names_to = &quot;Gender&quot;,
+               values_to = &quot;2018&quot;) %&gt;%
+  separate(col = Gender, into = c(&quot;Gender&quot;, &quot;Year&quot;), &quot;_&quot;) %&gt;%
+  select(-Year)
+
+consumption_g15 &lt;- consumption_gender_t[,c(1,5,6,7)] %&gt;%
+  pivot_longer(cols = c(&quot;Both_15&quot;, &quot;Male_15&quot;, &quot;Female_15&quot;),
+               names_to = &quot;Gender&quot;,
+               values_to = &quot;2015&quot;)  %&gt;%
+  separate(col = Gender, into = c(&quot;Gender&quot;, &quot;Year&quot;), &quot;_&quot;) %&gt;%
+  select(-Year)
+
+consumption_g10 &lt;- consumption_gender_t[,c(1,8,9,10)] %&gt;%
+  pivot_longer(cols = c(&quot;Both_10&quot;, &quot;Male_10&quot;, &quot;Female_10&quot;),
+               names_to = &quot;Gender&quot;,
+               values_to = &quot;2010&quot;)  %&gt;%
+  separate(col = Gender, into = c(&quot;Gender&quot;, &quot;Year&quot;), &quot;_&quot;) %&gt;%
+  select(-Year)
+
+consumption_g05 &lt;- consumption_gender_t[,c(1,11,12,13)] %&gt;%
+  pivot_longer(cols = c(&quot;Both_05&quot;, &quot;Male_05&quot;, &quot;Female_05&quot;),
+               names_to = &quot;Gender&quot;,
+               values_to = &quot;2005&quot;)  %&gt;%
+  separate(col = Gender, into = c(&quot;Gender&quot;, &quot;Year&quot;), &quot;_&quot;) %&gt;%
+  select(-Year)
+
+consumption_g00 &lt;- consumption_gender_t[,c(1,14,15,16)] %&gt;%
+  pivot_longer(cols = c(&quot;Both_00&quot;, &quot;Male_00&quot;, &quot;Female_00&quot;),
+               names_to = &quot;Gender&quot;,
+               values_to = &quot;2000&quot;)  %&gt;%
+  separate(col = Gender, into = c(&quot;Gender&quot;, &quot;Year&quot;), &quot;_&quot;) %&gt;%
+  select(-Year)</code></pre>
+<pre class="r"><code>consumption_gender &lt;- full_join(consumption_g18,
+                                   consumption_g15,
+                                   by=c(&quot;Country&quot;, &quot;Gender&quot;))%&gt;%
+  full_join(consumption_g10,by=c(&quot;Country&quot;, &quot;Gender&quot;)) %&gt;%
+  full_join(consumption_g05,by=c(&quot;Country&quot;, &quot;Gender&quot;)) %&gt;%
+  full_join(consumption_g00,by=c(&quot;Country&quot;, &quot;Gender&quot;)) %&gt;%
+  arrange(Country)</code></pre>
+<p>Combine this data set with the data set in the first part to explore whether alcoholic beverages are substituted.</p>
+</div>
+</div>
+</div>
 <div id="research-question-no.-3" class="section level1">
 <h1>Research Question No. 3</h1>
 <p><strong>Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?</strong></p>
 <p><em>Researcher: Yin Shan Ho</em></p>
-<div id="description-of-data" class="section level2">
+<div id="description-of-data-1" class="section level2">
 <h2>Description of Data</h2>
 <p>The data sets are downloaded from the <a href="https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH"><strong>Global Information System on Alcohol and Health (GISAH)</strong></a> tool of the WHO.</p>
 <p>The data sets are separated into two parts:</p>
@@ -195,7 +411,7 @@ pre code {
 <li><p>The data indicates the death rate of alcohol-related road injuries, cancers, liver cirrhosis for 194 countries in 2016.</p></li>
 </ul>
 </div>
-<div id="reading-the-data" class="section level2">
+<div id="reading-the-data-1" class="section level2">
 <h2>Reading the data</h2>
 <p>This section contains the code to read in data of the number of deaths per 100,000 population and the rate of alcohol attributed deaths caused by cancers, liver cirrhosis and traffic crashes in 2016.</p>
 <pre class="r"><code>cancer_alcohol &lt;- read_csv(&quot;../data/cancer_alcohol.csv&quot;)
@@ -205,7 +421,7 @@ cancer_death &lt;- read_csv(&quot;../data/cancer_death.csv&quot;)
 liver_death &lt;- read_csv(&quot;../data/liver_death.csv&quot;)
 traffic_death &lt;- read_csv(&quot;../data/traffic_death.csv&quot;)</code></pre>
 </div>
-<div id="cleaning-the-data" class="section level2">
+<div id="cleaning-the-data-1" class="section level2">
 <h2>Cleaning the data</h2>
 <div id="alcohol-attributed-deaths" class="section level3">
 <h3>Alcohol-attributed deaths</h3>
@@ -290,7 +506,7 @@ write_csv(traffic_d_clean, &quot;../clean_data/traffic_d_clean.csv&quot;)</code>
 <h1>Research Question No. 4</h1>
 <p><strong>What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?</strong></p>
 <p><em>Researcher: Smriti Vinayak Bhat</em></p>
-<div id="description-of-data-1" class="section level2">
+<div id="description-of-data-2" class="section level2">
 <h2>Description of Data</h2>
 <p>There are multiple data sets downloaded from the <a href="https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH"><strong>Global Information System on Alcohol and Health (GISAH)</strong></a> tool of WHO.</p>
 <p>It is split into two main parts:</p>
@@ -389,7 +605,7 @@ pacific_2016 &lt;- read_csv(csv_pacific_paths[7])</code></pre>
 <pre class="r"><code>consumption_pattern &lt;- read_csv(&quot;../data/consumption_pattern.csv&quot;)</code></pre>
 </div>
 </div>
-<div id="cleaning-the-data-1" class="section level2">
+<div id="cleaning-the-data-2" class="section level2">
 <h2>Cleaning the data</h2>
 <div id="cleaning-data-pertaining-to-policy-responses" class="section level3">
 <h3>Cleaning Data Pertaining to Policy Responses</h3>
@@ -672,7 +888,7 @@ write_csv(consumption_pattern,&quot;../clean_data/consumption_pattern.csv&quot;)
 <h1>Research Question No. 5</h1>
 <p><strong>Do drinking age restrictions and legal blood alcohol concentration (BAC) limits for young drivers have any effect on adolescents’ drinking among countries?</strong></p>
 <p><em>Researcher: Kexin Xu</em></p>
-<div id="description-of-data-2" class="section level2">
+<div id="description-of-data-3" class="section level2">
 <h2>Description of Data</h2>
 <p>All data sets below are downloaded from <a href="https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH"><strong>Global Information System on Alcohol and Health (GISAH)</strong></a> in WHO.</p>
 <ol style="list-style-type: decimal">
@@ -711,7 +927,7 @@ write_csv(consumption_pattern,&quot;../clean_data/consumption_pattern.csv&quot;)
 <pre class="r"><code>current_drinkers_15_19_raw &lt;- read_csv(here::here(&quot;data/15-19_years_old_current_drinkers_(%).csv&quot;))</code></pre>
 <pre class="r"><code>heavy_drinkers_15_19_raw &lt;- read_csv(here::here(&quot;data/15-19_years_old_heavy_episodic_drinking_drinkers_only_past_30_days.csv&quot;))</code></pre>
 </div>
-<div id="cleaning-the-data-2" class="section level2">
+<div id="cleaning-the-data-3" class="section level2">
 <h2>Cleaning the Data</h2>
 <pre class="r"><code>BAC_limits_tidy &lt;- BAC_limits_raw[-1,] %&gt;% 
   rename(&quot;country&quot; = X1, 
@@ -761,7 +977,7 @@ heavy_drinkers_15_19_tidy &lt;- heavy_drinkers_15_19_tidy[,-5]</code></pre>
 <h1>Research Question No. 6</h1>
 <p><strong>What are the trends in youth drinking issues over the years?</strong></p>
 <p><em>Researcher: Kexin Xu</em></p>
-<div id="description-of-data-3" class="section level2">
+<div id="description-of-data-4" class="section level2">
 <h2>Description of Data</h2>
 <p>All data sets below are downloaded from <a href="https://apps.who.int/gho/data/node.gisah.GISAH?showonly=GISAH"><strong>Global Information System on Alcohol and Health (GISAH)</strong></a> in WHO.<br />
 Age of 15 is taken on behalf of youth here. The following data sets describe different drinking issues based on 15-year-old teenagers.</p>
@@ -801,7 +1017,7 @@ Age of 15 is taken on behalf of youth here. The following data sets describe dif
 <pre class="r"><code>any_alcohol_in_past_12_months_raw &lt;- read_csv(here::here(&quot;data/15_years_old_any_alcoholic_beverage_in_past_12_months_(%).csv&quot;))</code></pre>
 <pre class="r"><code>any_alcohol_in_past_30_days_raw &lt;- read_csv(here::here(&quot;data/15_years_old_any_alcoholic_beverage_in_past_30_days_(%).csv&quot;))</code></pre>
 </div>
-<div id="cleaning-the-data-3" class="section level2">
+<div id="cleaning-the-data-4" class="section level2">
 <h2>Cleaning the Data</h2>
 <pre class="r"><code>at_least_once_a_week_tidy &lt;- at_least_once_a_week_raw[-1,-2] %&gt;% 
   rename(&quot;country&quot; = X1, 
