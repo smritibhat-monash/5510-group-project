@@ -1,0 +1,14 @@
+---
+title: "Analysis of Alcohol Consumption Patterns"
+author: "Hayaku"
+date: "09/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+```
+
