@@ -68,6 +68,9 @@ Column {.tabset}
 Findings {.tabset}
 ======================
 
+Limitations {.tabset}
+======================
+
 Conclusion {.tabset}
 ======================
 
