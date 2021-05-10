@@ -1,24 +1,29 @@
 ---
-title: "Analysis of Alcohol Consumption Patterns"
+title: "Alcohol Consumption Patterns"
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
-    storyboard: true
-    navbar:
-      - { title: "Hayaku",  align: right}
-      - { title: "Kexin Xu, Smriti Vinayak Bhat, Yalong liu, Yin Shan Ho",  align: right}
+    orientation: columns
+    vertical_layout: fill
 ---
    
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(knitr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(maps)
+library(plotly)
+library(flexdashboard)
+library(kableExtra)
 ```
 
 Introduction {.tabset}
 ======================
 
-Column {.tabset}
+Column {.tabset} {data-width=650}
 -------------------------------------
 
 ### Background
@@ -26,7 +31,7 @@ Column {.tabset}
 
 
 
-Column {.tabset} {data-width=100}
+Column {.tabset} {data-width=200}
 -------------------------------------
 
 ### Approach of Project
@@ -37,42 +42,87 @@ The report will be collating specific sections of this data pertaining to countr
 
 This report is being created using the data from the GISAH (Global Information System on Alcohol and Health) tool of the World Health Organisation. GISAH tool helps monitor trends relating to alcohol consumption across various age groups, side effects (harm caused) as well as the policy responses by different countries.
 
+### Makers
 
-Analysis {.tabset}
+**Team Name: Hayaku**
+
+_Researchers:_
+
+- _Kexin Xu_
+- _Smriti Vinayak Bhat_
+- _Yalong liu_
+- _Yin Shan Ho_
+
+
+Popularity {.tabset} 
 ======================
 
-Column {.tabset}
--------------------------------------
 
-### Research Question 1 
-
-**How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
-
-### Research Question 2 
-
-**Does alcohol take more lives in traffic crashes or illnesses and which countries suffer more from alcohol-related cases?**
-
-### Research Question 3
-
-**What are the recurring patterns of policy responses across different countries in the world and how has it impacted the consumption of alcohol?**
-
-### Research Question 4
-
-**Do drinking age restrictions and legal blood alcohol concentration (BAC) limits for young drivers have any effect on adolescents’ drinking among countries?**
-
-### Research Question 5
-
-**What are the trends in youth drinking issues over the years?**
-
-
-Findings {.tabset}
+Cause of Mortality {.tabset} 
 ======================
+
+Policy Pattern {.tabset}
+======================
+
+```{r read_data}
+policy_pattern <- read_csv("../clean_data/policy_pattern.csv")
+consumption_pattern <- read_csv("../clean_data/consumption_pattern.csv")
+```
+
+```{r}
+
+policy_country_group <- policy_pattern %>%
+  pivot_longer(cols = c("2010", "2011", "2012", "2013", "2014","2015", "2016"),
+               names_to = "Year",
+               values_to = "Action")
+
+policy_country_group_plot <-  policy_country_group %>%
+  group_by(`Action Area`,Year) %>%
+  tally() %>%
+  arrange(Year)
+
+policy_country_group_2010 <- policy_pattern %>%
+  select(Country, `Action Area`, "2010") %>%
+  na.omit()
+
+policy_country_group_2011 <- policy_pattern %>%
+  select(Country, `Action Area`, "2011") %>%
+  na.omit()
+
+policy_country_group_2012 <- policy_pattern %>%
+  select(Country, `Action Area`, "2012") %>%
+  na.omit()
+
+policy_country_group_2013 <- policy_pattern %>%
+  select(Country, `Action Area`, "2013") %>%
+  na.omit()
+
+policy_country_group_2014 <- policy_pattern %>%
+  select(Country, `Action Area`, "2014") %>%
+  na.omit()
+
+policy_country_group_2015 <- policy_pattern %>%
+  select(Country, `Action Area`, "2015") %>%
+  na.omit()
+
+policy_country_group_2016 <- policy_pattern %>%
+  select(Country, `Action Area`, "2016") %>%
+  na.omit()
+```
+
+
+Age Restrictions {.tabset}
+======================
+
+
+
+Youth Inebriation {.tabset}
+======================
+
 
 Limitations {.tabset}
 ======================
 
-Conclusion {.tabset}
-======================
 
 References {.tabset}
 ======================
