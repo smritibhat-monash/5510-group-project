@@ -3,8 +3,8 @@ title: "Alcohol Consumption Patterns"
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
-    orientation: columns
-    vertical_layout: fill
+    vertical_layout: scroll
+runtime: shiny
 ---
    
 
@@ -18,12 +18,14 @@ library(maps)
 library(plotly)
 library(flexdashboard)
 library(kableExtra)
+library(leaflet)
+library(stringr)
 ```
 
 Introduction {.tabset}
 ======================
 
-Column {.tabset} {data-width=650}
+Column {.tabset} {data-width=800}
 -------------------------------------
 
 ### Background
@@ -64,6 +66,10 @@ Cause of Mortality {.tabset}
 Policy Pattern {.tabset}
 ======================
 
+Column {.tabset} {data-width = 400}
+------------------------
+### Infographic of Policies
+
 ```{r read_data}
 policy_pattern <- read_csv("../clean_data/policy_pattern.csv")
 consumption_pattern <- read_csv("../clean_data/consumption_pattern.csv")
@@ -76,41 +82,223 @@ policy_country_group <- policy_pattern %>%
                names_to = "Year",
                values_to = "Action")
 
-policy_country_group_plot <-  policy_country_group %>%
+cities <- data.frame(world.cities) %>%
+  filter(capital == 1)
+
+world <- map_data("world") %>%
+  mutate(Country = region) %>%
+  select(long,lat,region)
+
+policy_country_group_map <- policy_country_group %>%
+  left_join(cities, by = c("Country" = "country.etc")) %>%
+  na.omit() %>%
+  select(Country,`Action Area`,Action,lat,long,name,Year)
+```
+
+```{r}
+ui <- bootstrapPage(tags$style(type = "text/css", "html, body, .leaflet {width:100%; height:100%}"),
+                    leafletOutput("map", width = "100%", height = "100%"),
+                    # position and properties of the time slider
+                    absolutePanel(top = 10, right = 10, draggable = TRUE,
+                                  # slider title, step increments, and ticks
+                                  sliderInput("integer", "Year", min = 2010, max = 2016, value = 2010, step = 1,ticks = FALSE, width = '100px', sep = "",
+                                              animate =
+                                                  animationOptions(interval = 4000, loop = TRUE))))
+
+# shiny server input/output
+server <- function(input, output, session) {
+    filteredData <- reactive({
+        policy_country_group_map %>%
+            filter(Year == input$integer)
+    })
+    output$map <- renderLeaflet({
+        leaflet(world) %>%
+            addProviderTiles(providers$CartoDB.Positron) %>%
+            # set boundaries for map
+            fitBounds(lng1 = min(world$long),
+                      lat1 = min(world$lat),
+                      lng2 = max(world$long),
+                      lat2 = max(world$lat))
+    })
+    observe({
+        leafletProxy("map", data = filteredData()) %>%
+            clearMarkers() %>%
+            addMarkers(~long, ~lat, popup = ~as.character(Action), label = ~as.character(`Action Area`))
+    })
+}
+shinyApp(ui=ui, server=server, options = list(height = 500), enableBookmarking = "server")
+```
+
+
+### Effectiveness of Policy Actions
+
+```{r}
+consumption_pattern_filter <- consumption_pattern %>%
+  filter(`Beverage Types` == "All types") %>%
+  select(-`Beverage Types`) %>%
+  pivot_longer(cols = -c("Country"), names_to = "Year", values_to = "Per Capita Alcohol Consumed") %>%
+  left_join(policy_country_group) %>%
+  filter(`Per Capita Alcohol Consumed` > 0) %>%
+  group_by(Country) %>%
+  arrange(Year, .by_group = TRUE)
+
+df <- data.frame(row_no=numeric())
+consumption_pattern_filter$row_no <- seq.int(nrow(consumption_pattern_filter)) 
+
+finaltbl <- consumption_pattern_filter %>%
+  na.omit() %>%
+  mutate(row_no2 = row_no + 1)
+
+addtbl <- finaltbl %>%
+  select(row_no2) %>%
+  left_join(consumption_pattern_filter) %>%
+  filter(row_no == row_no2) %>%
+  select(-c(row_no,row_no2))
+
+finaltbl <- finaltbl %>%
+  select(-c(row_no,row_no2))
+  
+
+tbl1 <- rbind(addtbl,finaltbl) %>%
+  arrange(Country, Year)
+
+tbl <- tbl1 %>%
+  distinct(`Per Capita Alcohol Consumed`, .keep_all = TRUE) %>%
+  select(Year, `Per Capita Alcohol Consumed`)
+
+```
+
+
+
+```{r}
+
+lag_tbl <- lag(tbl) %>%
+  select(Country, Year, `Per Capita Alcohol Consumed`) %>%
+  mutate(alc_diff = `Per Capita Alcohol Consumed`) %>%
+  cbind(tbl) %>%
+   transmute(Country = Country...5, Year = Year...6, `Per Capita Alcohol Consumed` = `Per Capita Alcohol Consumed...7`,alc_diff = alc_diff)
+ for (i in 1:452) {
+   ifelse(lag_tbl$Country[i] == lag_tbl$Country[i+1],
+          next,
+          lag_tbl$alc_diff[i+1] <- NA)
+ }
+lag_tbl <- lag_tbl %>%
+  mutate(Year = as.numeric(Year)-1)
+
+lag_tbl <- lag_tbl %>%
+   mutate(alc_diff_2= `Per Capita Alcohol Consumed` - alc_diff) %>%
+   filter(!is.na(alc_diff_2)) %>%
+   mutate(Trend = ifelse(alc_diff_2<=0,"Reducing","Increasing"))
+
+tbl1 <- tbl1 %>%
+  mutate(Year = as.numeric(Year)) %>%
+  select(-`Per Capita Alcohol Consumed`)
+
+check_tbl <- full_join(lag_tbl,tbl1) %>%
+  arrange(Country, Year) %>%
+  na.omit() %>%
+  unique()
+
+fin_tbl <- check_tbl %>%
+   group_by(Year,`Action Area`, Trend) %>%
+   tally() %>%
+  mutate(Year = as.character(Year))
+
+p2 <- fin_tbl %>%
+  ggplot(aes(y = Year, x= n,fill = Trend)) +
+  facet_wrap(~`Action Area`, labeller = labeller(`Action Area` = label_wrap_gen(70)), ncol = 2) +
+  geom_bar(stat = "identity") +
+  theme_bw() +
+  theme(strip.background = element_rect(colour = "white", fill = "white"), strip.text.x = element_text(size=6, color = "black", face = "bold"), axis.text.y = element_text(angle = 5, hjust = 1, size = 6), axis.title.x = element_text(size=9)) +
+  labs(x = "Number of Countries")
+
+ggplotly(p2)
+```
+
+
+
+Column {.tabset} {data-width = 650}
+------------------------------------
+
+### Policies being favored by countries across years 2010-2016
+
+```{r}
+policy_country_group_plot <- check_tbl %>%
+  na.omit() %>%
   group_by(`Action Area`,Year) %>%
   tally() %>%
   arrange(Year)
 
-policy_country_group_2010 <- policy_pattern %>%
-  select(Country, `Action Area`, "2010") %>%
-  na.omit()
 
-policy_country_group_2011 <- policy_pattern %>%
-  select(Country, `Action Area`, "2011") %>%
-  na.omit()
-
-policy_country_group_2012 <- policy_pattern %>%
-  select(Country, `Action Area`, "2012") %>%
-  na.omit()
-
-policy_country_group_2013 <- policy_pattern %>%
-  select(Country, `Action Area`, "2013") %>%
-  na.omit()
-
-policy_country_group_2014 <- policy_pattern %>%
-  select(Country, `Action Area`, "2014") %>%
-  na.omit()
-
-policy_country_group_2015 <- policy_pattern %>%
-  select(Country, `Action Area`, "2015") %>%
-  na.omit()
-
-policy_country_group_2016 <- policy_pattern %>%
-  select(Country, `Action Area`, "2016") %>%
-  na.omit()
+p <- policy_country_group_plot %>%
+  ggplot(aes(x=Year,y=n, group = `Action Area`)) +
+  geom_line(aes(color = `Action Area`)) +
+  geom_point() +
+  labs(y = "Number of Countries") +
+  theme_bw() +
+  theme(legend.position = "left", legend.text = element_text(size = 7)) 
+ggplotly(p) %>%
+  layout(legend = list(x = 0,
+                     y = 1,
+                     tracegroupgap = 0))
 ```
 
 
+
+### Analysis
+
+```{r}
+act_area <-  length(unique(policy_country_group$`Action Area`))
+```
+
+- There are `r act_area` main areas of Policy Actions that the effectiveness are measured for.
+From the figure of Policies favored across countries from the years 2010-2016, it is visible that 'Leadership, awareness and commitment' policies are the ones that are being favored by most countries.
+```{r}
+df <- check_tbl %>%
+  arrange(alc_diff_2)
+df <- head(df,10) %>%
+  filter(str_detect(`Action Area`,"Leadership")) %>%
+  tally() %>%
+  length()
+```
+
+- Upon checking the largest decreases in per capita alcohol consumption it is visible that this policy has only `r df` entry.
+```{r}
+df <- check_tbl %>%
+  arrange(desc(alc_diff_2))
+df <- head(df,10) %>%
+  filter(str_detect(`Action Area`,"Leadership")) %>%
+  tally()
+```
+
+- However upon checking the largest increases in per capita alcohol consumption it is visible that this policy has `r df[1]` entries.
+- This shows that the governments of the different countries may not be taking the most efficient of routes.
+```{r}
+df <- check_tbl %>%
+  group_by(`Action Area`) %>%
+  summarise(mean = mean(alc_diff_2)) %>%
+  arrange(mean)
+
+kbl(df) %>%
+  kable_minimal(font_size = 9) %>%
+  row_spec(1, bold = T) %>%
+  row_spec(10, bold = T)
+```
+- From the table we can see that the most efficient action area seems to be - `r paste(df$'Action Area'[1])`
+- While the least efficient area is - `r paste(df$'Action Area'[10])`
+- One area of relief is that the second most efficent action area i.e., `r paste(df$'Action Area'[2])`, is also the second most used strategy by countries across the world.
+```{r}
+df1 <- check_tbl %>%
+  filter(alc_diff_2 == min(alc_diff_2))
+df2 <- check_tbl %>%
+  filter(alc_diff_2 == max(alc_diff_2))
+```
+
+> The biggest dip in consumption was seen in `r paste(df1$Country[1])` in the year `r paste(df1$Year[1])` after the step - `r paste(df1$Action[1])`.
+
+> The biggest spike in consumption was seen in `r paste(df2$Country[1])` in the year `r paste(df2$Year[1])` after the step - `r paste(df2$Action[1])`
+
+-------------------
 Age Restrictions {.tabset}
 ======================
 
@@ -123,6 +311,12 @@ Youth Inebriation {.tabset}
 Limitations {.tabset}
 ======================
 
+### Policy Patterns
+
+1. The values for each policy area have not been weighted by importance.
+2. Data is not available for a large number of countries so the analysis has been performed on the limited data set given.
+3. This analysis has only been limited between the years of 2010-2016.
+4. There could be population/age bias as demographic data is unavailable.
 
 References {.tabset}
 ======================
