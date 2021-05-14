@@ -299,6 +299,7 @@ df2 <- check_tbl %>%
 > The biggest spike in consumption was seen in `r paste(df2$Country[1])` in the year `r paste(df2$Year[1])` after the step - `r paste(df2$Action[1])`
 
 -------------------
+
 Age Restrictions {.tabset}
 ======================
 
@@ -308,8 +309,14 @@ Youth Inebriation {.tabset}
 ======================
 
 
-Limitations {.tabset}
+Limitations {.tabset} 
 ======================
+
+Column {.tabset}
+---------------------------
+### Popularity
+
+### Cause of Mortality
 
 ### Policy Patterns
 
@@ -317,6 +324,12 @@ Limitations {.tabset}
 2. Data is not available for a large number of countries so the analysis has been performed on the limited data set given.
 3. This analysis has only been limited between the years of 2010-2016.
 4. There could be population/age bias as demographic data is unavailable.
+
+
+
+### Age Restrictions
+
+### Youth Inebriation
 
 References {.tabset}
 ======================
