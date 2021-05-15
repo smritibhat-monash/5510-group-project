@@ -133,6 +133,28 @@ ggplotly(view_by_country)
 
 ```
 
+```{r}
+alc_death %>% 
+  group_by(Country, gender) %>% 
+  summarise(number_of_alc_death = sum(number_of_death))%>% 
+  left_join(death_traffic) %>% 
+  left_join(death_cancer) %>% 
+  arrange(desc(number_of_alc_death)) %>% 
+  kable()
+  
+  pivot_longer(cols = c("number_of_alc_death", `road.traffic.death.population`),
+               names_to = "cause_of_death",
+               values_to = "number_of_death") %>% 
+  ggplot(aes(x = reorder(Country, desc(number_of_death)),
+             y = number_of_death, 
+             fill = gender)) +
+  geom_bar(stat="identity")+
+    facet_wrap(~cause_of_death, ncol =1)+
+    theme_bw()+
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.3)) 
+```
+
+
 Column {.tabset} {data-width=350}
 -------------------------------------
 ### Top 20 Countries
