@@ -20,6 +20,7 @@ library(flexdashboard)
 library(kableExtra)
 library(leaflet)
 library(stringr)
+library(shiny)
 ```
 
 Introduction {.tabset}
@@ -186,7 +187,7 @@ lag_tbl <- lag_tbl %>%
   mutate(Year = as.numeric(Year)-1)
 
 lag_tbl <- lag_tbl %>%
-   mutate(alc_diff_2= `Per Capita Alcohol Consumed` - alc_diff) %>%
+   mutate(alc_diff_2= (`Per Capita Alcohol Consumed` - alc_diff)/alc_diff*100) %>%
    filter(!is.na(alc_diff_2)) %>%
    mutate(Trend = ifelse(alc_diff_2<=0,"Reducing","Increasing"))
 
@@ -262,7 +263,7 @@ df <- head(df,10) %>%
   length()
 ```
 
-- Upon checking the largest decreases in per capita alcohol consumption it is visible that this policy has only `r df` entry.
+- Upon checking the largest percentage decrease in per capita alcohol consumption it is visible that this policy has only `r df` entry which has resulted in a decrease.
 ```{r}
 df <- check_tbl %>%
   arrange(desc(alc_diff_2))
@@ -271,8 +272,8 @@ df <- head(df,10) %>%
   tally()
 ```
 
-- However upon checking the largest increases in per capita alcohol consumption it is visible that this policy has `r df[1]` entries.
-- This shows that the governments of the different countries may not be taking the most efficient of routes.
+- However upon checking the largest percentage increase in per capita alcohol consumption it is visible that this policy has `r df[1]` entries.
+- This shows that the governments are not taking the efficient route.
 ```{r}
 df <- check_tbl %>%
   group_by(`Action Area`) %>%
@@ -294,9 +295,9 @@ df2 <- check_tbl %>%
   filter(alc_diff_2 == max(alc_diff_2))
 ```
 
-> The biggest dip in consumption was seen in `r paste(df1$Country[1])` in the year `r paste(df1$Year[1])` after the step - `r paste(df1$Action[1])`.
+> The biggest dip in consumption was seen in `r paste(df1$Country[1])` in the year `r paste(df1$Year[1])` after the step - `r paste(df1$Action[1])` The policy area for this is - `r paste(df1$'Action Area'[1])`. There was a dip in consumption by `r paste(df1$alc_diff_2[1])`%.
 
-> The biggest spike in consumption was seen in `r paste(df2$Country[1])` in the year `r paste(df2$Year[1])` after the step - `r paste(df2$Action[1])`
+> The biggest spike in consumption was seen in `r paste(df2$Country[1])` in the year `r paste(df2$Year[1])` within the policy area - `r paste(df2$'Action Area'[1])`. There was a spike in consumption by `r paste(df2$alc_diff_2[1])`%. Bhutan's alcoholism is an issue that has been noted and despite efforts there seems to be no solution yet.
 
 -------------------
 
@@ -335,3 +336,5 @@ References {.tabset}
 ======================
 
 GHO | global information system on alcohol and Health (gisah) | global information system on alcohol and health. (n.d.). Retrieved May 09, 2021, from https://apps.who.int/gho/data/node.gisah.GISAH?lang=en&amp;showonly=GISAH
+
+Need to control alcohol consumption. (2017, January 24). Retrieved May 15, 2021, from https://kuenselonline.com/need-to-control-alcohol-consumption/
