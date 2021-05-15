@@ -1,11 +1,11 @@
 ---
 title: "Alcohol Consumption Patterns"
-runtime: shiny
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
     orientation: columns
     vertical_layout: scroll
+    runtime: shiny
 ---
    
 
@@ -66,6 +66,89 @@ _Researchers:_
 
 Popularity {.tabset}
 ======================
+
+Column {.tabset} {data-width=100}
+-------------------------------------
+
+### Total Consumption
+```{r}
+consumption <- read_csv("../clean_data/consumption_join.csv")
+```
+
+```{r} 
+# Origin data pivot longer
+
+b_tidy <- consumption %>%
+  filter(Beverage_Types == "Beer") %>%
+  pivot_longer(cols = -c(Country, Beverage_Types),
+               names_to = "Year",
+               values_to = "Litres")
+b_tidy
+```
+
+```{r}
+# Loading countries data
+countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
+  select(admin, continent, pop_est, gdp_md_est, economy, income_grp )
+```
+
+
+
+```{r}
+# Test unmatched countries
+
+anti_join(b_tidy, countries, by = c("Country" = "admin"))
+```
+```{r}
+# Modify the country name consisting with rnaturalearth package
+
+b_l_country <- b_tidy %>%
+  mutate(Country = recode(Country,
+                             "Bahamas" = "The Bahamas",
+                             "Bolivia (Plurinational State of)" = "Bolivia",
+                             "Brunei Darussalam" = "Brunei",
+                             "Cabo Verde" = "Cape Verde",
+                             "Congo" = "Democratic Republic of the Congo",
+                             "Côte d'Ivoire" = "Ivory Coast",
+                             "Czechia" = "Czech Republic",
+                             "Democratic People's Republic of Korea" = "North Korea",
+                             "Eswatini" = "Swaziland",
+                             "Guinea-Bissau" = "Guinea Bissau",
+                             "Iran (Islamic Republic of)" = "Iran",
+                             "Lao People's Democratic Republic" = "Laos",
+                             "Micronesia (Federated States of)" = "Federated States of Micronesia",
+                             "North Macedonia" = "Macedonia",
+                             "Republic of Korea" = "South Korea",
+                             "Republic of Moldova" = "Moldova",
+                             "Russian Federation" = "Russia",
+                             "Serbia" = "Republic of Serbia",
+                             "Syrian Arab Republic" = "Syria",
+                             "Timor-Leste" = "East Timor",
+                             "Tuvalu" = "Wallis and Futuna",
+                             "United Kingdom of Great Britain and Northern Ireland" = "United Kingdom", 
+                             "Venezuela (Bolivarian Republic of)" = "Venezuela",
+                             "Viet Nam" = "Vietnam"))%>%
+  filter(!is.na(Country))
+```
+
+```{r}
+# Beer popularity by time
+
+b_l_country_time <- left_join(countries, b_l_country, by = c("admin" = "Country"))
+
+  b_time  <- ggplot() +
+  geom_sf(data = countries, fill = NA) +
+  geom_sf(data = b_l_country_time %>% filter(!is.na(Year)), mapping = aes(fill = Litres)) +
+  scale_fill_viridis(na.value="white") +
+  labs(title = "Countries where Beer is popular",
+       subtitle = "Year: {current_frame}",
+       fill = "Total") +
+  theme_bw() +
+  transition_manual(Year)
+
+  animate(b_time, duration = 30, fps = 20, width = 1000, height = 500, renderer = gifski_renderer())
+```
+
 
 
 Cause of Mortality {.tabset}
