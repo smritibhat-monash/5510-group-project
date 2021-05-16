@@ -20,6 +20,7 @@ library(plotly)
 library(flexdashboard)
 library(kableExtra)
 library(shiny)
+library(gridExtra)
 ```
 
 Introduction {.tabset}
@@ -143,7 +144,11 @@ limits1 <- limits %>%
          country = ifelse(country == "Iran (Islamic Republic of)", "Iran", country),
          country = ifelse(country == "United States of America", "USA", country),
          country = ifelse(country == "Venezuela (Bolivarian Republic of)", "Venezuela", country),
-         country = ifelse(country == "Viet Nam", "Vietnam", country))
+         country = ifelse(country == "Viet Nam", "Vietnam", country),
+         country = ifelse(country == "United Kingdom of Great Britain and Northern Ireland", "UK", country),
+         country = ifelse(country == "Czechia", "Czech Republic", country),
+         country = ifelse(country == "Congo", "Democratic Republic of the Congo", country),
+         country = ifelse(country == "United Republic of Tanzania", "Tanzania", country))
 
 limits2 <- limits1 %>% 
   group_by(country) %>% 
@@ -154,15 +159,15 @@ limits_tidy <- limits1 %>%
   group_by(country) %>% 
   distinct() %>% 
   full_join(limits2) %>% 
-  mutate(BAC_limit = factor(BAC_limits, 
+  mutate(BAC_limits = factor(BAC_limits, 
                             levels = c("none", "0.08%", "0.07%", "0.06%", "0.05%", "0.04%", "0.03%", "0.02%", "0.01%", "zero tolerance", "total ban"))) %>% 
   mutate(Age_limit = factor(Age_limit, 
                             levels = as.character(c("0", "16", "17", "18", "20", "21", "25", "99"))))
 ```
 
-```{r fig.width = 14, fig.height = 8}
+```{r}
 world_map <- map_data("world")
-p1 <- world_map %>% 
+map1 <- world_map %>% 
   left_join(limits_tidy, 
             by = c("region" = "country")) %>% 
   ggplot(aes(x = long, 
@@ -173,13 +178,13 @@ p1 <- world_map %>%
                colour = "gray50") +
   scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
   scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Drinkers percentage all over the world",
+  labs(title="Youth drinkers percentage all over the world",
        x = "Longitude", 
        y = "Latitude") +
   theme_light() 
-ggplotly(p1)
+ggplotly(map1)
 
-p2 <- world_map %>% 
+map2 <- world_map %>% 
   left_join(limits_tidy, 
             by = c("region" = "country")) %>% 
   ggplot(aes(x = long, 
@@ -190,27 +195,47 @@ p2 <- world_map %>%
                colour = "gray50") +
   scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
   scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Drinkers percentage all over the world",
+  labs(title="Youth heavy drinkers percentage all over the world",
        x = "Longitude", 
        y = "Latitude") +
   theme_light() 
-ggplotly(p2)
+ggplotly(map2)
 
-world_map %>% 
+map_age <- world_map %>% 
   left_join(limits_tidy, 
             by = c("region" = "country")) %>% 
   ggplot(aes(x = long, 
              y = lat, 
-             group = group)) +
+             group = group,
+             text = region)) +
   geom_polygon(aes(fill = Age_limit), 
                colour = "gray50") +
   scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
   scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Drinkers percentage all over the world",
+  labs(title="Age limits all over the world",
        x = "Longitude", 
        y = "Latitude") +
   theme_light() 
+ggplotly(map_age)
+
+map_BAC <- world_map %>% 
+  left_join(limits_tidy, 
+            by = c("region" = "country")) %>% 
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = BAC_limits), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
+  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
+  labs(title="Youth BAC limits all over the world",
+       x = "Longitude", 
+       y = "Latitude") +
+  theme_light() 
+ggplotly(map_BAC)
 ```
+
 
 ```{r eruptions, echo=FALSE}
 selectInput(
@@ -231,7 +256,6 @@ renderPlot({
 
 
 ```{r fig.height = 10}
-library(geofacet)
 limits_tidy %>% 
 
    
@@ -242,7 +266,9 @@ limits_tidy %>%
   scale_fill_brewer(palette = "Dark2")
 ```
 
+It is shown in youth drinkers percentage that most countries in the Middle East, as well as some in West Africa, have significantly lower rates of youth drinking than other regions while USA, Argentina, Australia and European countries illustrate roughly high proportion. Most of age restrictions in the Mid East countries like Saudi Arabia, Sudan, Iran are "total ban" which is one reason for less drinkers. However, it is found that there is no clear correlation between age restrictions and drinkers percentage in the rest countries. Readings of the literature found that the countries with significantly lower rates of drinking were all Muslim, which strictly prohibits alcohol. On the contrast, most countries with high drinkers proportion have a rich drinking culture and some are also rich in wine.
 
+Heavy drinkers percentage based on drinkers indicates obvious higher rates in Russia and some African countries. There are several factors that can contribute to alcohol abuse, like economic depression, national character, drinking culture, natural cold etc. BAC restrictions, which are more relaxed in countries in central and western Africa, may also be contributing to the increase in teenage binge drinking.
 
 
 
@@ -264,59 +290,84 @@ youth_drinking1 <- first_drink_earlier_than_13_tidy %>%
             by = c("country", "year", "gender")) %>% 
   rename("first_drink_earlier_than_13_percentage" = percentage.x,
          "at_least_once_a_week_percentage" = percentage.y) %>% 
-  group_by(country, year) %>%
-  mutate(year = factor(year, levels = as.character(c("2005", "2006", "2010", "2014"))))
+  filter(!is.na(first_drink_earlier_than_13_percentage),
+         !is.na(at_least_once_a_week_percentage)) %>% 
+  group_by(country, gender) %>%
+  summarise(first_drink_earlier_than_13_mean = mean(first_drink_earlier_than_13_percentage),
+            at_least_once_a_week_mean = mean(at_least_once_a_week_percentage))
+
+```
 
 
+```{r}
+youth_drinking2 <- any_alcohol_in_past_12_months_tidy %>% 
+  filter(!str_detect(gender, "All"),
+         !is.na(percentage)) %>% 
+  group_by(country, gender) %>% 
+  summarise(any_alcohol_in_past_12_months_mean = mean(percentage))
 
-
-#%>%
-#  summarise(mean_first_drink_earlier_than_13_percentage = mean(first_drink_earlier_than_13_percentage),
-#            mean_at_least_once_a_week_percentage = mean(at_least_once_a_week_percentage)) %>%
- 
+youth_drinking3 <- any_alcohol_in_past_30_days_tidy %>% 
+  filter(!str_detect(gender, "All"),
+         !is.na(percentage)) %>% 
+  group_by(country, gender) %>% 
+  summarise(any_alcohol_in_past_30_days_mean = mean(percentage))
 ```
 
 ```{r}
-country_list <- youth_drinking1 %>% group_by(country) %>% distinct(country)
+youth_drinking <- youth_drinking1 %>% 
+  left_join(youth_drinking2) %>%
+  left_join(youth_drinking3) %>% 
+  filter(!is.na(any_alcohol_in_past_12_months_mean),
+         !is.na(any_alcohol_in_past_30_days_mean))
 ```
 
-```{r fig.width = 14, fig.height = 8}
-p <- world_map %>% 
-  left_join(youth_drinking1, 
-            by = c("region" = "country")) %>% 
-  mutate(year = as.integer(year)) %>% 
-  ggplot(aes(x = long, 
-             y = lat, 
-             group = group)) +
-  geom_polygon(aes(fill = first_drink_earlier_than_13_percentage), 
-               colour = "gray50") +
-  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
-  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Drinkers percentage all over the world",
-       x = "Longitude", 
-       y = "Latitude") +
-  theme_light() 
-
-library(tidytuesdayR)
-library(gganimate)
-p+transition_time(year)+shadow_mark(exclude_layer = 3)+
-  exit_disappear()
+```{r}
+country_list <- youth_drinking %>% group_by(country) %>% distinct(country)
 ```
+
 
 
 ```{r fig.height = 10}
-youth_drinking1 %>% 
-  ggplot(aes(x = at_least_once_a_week_percentage,
-             y = reorder(country, desc(at_least_once_a_week_percentage)))) +
+p1 <- youth_drinking %>% 
+  ggplot(aes(x = at_least_once_a_week_mean,
+             y = reorder(country, desc(at_least_once_a_week_mean)))) +
   geom_boxplot() +
+  scale_y_discrete(labels = NULL) +
+  labs(y = "") +
   theme_bw()
+
+p2 <- youth_drinking %>% 
+  ggplot(aes(x = first_drink_earlier_than_13_mean,
+             y = reorder(country, desc(first_drink_earlier_than_13_mean)))) +
+  geom_boxplot() +
+  scale_y_discrete(labels = NULL) +
+  labs(y = "") +
+  theme_bw()
+
+p3 <- youth_drinking %>% 
+  ggplot(aes(x = any_alcohol_in_past_12_months_mean,
+             y = reorder(country, desc(any_alcohol_in_past_12_months_mean)))) +
+  geom_boxplot() +
+  scale_y_discrete(labels = NULL) +
+  labs(y = "") +
+  theme_bw()
+
+p4 <- youth_drinking %>% 
+  ggplot(aes(x = any_alcohol_in_past_30_days_mean,
+             y = reorder(country, desc(any_alcohol_in_past_30_days_mean)))) +
+  geom_boxplot() +
+  scale_y_discrete(labels = NULL) +
+  labs(y = "") +
+  theme_bw()
+
+library(ggpubr)
+
+p <- ggarrange(p1, p2, p3, p4)
+
+ggplotly(p)
 ```
 
-
-
-
-
-
+The plots above are based on 15 year-old teenagers. Most of the countries in the data are in Europe as Europe is a region well-known for its wine culture. It is clearly shown that teenagers in Northern Europe drink obvious the least. Take the Czech Republic and Denmark, where drinking frequencies are relatively high, as an example. According to a European study (ESPAD), the Czech Republic is the top drinker in the world, not only because alcoholic drinks taste awesome, but also due to the cheapest price among all drinks, even cheaper than mineral water and Coke. Besides, the study also revealed that Danish children are the most enthusiastic drinkers while Icelandic teenagers are not being attracted to addictive substances.
 
 
 
