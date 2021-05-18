@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
     orientation: columns
-    vertical_layout: fill
+    vertical_layout: scroll
     runtime: shiny
 ---
    
@@ -21,6 +21,7 @@ library(flexdashboard)
 library(kableExtra)
 library(shiny)
 library(gridExtra)
+library(ggiraph)
 ```
 
 Introduction {.tabset}
@@ -166,105 +167,72 @@ limits_tidy <- limits1 %>%
 ```
 
 ```{r}
-world_map <- map_data("world")
-map1 <- world_map %>% 
-  left_join(limits_tidy, 
+world_map <- map_data("world") %>% 
+  right_join(limits_tidy, 
             by = c("region" = "country")) %>% 
+  select(-subregion)
+worldMaps <- function(df, data_type){
+map1 <- df %>% 
   ggplot(aes(x = long, 
              y = lat, 
              group = group,
              text = region)) +
-  geom_polygon(aes(fill = drinker_percentage), 
+  geom_polygon(aes(fill = data_type), 
                colour = "gray50") +
-  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
-  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Youth drinkers percentage all over the world",
-       x = "Longitude", 
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
        y = "Latitude") +
   theme_light() 
-ggplotly(map1)
+ggplotly(map1)}
 
-map2 <- world_map %>% 
-  left_join(limits_tidy, 
-            by = c("region" = "country")) %>% 
-  ggplot(aes(x = long, 
-             y = lat, 
-             group = group,
-             text = region)) +
-  geom_polygon(aes(fill = heavy_drinker_percentage), 
-               colour = "gray50") +
-  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
-  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Youth heavy drinkers percentage all over the world",
-       x = "Longitude", 
-       y = "Latitude") +
-  theme_light() 
-ggplotly(map2)
-
-map_age <- world_map %>% 
-  left_join(limits_tidy, 
-            by = c("region" = "country")) %>% 
-  ggplot(aes(x = long, 
-             y = lat, 
-             group = group,
-             text = region)) +
-  geom_polygon(aes(fill = Age_limit), 
-               colour = "gray50") +
-  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
-  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Age limits all over the world",
-       x = "Longitude", 
-       y = "Latitude") +
-  theme_light() 
-ggplotly(map_age)
-
-map_BAC <- world_map %>% 
-  left_join(limits_tidy, 
-            by = c("region" = "country")) %>% 
-  ggplot(aes(x = long, 
-             y = lat, 
-             group = group,
-             text = region)) +
-  geom_polygon(aes(fill = BAC_limits), 
-               colour = "gray50") +
-  scale_x_continuous(breaks = seq(-180, 210, 45), labels = function(x){paste0(x, "°")}) +
-  scale_y_continuous(breaks = seq(-60, 100, 30), labels = function(x){paste0(x, "°")}) +
-  labs(title="Youth BAC limits all over the world",
-       x = "Longitude", 
-       y = "Latitude") +
-  theme_light() 
-ggplotly(map_BAC)
+#worldMaps(world_map, world_map$drinker_percentage)
 ```
 
-
-```{r eruptions, echo=FALSE}
-selectInput(
-  'breaks', label = 'Number of bins:',
-  choices = c(10, 20, 35, 50), selected = 20
+```{r}
+ui = fluidPage(
+  titlePanel("Youth drinking analysis via map"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(inputId = "data_type",
+                  label = "Choose the type of data you want to see:",
+                  choices = list("drinker_percentage" = "drinker_percentage", "heavy_drinker_percentage" = "heavy_drinker_percentage", "Age_limit" = "Age_limit", "BAC_limits" = "BAC_limits"))
+      
+    ),
+    mainPanel(
+      
+      # Hide errors
+      tags$style(type = "text/css",
+                 ".shiny-output-error { visibility: hidden; }",
+                 ".shiny-output-error:before { visibility: hidden; }"),
+      
+      # Output: interactive world map
+      girafeOutput("distPlot")
+      
+    )
+  )
 )
 
-renderPlot({
-  par(mar = c(4, 4, .1, .5))
-  hist(
-    faithful$eruptions, as.numeric(input$breaks),
-    col = 'gray', border = 'white',
-    xlab = 'Duration (minutes)', main = ''
-  )
-})
+# Define the server
+server = function(input, output, session) {
+  
+  # Create the interactive world map
+  output$distPlot <- renderGirafe({
+    ggiraph(code = {print(worldMaps(world_map, input$data_type))})
+  })
+  
+}
+shinyApp(ui = ui, server = server)
 ```
 
+```{r eval = FALSE}
+library(bsselectR)
+map_plots <- (list(c(map1, map2), full.names = TRUE))
 
-
-```{r fig.height = 10}
-limits_tidy %>% 
-
-   
-  ggplot(aes(x = drinker_percentage,
-             y = country,
-             fill = Age_limit)) +
-  geom_col() +
-  scale_fill_brewer(palette = "Dark2")
+bsselect(map_plots, type = "img", 
+         live_search = TRUE, show_tick = TRUE)
 ```
+
 
 It is shown in youth drinkers percentage that most countries in the Middle East, as well as some in West Africa, have significantly lower rates of youth drinking than other regions while USA, Argentina, Australia and European countries illustrate roughly high proportion. Most of age restrictions in the Mid East countries like Saudi Arabia, Sudan, Iran are "total ban" which is one reason for less drinkers. However, it is found that there is no clear correlation between age restrictions and drinkers percentage in the rest countries. Readings of the literature found that the countries with significantly lower rates of drinking were all Muslim, which strictly prohibits alcohol. On the contrast, most countries with high drinkers proportion have a rich drinking culture and some are also rich in wine.
 
@@ -318,54 +286,29 @@ youth_drinking <- youth_drinking1 %>%
   left_join(youth_drinking2) %>%
   left_join(youth_drinking3) %>% 
   filter(!is.na(any_alcohol_in_past_12_months_mean),
-         !is.na(any_alcohol_in_past_30_days_mean))
+         !is.na(any_alcohol_in_past_30_days_mean)) %>% 
+  select(-first_drink_earlier_than_13_mean) %>% 
+  pivot_longer(cols = -c(country, gender),
+               names_to = "frequency",
+               values_to = "percentage")
+
+youth_drinking$frequency <- factor(youth_drinking$frequency, levels = c("at_least_once_a_week_mean", "any_alcohol_in_past_30_days_mean", "any_alcohol_in_past_12_months_mean"))
 ```
 
 ```{r}
-country_list <- youth_drinking %>% group_by(country) %>% distinct(country)
+freq <- youth_drinking %>% 
+  ggplot(aes(x = percentage,
+             y = reorder(country, desc(percentage)),
+             fill = gender)) +
+  geom_col() +
+  facet_grid(~frequency, scales = "free_x") +
+  scale_y_discrete(labels = NULL) +
+  labs(y = "") +
+  theme_bw()
+
+ggplotly(freq)
 ```
 
-
-
-```{r fig.height = 10}
-p1 <- youth_drinking %>% 
-  ggplot(aes(x = at_least_once_a_week_mean,
-             y = reorder(country, desc(at_least_once_a_week_mean)))) +
-  geom_boxplot() +
-  scale_y_discrete(labels = NULL) +
-  labs(y = "") +
-  theme_bw()
-
-p2 <- youth_drinking %>% 
-  ggplot(aes(x = first_drink_earlier_than_13_mean,
-             y = reorder(country, desc(first_drink_earlier_than_13_mean)))) +
-  geom_boxplot() +
-  scale_y_discrete(labels = NULL) +
-  labs(y = "") +
-  theme_bw()
-
-p3 <- youth_drinking %>% 
-  ggplot(aes(x = any_alcohol_in_past_12_months_mean,
-             y = reorder(country, desc(any_alcohol_in_past_12_months_mean)))) +
-  geom_boxplot() +
-  scale_y_discrete(labels = NULL) +
-  labs(y = "") +
-  theme_bw()
-
-p4 <- youth_drinking %>% 
-  ggplot(aes(x = any_alcohol_in_past_30_days_mean,
-             y = reorder(country, desc(any_alcohol_in_past_30_days_mean)))) +
-  geom_boxplot() +
-  scale_y_discrete(labels = NULL) +
-  labs(y = "") +
-  theme_bw()
-
-library(ggpubr)
-
-p <- ggarrange(p1, p2, p3, p4)
-
-ggplotly(p)
-```
 
 The plots above are based on 15 year-old teenagers. Most of the countries in the data are in Europe as Europe is a region well-known for its wine culture. It is clearly shown that teenagers in Northern Europe drink obvious the least. Take the Czech Republic and Denmark, where drinking frequencies are relatively high, as an example. According to a European study (ESPAD), the Czech Republic is the top drinker in the world, not only because alcoholic drinks taste awesome, but also due to the cheapest price among all drinks, even cheaper than mineral water and Coke. Besides, the study also revealed that Danish children are the most enthusiastic drinkers while Icelandic teenagers are not being attracted to addictive substances.
 
