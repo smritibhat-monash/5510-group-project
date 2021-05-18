@@ -167,63 +167,99 @@ limits_tidy <- limits1 %>%
 ```
 
 ```{r}
-world_map <- map_data("world") %>% 
+world_map <- map_data("world") %>%
   right_join(limits_tidy, 
-            by = c("region" = "country")) %>% 
+            by = c("region" = "country")) %>%
   select(-subregion)
-worldMaps <- function(df, data_type){
-map1 <- df %>% 
+worldMaps <- function(data_type){
+if(data_type == "drinker_percentage") 
+  {
+  p <- world_map %>%
   ggplot(aes(x = long, 
              y = lat, 
              group = group,
              text = region)) +
-  geom_polygon(aes(fill = data_type), 
+  geom_polygon(aes(fill = drinker_percentage), 
                colour = "gray50") +
   scale_x_continuous(breaks = seq(-180, 210, 45)) +
   scale_y_continuous(breaks = seq(-60, 100, 30)) +
   labs(x = "Longitude", 
        y = "Latitude") +
-  theme_light() 
-ggplotly(map1)}
-
-#worldMaps(world_map, world_map$drinker_percentage)
-```
-
-```{r}
-ui = fluidPage(
-  titlePanel("Youth drinking analysis via map"),
-  sidebarLayout(
-    sidebarPanel(
-      selectInput(inputId = "data_type",
-                  label = "Choose the type of data you want to see:",
-                  choices = list("drinker_percentage" = "drinker_percentage", "heavy_drinker_percentage" = "heavy_drinker_percentage", "Age_limit" = "Age_limit", "BAC_limits" = "BAC_limits"))
-      
-    ),
-    mainPanel(
-      
-      # Hide errors
-      tags$style(type = "text/css",
-                 ".shiny-output-error { visibility: hidden; }",
-                 ".shiny-output-error:before { visibility: hidden; }"),
-      
-      # Output: interactive world map
-      girafeOutput("distPlot")
-      
-    )
-  )
-)
-
-# Define the server
-server = function(input, output, session) {
+  theme_light()
   
-  # Create the interactive world map
-  output$distPlot <- renderGirafe({
-    ggiraph(code = {print(worldMaps(world_map, input$data_type))})
-  })
   
 }
-shinyApp(ui = ui, server = server)
+  else if(data_type == "heavy_drinker_percentage") {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = heavy_drinker_percentage), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  
+  
+  }
+  else if(data_type == "BAC_limits") {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = BAC_limits), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  
+  }
+  else {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = Age_limit), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+
+  }
+  
+  return(p)
+}
+
 ```
+
+
+```{r}
+ui <- fluidPage(
+    selectInput("variable", "Variable:",
+                c("drinker_percentage" = "drinker_percentage", "heavy_drinker_percentage" = "heavy_drinker_percentage", "Age_limit" = "Age_limit", "BAC_limits" = "BAC_limits")),
+    mainPanel(plotOutput(outputId = "plot_output"))
+  )
+server <- function(input,output,session) {
+    output$plot_output <- renderPlot({
+      worldMaps(input$variable)
+    })
+  }
+shinyApp(ui=ui, server=server, options = list(height = 500), enableBookmarking = "server")
+```
+
+
 
 ```{r eval = FALSE}
 library(bsselectR)
@@ -233,6 +269,10 @@ bsselect(map_plots, type = "img",
          live_search = TRUE, show_tick = TRUE)
 ```
 
+Column {data-width: 500}
+------------------
+
+### Analysis
 
 It is shown in youth drinkers percentage that most countries in the Middle East, as well as some in West Africa, have significantly lower rates of youth drinking than other regions while USA, Argentina, Australia and European countries illustrate roughly high proportion. Most of age restrictions in the Mid East countries like Saudi Arabia, Sudan, Iran are "total ban" which is one reason for less drinkers. However, it is found that there is no clear correlation between age restrictions and drinkers percentage in the rest countries. Readings of the literature found that the countries with significantly lower rates of drinking were all Muslim, which strictly prohibits alcohol. On the contrast, most countries with high drinkers proportion have a rich drinking culture and some are also rich in wine.
 
