@@ -18,6 +18,7 @@ library(maps)
 library(plotly)
 library(flexdashboard)
 library(kableExtra)
+library(rnaturalearth)
 ```
 
 Introduction {.tabset}
@@ -88,17 +89,67 @@ alc_traffic_death <- death_traffic %>%
     mutate(traffic_alc_death = `road.traffic.death.population` * `alc.attri.death.traffic`/100) %>% 
   select(Country, gender, traffic_alc_death)    
 
-alc_illness_death <- alc_cancer_death %>% 
+ alc_death <- alc_cancer_death %>% 
   left_join(alc_liver_death) %>% 
-  mutate(illness_alc_death = can_alc_death + liver_alc_death) %>% 
-    select(Country, gender, illness_alc_death) 
-
-alc_death <- alc_illness_death %>% 
   left_join(alc_traffic_death) %>% 
-  pivot_longer(cols = c("illness_alc_death", "traffic_alc_death"),
+  pivot_longer(cols = c("can_alc_death", "liver_alc_death", "traffic_alc_death"),
                names_to = "cause_of_death",
                values_to = "number_of_death") 
 ```
+
+### Overview on the alcohol-attributed death
+
+```{r fig.height=6}
+
+view_by_country <- alc_death %>% 
+  select(Country, cause_of_death, number_of_death,gender)%>% 
+  group_by(Country,cause_of_death) %>% 
+  ggplot(aes(x = reorder(Country,desc(number_of_death)),
+             y = number_of_death,
+             fill = gender))+
+    geom_bar(stat="identity")+
+    facet_wrap(~cause_of_death, ncol =1)+
+    theme_bw()+
+   theme(axis.text.x = element_blank(),
+         axis.title.x = element_blank())
+
+ggplotly(view_by_country)
+
+```
+
+### Comparison between alcohol-attributed deaths
+
+**Harms of alcohol**
+
+- Cancer
+
+- Liver Cirrhosis
+
+- Road traffic accidents
+
+**Calculation Method:**
+
+- Cancer Death $\times$ Alcohol-Attributed Cancer Death Rate
+
+- Liver Cirrhosis Death $\times$ Alcohol-attributed Liver Cirrhosis Death Rate
+
+- Road Traffic Death $\times$ Alcohol-attributed Road Traffic Death Rate
+
+
+**Analysis:**
+
+- Alcohol causes more deaths to *Males*.
+
+- *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
+
+- Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
+
+
+
+
+
+Column {.tabset} {data-width=350}
+-------------------------------------
 
 ### Total number of alcohol attributed death
 
@@ -114,61 +165,76 @@ ggplotly(overview)
 
 ```
 
-### Overview on the alcohol-attributed death
+### Alcohol-Attributed Death VS Road Traffic death (By Continent)
 
-```{r fig.height=10}
+```{r }
+countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
+  select(admin, continent, income_grp)
 
-view_by_country <- alc_death %>% 
-  select(Country, cause_of_death, number_of_death,gender)%>% 
-  group_by(Country,cause_of_death) %>% 
-  ggplot(aes(x = reorder(Country,desc(number_of_death)),
-             y = number_of_death,
-             fill = gender))+
-    geom_bar(stat="identity")+
-    facet_wrap(~cause_of_death, ncol =1)+
-    theme_bw()+
-   theme(axis.text.x = element_text(angle = 90, vjust = 0.3)) 
-
-ggplotly(view_by_country)
-
-```
-
-```{r}
-alc_death %>% 
-  group_by(Country, gender) %>% 
-  summarise(number_of_alc_death = sum(number_of_death))%>% 
+alc_death %>%
+  left_join(countries, by = c("Country" = "admin")) %>% 
+  group_by(Country, continent, gender) %>% 
+  summarise(alc_death = sum(number_of_death)) %>% 
   left_join(death_traffic) %>% 
-  left_join(death_cancer) %>% 
-  arrange(desc(number_of_alc_death)) %>% 
-  kable()
-  
-  pivot_longer(cols = c("number_of_alc_death", `road.traffic.death.population`),
-               names_to = "cause_of_death",
-               values_to = "number_of_death") %>% 
-  ggplot(aes(x = reorder(Country, desc(number_of_death)),
-             y = number_of_death, 
-             fill = gender)) +
-  geom_bar(stat="identity")+
-    facet_wrap(~cause_of_death, ncol =1)+
-    theme_bw()+
-   theme(axis.text.x = element_text(angle = 90, vjust = 0.3)) 
-```
-
-
-Column {.tabset} {data-width=350}
--------------------------------------
-### Top 20 Countries
-
-```{r}
-alc_death %>% 
-
-  select(Country, cause_of_death, gender, number_of_death)%>%
-  group_by(Country,cause_of_death) %>% 
-  arrange(desc(number_of_death)) %>% 
-  head(20) %>% 
-  kable() %>% 
+  drop_na() %>% 
+  rename("traffic_death" = `road.traffic.death.population`) %>% 
+    group_by(continent) %>% 
+  summarise(alc_death = mean(alc_death),
+            traffic_death = mean(traffic_death))%>%    
+  arrange(desc(alc_death)) %>%
+  kable(align = "c") %>% 
   kable_styling("striped","hover")
+
 ```
+
+### Alcohol-Attributed Death VS Road Traffic death (By Income Level)
+
+```{r }
+alc_death %>%
+  left_join(countries, by = c("Country" = "admin")) %>% 
+  mutate(income_grp = recode(income_grp,
+                            `2. High income: nonOECD` = "high",
+                            `5. Low income` = "low",
+                            `3. Upper middle income` =  "upper_middle",
+                            `4. Lower middle income` =  "lower_middle",
+                            `1. High income: OECD` = "high")) %>%
+  group_by(Country, income_grp, gender) %>%
+  summarise(alc_death = sum(number_of_death)) %>% 
+  left_join(death_traffic) %>% 
+  drop_na() %>% 
+  rename("traffic_death" = `road.traffic.death.population`) %>% 
+    group_by(income_grp) %>% 
+  summarise(alc_death = mean(alc_death),
+            traffic_death = mean(traffic_death))%>%    
+  arrange(desc(alc_death)) %>%
+  kable(align = "c") %>% 
+  kable_styling("striped","hover")
+  
+```
+
+### Comparison between total alcohol-attributed deaths and traffic deaths
+
+**Calculated by: **
+
+- Average number of deaths(per 100,000 population) in each continent.
+
+**Analysis: **
+
+- Alcohol brings the highest number of deaths in Africa.
+
+- Alcohol brings comparatively lowest number of deaths in Oceania and Asia
+
+
+**Possible reasons affecting death rates**
+
+- Religions
+
+- Income
+
+- Education
+
+- Medical conditions
+
 
 Policy Pattern {.tabset}
 ======================
