@@ -19,6 +19,9 @@ library(plotly)
 library(flexdashboard)
 library(kableExtra)
 library(rnaturalearth)
+library(RColorBrewer)
+library(sf)
+library(viridis)
 ```
 
 Introduction {.tabset}
@@ -95,37 +98,62 @@ alc_traffic_death <- death_traffic %>%
   pivot_longer(cols = c("can_alc_death", "liver_alc_death", "traffic_alc_death"),
                names_to = "cause_of_death",
                values_to = "number_of_death") 
+
 ```
 
 ### Overview on the alcohol-attributed death
 
-```{r fig.height=6}
+```{r}
 
-view_by_country <- alc_death %>% 
-  select(Country, cause_of_death, number_of_death,gender)%>% 
-  group_by(Country,cause_of_death) %>% 
-  ggplot(aes(x = reorder(Country,desc(number_of_death)),
-             y = number_of_death,
-             fill = gender))+
-    geom_bar(stat="identity")+
-    facet_wrap(~cause_of_death, ncol =1)+
-    theme_bw()+
-   theme(axis.text.x = element_blank(),
-         axis.title.x = element_blank())
+countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
+  select(admin, continent, income_grp)
 
-ggplotly(view_by_country)
+ alc_death_sum <- alc_death %>% 
+   group_by(Country) %>% 
+   summarise(number_of_death = sum(number_of_death))
+
+map_all <- alc_death_sum %>%
+  mutate(Country = recode(Country,
+                             "Bahamas" = "The Bahamas",
+                             "Bolivia (Plurinational State of)" = "Bolivia",
+                             "Brunei Darussalam" = "Brunei",
+                             "Cabo Verde" = "Cape Verde",
+                             "Congo" = "Democratic Republic of the Congo",
+                             "Czechia" = "Czech Republic",
+                             "Democratic People's Republic of Korea" = "North Korea",
+                             "Guinea-Bissau" = "Guinea Bissau",
+                             "Iran (Islamic Republic of)" = "Iran",
+                             "Lao People's Democratic Republic" = "Laos",
+                             "Micronesia (Federated States of)" = "Federated States of Micronesia",
+                             "North Macedonia" = "Macedonia",
+                             "Republic of Korea" = "South Korea",
+                             "Republic of Moldova" = "Moldova",
+                             "Russian Federation" = "Russia",
+                             "Serbia" = "Republic of Serbia",
+                             "Syrian Arab Republic" = "Syria",
+                             "Timor-Leste" = "East Timor",
+                             "Tuvalu" = "Wallis and Futuna",
+                             "United Kingdom of Great Britain and Northern Ireland" = "United Kingdom", 
+                             "Venezuela (Bolivarian Republic of)" = "Venezuela",
+                             "Viet Nam" = "Vietnam")) 
+
+all_loc <-left_join(countries, map_all, by = c("admin" = "Country"))
+
+p1 <- all_loc %>% 
+      ggplot()+
+  geom_sf(mapping = aes(fill = number_of_death))+
+  scale_fill_distiller(palette = "Spectral", na.value = "white", )+
+  labs(title = "Overview of alcohol-attributed deaths",
+       fill = "") +
+  theme_void()+
+  theme(panel.grid.major = element_line(colour = "transparent"),
+        legend.position = "bottom")
+
+ggplotly(p1)
 
 ```
 
 ### Comparison between alcohol-attributed deaths
-
-**Harms of alcohol**
-
-- Cancer
-
-- Liver Cirrhosis
-
-- Road traffic accidents
 
 **Calculation Method:**
 
@@ -144,30 +172,24 @@ ggplotly(view_by_country)
 
 - Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
 
+- Alcohol brings the highest number of deaths in Africa.
 
+**Possible reasons affecting death rates**
+
+- Religions
+
+- Income
+
+- Education
+
+- Medical conditions
 
 
 
 Column {.tabset} {data-width=350}
 -------------------------------------
 
-### Total number of alcohol attributed death
-
-```{r fig.height=4 ,fig.width=2}
-overview <- alc_death %>% 
-  group_by(gender, cause_of_death) %>%  
-  ggplot(aes(x = cause_of_death,
-             y = number_of_death,
-             fill = gender))+
-    geom_col(position = "dodge")+
-    theme_bw() 
-ggplotly(overview)
-
-```
-
-### Alcohol-Attributed Death VS Road Traffic death (By Continent)
-
-```{r }
+```{r eval = FALSE}
 countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
   select(admin, continent, income_grp)
 
@@ -187,9 +209,25 @@ alc_death %>%
 
 ```
 
+### Total number of alcohol attributed death
+
+```{r fig.height=4 ,fig.width=2}
+
+overview <- alc_death %>% 
+  group_by(gender, cause_of_death) %>%  
+  ggplot(aes(x = cause_of_death,
+             y = number_of_death,
+             fill = gender))+
+    geom_col(position = "dodge")+
+    theme_bw() 
+ggplotly(overview)
+
+```
+
 ### Alcohol-Attributed Death VS Road Traffic death (By Income Level)
 
 ```{r }
+
 alc_death %>%
   left_join(countries, by = c("Country" = "admin")) %>% 
   mutate(income_grp = recode(income_grp,
@@ -214,26 +252,24 @@ alc_death %>%
 
 ### Comparison between total alcohol-attributed deaths and traffic deaths
 
-**Calculated by: **
+**Harms of alcohol**
+
+- Cancer
+
+- Liver Cirrhosis
+
+- Road traffic accidents
+
+**Calculation method: **
 
 - Average number of deaths(per 100,000 population) in each continent.
 
-**Analysis: **
 
-- Alcohol brings the highest number of deaths in Africa.
+**Analysis:**
 
-- Alcohol brings comparatively lowest number of deaths in Oceania and Asia
+- Alcohol causes more deaths to *Males*.
 
-
-**Possible reasons affecting death rates**
-
-- Religions
-
-- Income
-
-- Education
-
-- Medical conditions
+- *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
 
 
 Policy Pattern {.tabset}
