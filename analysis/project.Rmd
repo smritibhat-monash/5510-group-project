@@ -132,7 +132,6 @@ map_all <- alc_death_sum %>%
                              "Serbia" = "Republic of Serbia",
                              "Syrian Arab Republic" = "Syria",
                              "Timor-Leste" = "East Timor",
-                             "Tuvalu" = "Wallis and Futuna",
                              "United Kingdom of Great Britain and Northern Ireland" = "United Kingdom", 
                              "Venezuela (Bolivarian Republic of)" = "Venezuela",
                              "Viet Nam" = "Vietnam")) 
@@ -143,7 +142,7 @@ p1 <- all_loc %>%
       ggplot()+
   geom_sf(mapping = aes(fill = number_of_death))+
   scale_fill_distiller(palette = "Spectral", na.value = "white", )+
-  labs(title = "Overview of alcohol-attributed deaths",
+  labs(title = "Overview on number of alcohol-attributed deaths(per 100,000 population)",
        fill = "") +
   theme_void()+
   theme(panel.grid.major = element_line(colour = "transparent"),
@@ -163,16 +162,18 @@ ggplotly(p1)
 
 - Road Traffic Death $\times$ Alcohol-attributed Road Traffic Death Rate
 
+- Sum up all types of alcohol-attributed deaths
+
 
 **Analysis:**
+
+-Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
+
+- Alcohol brings the highest number of deaths in African countries while the lowest in Middle East countries.
 
 - Alcohol causes more deaths to *Males*.
 
 - *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
-
-- Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
-
-- Alcohol brings the highest number of deaths in Africa.
 
 **Possible reasons affecting death rates**
 
@@ -188,26 +189,6 @@ ggplotly(p1)
 
 Column {.tabset} {data-width=350}
 -------------------------------------
-
-```{r eval = FALSE}
-countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
-  select(admin, continent, income_grp)
-
-alc_death %>%
-  left_join(countries, by = c("Country" = "admin")) %>% 
-  group_by(Country, continent, gender) %>% 
-  summarise(alc_death = sum(number_of_death)) %>% 
-  left_join(death_traffic) %>% 
-  drop_na() %>% 
-  rename("traffic_death" = `road.traffic.death.population`) %>% 
-    group_by(continent) %>% 
-  summarise(alc_death = mean(alc_death),
-            traffic_death = mean(traffic_death))%>%    
-  arrange(desc(alc_death)) %>%
-  kable(align = "c") %>% 
-  kable_styling("striped","hover")
-
-```
 
 ### Total number of alcohol attributed death
 
