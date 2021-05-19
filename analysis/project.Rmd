@@ -3,14 +3,8 @@ title: "Alcohol Consumption Patterns"
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
-<<<<<<< HEAD
-    vertical_layout: scroll
-runtime: shiny
-=======
-    orientation: columns
     vertical_layout: scroll
     runtime: shiny
->>>>>>> 08f5d35 (Map and boxplot)
 ---
    
 
@@ -24,11 +18,8 @@ library(maps)
 library(plotly)
 library(flexdashboard)
 library(kableExtra)
-<<<<<<< HEAD
 library(leaflet)
 library(stringr)
-=======
->>>>>>> 08f5d35 (Map and boxplot)
 library(shiny)
 library(gridExtra)
 library(ggiraph)
@@ -37,11 +28,11 @@ library(ggiraph)
 Introduction {.tabset}
 ======================
 
-<<<<<<< HEAD
-Column {.tabset} {data-width=800}
-=======
+
+
+
 Column {data-width=650}
->>>>>>> 2a178c1 (Finished youth drinking part)
+
 -------------------------------------
 
 ### Background
