@@ -31,8 +31,7 @@ Introduction {.tabset}
 
 
 
-Column {data-width=650}
-
+Column {data-width=800}
 -------------------------------------
 
 ### Background
