@@ -115,7 +115,7 @@ countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
 map_all <- alc_death_sum %>%
   mutate(Country = recode(Country,
                              "Bahamas" = "The Bahamas",
-                             "Bolivia (Plurinational State of)" = "Bolivia",
+                             "Bolivia (Plurinational State of)" = "clean.htmlBolivia",
                              "Brunei Darussalam" = "Brunei",
                              "Cabo Verde" = "Cape Verde",
                              "Congo" = "Democratic Republic of the Congo",
@@ -137,10 +137,14 @@ map_all <- alc_death_sum %>%
                              "Viet Nam" = "Vietnam")) 
 
 all_loc <-left_join(countries, map_all, by = c("admin" = "Country"))
+world_points<- st_centroid(all_loc)
+world_points <- cbind(all_loc, st_coordinates(st_centroid(all_loc$geometry)))
 
 p1 <- all_loc %>% 
       ggplot()+
   geom_sf(mapping = aes(fill = number_of_death))+
+  geom_text(data= world_points,aes(x=X, y=Y, label=admin),
+    color = "transparent", size = 1, check_overlap = FALSE)+
   scale_fill_distiller(palette = "Spectral", na.value = "white", )+
   labs(title = "Overview on number of alcohol-attributed deaths(per 100,000 population)",
        fill = "") +
@@ -167,7 +171,7 @@ ggplotly(p1)
 
 **Analysis:**
 
--Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
+- Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
 
 - Alcohol brings the highest number of deaths in African countries while the lowest in Middle East countries.
 
@@ -183,7 +187,6 @@ ggplotly(p1)
 
 - Education
 
-- Medical conditions
 
 
 
@@ -226,7 +229,8 @@ alc_death %>%
   summarise(alc_death = mean(alc_death),
             traffic_death = mean(traffic_death))%>%    
   arrange(desc(alc_death)) %>%
-  kable(align = "c") %>% 
+  kable(align = "c", col.names = c("income group",
+                           "alcohol-attribute death", "road traffic death")) %>% 
   kable_styling("striped","hover")
   
 ```
