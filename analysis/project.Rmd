@@ -32,11 +32,7 @@ library(ggiraph)
 Introduction {.tabset}
 ======================
 
-
-
-
-Column {data-width=650}
-
+Column {.tabset} {data-width=800}
 -------------------------------------
 
 ### Background
@@ -44,7 +40,7 @@ Column {data-width=650}
 
 
 
-Column {data-width=200}
+Column {.tabset} {data-width=200}
 -------------------------------------
 
    
