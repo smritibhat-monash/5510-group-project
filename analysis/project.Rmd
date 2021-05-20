@@ -5,7 +5,7 @@ output:
     theme: bootstrap
     orientation: columns
     vertical_layout: scroll
-runtime: shiny
+    runtime: shiny
 ---
    
 
@@ -25,12 +25,18 @@ library(viridis)
 library(leaflet)
 library(stringr)
 library(shiny)
+library(gridExtra)
+library(ggiraph)
 ```
 
 Introduction {.tabset}
 ======================
 
-Column {.tabset} {data-width=800}
+
+
+
+Column {data-width=650}
+
 -------------------------------------
 
 ### Background
@@ -38,9 +44,10 @@ Column {.tabset} {data-width=800}
 
 
 
-Column {.tabset} {data-width=200}
+Column {data-width=200}
 -------------------------------------
 
+   
 ### Approach of Project
 
 The report will be collating specific sections of this data pertaining to countrywise policy responses, consumption pattern, youth and alcohol, levels of consumption and harms and consequences.
@@ -61,11 +68,11 @@ _Researchers:_
 - _Yin Shan Ho_
 
 
-Popularity {.tabset} 
+Popularity {.tabset}
 ======================
 
 
-Cause of Mortality {.tabset} 
+Cause of Mortality {.tabset}
 ======================
 
 Column {.tabset} {data-width=650}
@@ -500,10 +507,312 @@ df2 <- check_tbl %>%
 Age Restrictions {.tabset}
 ======================
 
+```{r}
+BAC_limits_tidy <- read_csv(here::here("clean_data/BAC_limits_tidy.csv"))
+Age_limits_tidy <- read_csv(here::here("clean_data/Age_limits_tidy.csv"))
+current_drinkers_15_19_tidy <- read_csv(here::here("clean_data/current_drinkers_15_19_tidy.csv"))
+heavy_drinkers_15_19_tidy <- read_csv(here::here("clean_data/heavy_drinkers_15_19_tidy.csv"))
+```
+
+```{r}
+limits <- BAC_limits_tidy %>% 
+  left_join(Age_limits_tidy) %>% 
+  left_join(current_drinkers_15_19_tidy) %>% 
+  left_join(heavy_drinkers_15_19_tidy) %>% 
+  rename("Age_limit" = limit)
+limits1 <- limits %>% 
+  mutate(Age_limit = tolower(Age_limit),
+         BAC_limits = tolower(BAC_limits)) %>% 
+  filter(gender == "All") %>% 
+  filter(!str_detect(Age_limit, "no data"),
+         !str_detect(Service, "service")) %>% 
+  mutate(Age_limit = ifelse(Age_limit == "total ban", "99", Age_limit), 
+         Age_limit = ifelse(Age_limit == "none", "0", Age_limit),
+         Age_limit = ifelse(Age_limit == "subnational", "18", Age_limit)) %>% 
+  mutate(Age_limit = as.numeric(Age_limit)) %>% 
+  mutate(country = ifelse(country == "Russian Federation", "Russia", country),
+         country = ifelse(country == "Iran (Islamic Republic of)", "Iran", country),
+         country = ifelse(country == "United States of America", "USA", country),
+         country = ifelse(country == "Venezuela (Bolivarian Republic of)", "Venezuela", country),
+         country = ifelse(country == "Viet Nam", "Vietnam", country),
+         country = ifelse(country == "United Kingdom of Great Britain and Northern Ireland", "UK", country),
+         country = ifelse(country == "Czechia", "Czech Republic", country),
+         country = ifelse(country == "Congo", "Democratic Republic of the Congo", country),
+         country = ifelse(country == "United Republic of Tanzania", "Tanzania", country))
+
+limits2 <- limits1 %>% 
+  group_by(country) %>% 
+  summarise(Age_limit = min(Age_limit)) 
+  
+limits_tidy <- limits1 %>% 
+  select(country, BAC_limits, drinker_percentage, heavy_drinker_percentage) %>% 
+  group_by(country) %>% 
+  distinct() %>% 
+  full_join(limits2) %>% 
+  mutate(BAC_limits = factor(BAC_limits, 
+                            levels = c("none", "0.08%", "0.07%", "0.06%", "0.05%", "0.04%", "0.03%", "0.02%", "0.01%", "zero tolerance", "total ban"))) %>% 
+  mutate(Age_limit = factor(Age_limit, 
+                            levels = as.character(c("0", "16", "17", "18", "20", "21", "25", "99")))) %>% 
+  rename("drinker_rate" = drinker_percentage,
+         "heavy_rate" = heavy_drinker_percentage)
+```
+
+Column {data-width=650}
+---------------------------
+
+
+### table
+
+
+```{r}
+limits_tidy %>% 
+  ungroup() %>%
+  summarise(mean_drinker_rate = mean(drinker_rate),
+            mean_heavy_rate = mean(heavy_rate)) %>% 
+  kable(caption = "Summary") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+
+### map
+
+```{r}
+world_map <- map_data("world") %>%
+  right_join(limits_tidy, 
+            by = c("region" = "country")) %>%
+  select(-subregion)
+worldMaps <- function(data_type){
+if(data_type == "drinker_rate") 
+  {
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = drinker_rate), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  
+  
+}
+  else if(data_type == "heavy_rate") {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = heavy_rate), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  
+  
+  }
+  else if(data_type == "BAC_limits") {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = BAC_limits), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  
+  }
+  else {
+    
+  p <- world_map %>%
+  ggplot(aes(x = long, 
+             y = lat, 
+             group = group,
+             text = region)) +
+  geom_polygon(aes(fill = Age_limit), 
+               colour = "gray50") +
+  scale_x_continuous(breaks = seq(-180, 210, 45)) +
+  scale_y_continuous(breaks = seq(-60, 100, 30)) +
+  labs(x = "Longitude", 
+       y = "Latitude") +
+  theme_light()
+  }
+  return(p)
+  #ggplotly(p)
+}
+```
+
+
+```{r}
+ui <- fluidPage(
+    selectInput("variable", "Variable:",
+                c("drinker_rate" = "drinker_rate", "heavy_rate" = "heavy_rate", "Age_limit" = "Age_limit", "BAC_limits" = "BAC_limits")),
+    mainPanel(plotOutput(outputId = "plot_output"))
+  )
+server <- function(input,output,session) {
+    output$plot_output <- renderPlot({
+      worldMaps(input$variable)
+    })
+  }
+shinyApp(ui=ui, server=server, options = list(height = 500), enableBookmarking = "server")
+```
+
+
+
+
+
+Column {data-width=350}
+---------------------------
+
+
+### Analysis
+  
+* Based on 15-19 years old adolescents  
+* Youth drinker mean percentage across world: 31.2%  
+* Youth heavy drinker mean percentage  
+(Based on drinkers) across world: 48.5%  
+* Roughly high rate  
+  
+    
+    
+* Low rate of drinkers:  
+**The Middle East** & **North Africa**    
+  
+* High rate of drinkers:  
+**USA** & **Argentina** & **Australia** & **European countries** 
+  
+* Possible reasons:  
+  + Low rate   
+    - Age restriction: "Total Ban"   
+    - Religion: Islam (Alcohol Forbidden)  
+  + High rate
+    - Rich drinking culture
+    - Rich in wine
+      
+* Low rate of heavy drinkers: 
+**The Middle East** & **North Africa**     
+    
+* High rate of heavy drinkers:  
+**Russia** & **West Africa**
+   
+* Possible reasons:    
+  + Low rate 
+    - Same as above   
+  + High rate  
+    - BAC restriction: more relaxed  
+    - Economic depression  
+    - Drinking culture  
+    - National character  
+    - Natural cold  
+
+
 
 
 Youth Inebriation {.tabset}
 ======================
+
+```{r}
+at_least_once_a_week_tidy <- read_csv(here::here("clean_data/at_least_once_a_week_tidy.csv"))
+first_drink_earlier_than_13_tidy <- read_csv(here::here("clean_data/first_drink_earlier_than_13_tidy.csv"))
+any_alcohol_in_past_12_months_tidy <- read_csv(here::here("clean_data/any_alcohol_in_past_12_months_tidy.csv"))
+any_alcohol_in_past_30_days_tidy <- read_csv(here::here("clean_data/any_alcohol_in_past_30_days_tidy.csv"))
+```
+
+```{r}
+youth_drinking1 <- first_drink_earlier_than_13_tidy %>% 
+  filter(!gender == "All") %>% 
+  full_join(at_least_once_a_week_tidy, 
+            by = c("country", "year", "gender")) %>% 
+  rename("first_drink_earlier_than_13_percentage" = percentage.x,
+         "at_least_once_a_week_percentage" = percentage.y) %>% 
+  filter(!is.na(first_drink_earlier_than_13_percentage),
+         !is.na(at_least_once_a_week_percentage)) %>% 
+  group_by(country, gender) %>%
+  summarise(first_drink_earlier_than_13_mean = mean(first_drink_earlier_than_13_percentage),
+            at_least_once_a_week_mean = mean(at_least_once_a_week_percentage))
+
+```
+
+
+```{r}
+youth_drinking2 <- any_alcohol_in_past_12_months_tidy %>% 
+  filter(!str_detect(gender, "All"),
+         !is.na(percentage)) %>% 
+  group_by(country, gender) %>% 
+  summarise(any_alcohol_in_past_12_months_mean = mean(percentage))
+
+youth_drinking3 <- any_alcohol_in_past_30_days_tidy %>% 
+  filter(!str_detect(gender, "All"),
+         !is.na(percentage)) %>% 
+  group_by(country, gender) %>% 
+  summarise(any_alcohol_in_past_30_days_mean = mean(percentage))
+```
+
+```{r}
+youth_drinking <- youth_drinking1 %>% 
+  left_join(youth_drinking2) %>%
+  left_join(youth_drinking3) %>% 
+  filter(!is.na(any_alcohol_in_past_12_months_mean),
+         !is.na(any_alcohol_in_past_30_days_mean)) %>% 
+  select(-first_drink_earlier_than_13_mean) %>% 
+  pivot_longer(cols = -c(country, gender),
+               names_to = "frequency",
+               values_to = "percentage") %>%
+  mutate(country = ifelse(country == "United Kingdom of Great Britain and Northern Ireland", "UK", country),
+         country = ifelse(country == "United States of America", "USA", country),
+         country = ifelse(country == "Russian Federation", "Russia", country))
+
+youth_drinking$frequency <- factor(youth_drinking$frequency, levels = c("at_least_once_a_week_mean", "any_alcohol_in_past_30_days_mean", "any_alcohol_in_past_12_months_mean"))
+```
+
+Column 
+---------------------------
+
+### Barplot
+
+```{r, fig.height=6}
+freq <- youth_drinking %>% 
+  ggplot(aes(x = percentage,
+             y = reorder(country, desc(percentage)),
+             fill = gender,
+             text = country)) +
+  geom_col() +
+  facet_grid(~frequency, scales = "free_x") +
+  theme_bw() + 
+  scale_fill_brewer(palette = "Paired")
+
+ggplotly(freq)
+```
+
+  
+ 
+
+
+### Analysis  
+  
+* Based on 15-year-old adolescents & mainly based in Europe  
+* Low frequency:  
+**Northern Europe**  
+* High frequency:  
+**Malta** & **Czech** & **Denmark** & **Austria** etc.    
+* Possible reasons:  
+  + Good taste   
+  + Low price   
+* Examples: (According to a European study *ESPAD*)       
+  + Danish children: most enthusiastic drinkers  
+  + Icelandic teenagers: not being attracted to addictive substances  
+
 
 
 Limitations {.tabset} 
