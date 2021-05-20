@@ -1,10 +1,10 @@
 ---
 title: "Alcohol Consumption Patterns"
+runtime: shiny
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
     vertical_layout: scroll
-    runtime: shiny
 ---
    
 
