@@ -67,7 +67,7 @@ _Researchers:_
 Popularity {.tabset}
 ======================
 
-Column {.tabset} {data-width=100}
+Column {data-width=400}
 -------------------------------------
 
 ### Total Consumption
@@ -88,6 +88,7 @@ b_tidy
 
 ```{r}
 # Loading countries data
+
 countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
   select(admin, continent, pop_est, gdp_md_est, economy, income_grp )
 ```
@@ -147,6 +148,71 @@ b_l_country_time <- left_join(countries, b_l_country, by = c("admin" = "Country"
   transition_manual(Year)
 
   animate(b_time, duration = 30, fps = 20, width = 1000, height = 500, renderer = gifski_renderer())
+```
+
+Column {data-width=200}
+-------------------------------------
+
+### Total Percentage
+
+```{r}
+# Pivoting Beverage_Types and Year
+
+t_tidy <- consumption %>%
+  pivot_longer(cols = -c(Country, Beverage_Types),
+               names_to = "Year",
+               values_to = "Litres") %>%
+  mutate(Beverage_Types = recode(Beverage_Types,
+                                 "All types" = "All_types",
+                                 "Other alcoholic beverages" = "Other_alcoholic_beverages")) %>%
+  pivot_wider(names_from = Beverage_Types,
+              values_from = Litres) %>%
+  mutate(All_types = as.double(as.character(All_types))) %>%
+  mutate(Beer = as.double(as.character(Beer))) %>% 
+  mutate(Wine = as.double(as.character(Wine))) %>% 
+  mutate(Spirits = as.double(as.character(Spirits))) %>% 
+  mutate(Other_alcoholic_beverages = as.double(as.character(Other_alcoholic_beverages))) 
+t_tidy
+```
+
+```{r}
+t_each_type <- t_tidy %>% 
+  select(-c("Country", "Year", "All_types")) %>% 
+  summarise(Beer = sum(Beer, na.rm = TRUE),
+            Wine = sum(Wine, na.rm = TRUE),
+            Spirits = sum(Spirits, na.rm = TRUE),
+            Other_alcoholic_beverages = sum(Other_alcoholic_beverages, na.rm = TRUE)) %>%
+  pivot_longer(cols = c(Beer, Wine, Spirits, Other_alcoholic_beverages),
+               names_to = "Types",
+               values_to = "Litres") 
+
+  t_pie = plot_ly(t_each_type) %>%
+  add_pie(labels = t_each_type$Types, values = t_each_type$Litres,hole=0.6)
+  t_pie
+```
+
+
+
+
+
+
+
+
+```{r}
+consumption %>%
+  select(Beverage_Types, "2018") %>%
+  group_by(Beverage_Types) %>%
+  summarise(no = sum(`2018`, na.rm = TRUE))
+consumption
+```
+
+```{r}
+# The number of litres consumed for each country
+
+b_l_country <- b_tidy %>%
+  group_by(Country)%>%
+  summarise(Litres = sum(Litres, na.rm = TRUE))
+b_l_country
 ```
 
 
