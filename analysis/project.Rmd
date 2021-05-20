@@ -820,6 +820,10 @@ Column {.tabset}
 
 ### Cause of Mortality
 
+1. There can be unidentified alcohol-attributed deaths.
+2. It contains only 2016 data that may cause limitations in explaining the situation.
+3. There are missing data in some areas that would affect the accuracy of the analysis.
+
 ### Policy Patterns
 
 1. The values for each policy area have not been weighted by importance.
@@ -847,3 +851,11 @@ References {.tabset}
 GHO | global information system on alcohol and Health (gisah) | global information system on alcohol and health. (n.d.). Retrieved May 09, 2021, from https://apps.who.int/gho/data/node.gisah.GISAH?lang=en&amp;showonly=GISAH
 
 Need to control alcohol consumption. (2017, January 24). Retrieved May 15, 2021, from https://kuenselonline.com/need-to-control-alcohol-consumption/
+
+Writer, S. (2019, August 10). South Africa has some of the heaviest drinkers in the world. Retrieved May 20, 2021, from https://businesstech.co.za/news/lifestyle/332909/south-africa-has-some-of-the-heaviest-drinkers-in-the-world/
+
+(www.dw.com), D. W. (2015, January 05). Tanzania mulls action on alcohol misuse: DW: 05.01.2015. Retrieved May 20, 2021, from https://www.dw.com/en/tanzania-mulls-action-on-alcohol-misuse/a-18171168
+
+Meltzer, M. (2019, March 18). Your guide to drinking laws in the Arab world. Retrieved May 20, 2021, from https://matadornetwork.com/read/drinking-laws-arab-world/
+
+Drucker, D. P., Mutumbuka, D., & V, G. (2015, November 26). Literacy & the Economy. Retrieved May 20, 2021, from http://www.read.org.za/useful-info/literacy-the-economy/
