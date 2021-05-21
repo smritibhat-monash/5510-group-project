@@ -288,7 +288,6 @@ trend_total <- c_tidy %>%
 
 **How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
 
-<<<<<<< HEAD
 
 Cause of Mortality {.tabset}
 ======================
@@ -330,12 +329,6 @@ alc_traffic_death <- death_traffic %>%
 ```
 
 ### Overview on the alcohol-attributed death
-=======
-### Wine
-
-### Other
-
->>>>>>> Added the line plot of global trend
 
 ```{r}
 
