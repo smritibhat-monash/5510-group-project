@@ -4,8 +4,8 @@ output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
     orientation: columns
-    vertical_layout: scroll
     runtime: shiny
+    vertical_layout: scroll
 ---
    
 
@@ -71,7 +71,7 @@ _Researchers:_
 Popularity General {.tabset}
 ======================
 
-Column {data-width=500}
+Column {data-width=680}
 -------------------------------------
 
 ### Popular changes in beer
@@ -104,14 +104,14 @@ c_tidy <- consumption %>%
 ```{r}
 # Loading countries data
 
-countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
+Countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
   select(admin, continent, pop_est, gdp_md_est, economy, income_grp )
 ```
 
 ```{r}
 # Test unmatched countries
 
-country_test <- anti_join(c_tidy, countries, by = c("Country" = "admin"))
+country_test <- anti_join(c_tidy, Countries, by = c("Country" = "admin"))
 
 # Modify the country name consisting with rnaturalearth package
 
@@ -144,119 +144,65 @@ c_tidy <- c_tidy %>%
 ```
 
 ```{r}
-# Beer data
+spirit_data <- c_tidy %>%
+  pivot_longer(cols = All_types:Other_alcoholic_beverages,
+               names_to = "Beverage_Types",
+               values_to = "Litres") %>%
+  filter(!str_detect(Beverage_Types, "All")) %>%
+  group_by(Country, Year) %>%
+  slice(which.max(Litres))
+spirit_data
+```
 
-beer_data <- c_tidy %>%
-  select(Country, Year, Beer)
+```{r}
+type_time <- left_join(countries, spirit_data, by = c("admin" = "Country"))
 
-# Beer popularity by time
-
-beer_time <- left_join(countries, beer_data, by = c("admin" = "Country"))
-
-  b_time  <- ggplot() +
+  t_time  <- ggplot() +
   geom_sf(data = countries, fill = NA) +
-  geom_sf(data = beer_time %>% 
-  filter(!is.na(Year)), mapping = aes(fill = Beer)) +
-  scale_fill_gradient(low = "#1e5a85", high = "#a2e951",
-    space = "Lab", na.value="white", guide = "colourbar",
-    aesthetics = "fill") +
-  labs(title = "Countries where Beer is popular",
+  geom_sf(data = type_time %>% 
+  filter(!is.na(Year)), mapping = aes(fill = Beverage_Types)) +
+  scale_fill_brewer(palette = "Set2", na.value="white") +
+  labs(title = "Popularity of each type alcohol",
        subtitle = "Year: {current_frame}",
        fill = "Total") +
   theme_void() +
   theme(legend.position = "bottom") +
-  transition_manual(Year)
-
-  animate(b_time, duration = 30, fps = 20, width = 1000, 
-          height = 500, renderer = gifski_renderer())
+  
+  transition_manual(Year) 
+  animate(t_time, duration = 30, fps = 20)
 ```
 
-
-### Beer
+### Changes in the popularity of various alcoholic beverages
 
 ```{r}
-# Test unmatched countries
+seychelles_spirits <- c_tidy %>%
+  filter(Country == "Seychelles") %>%
+  pivot_longer(cols = -c(Country, Year),
+               names_to = "Beverage_Types",
+               values_to = "Litres")  %>%
+  mutate(Year = as.double(Year)) %>%
+  group_by(Beverage_Types,Year) %>%
+  na.omit()
 
-countrys_test <- anti_join(consumption, countries, by = c("Country" = "admin"))
-
-# Modify the country name consisting with rnaturalearth package
-
-consumption_c <- consumption %>%
-  mutate(Country = recode(Country,
-                             "Bahamas" = "The Bahamas",
-                             "Bolivia (Plurinational State of)" = "Bolivia",
-                             "Brunei Darussalam" = "Brunei",
-                             "Cabo Verde" = "Cape Verde",
-                             "Congo" = "Democratic Republic of the Congo",
-                             "Côte d'Ivoire" = "Ivory Coast",
-                             "Czechia" = "Czech Republic",
-                             "Democratic People's Republic of Korea" = "North Korea",
-                             "Eswatini" = "Swaziland",
-                             "Guinea-Bissau" = "Guinea Bissau",
-                             "Iran (Islamic Republic of)" = "Iran",
-                             "Lao People's Democratic Republic" = "Laos",
-                             "Micronesia (Federated States of)" = "Federated States of Micronesia",
-                             "North Macedonia" = "Macedonia",
-                             "Republic of Korea" = "South Korea",
-                             "Republic of Moldova" = "Moldova",
-                             "Russian Federation" = "Russia",
-                             "Serbia" = "Republic of Serbia",
-                             "Syrian Arab Republic" = "Syria",
-                             "Timor-Leste" = "East Timor",
-                             "Tuvalu" = "Wallis and Futuna",
-                             "United Kingdom of Great Britain and Northern Ireland" = "United Kingdom", 
-                             "Venezuela (Bolivarian Republic of)" = "Venezuela",
-                             "Viet Nam" = "Vietnam"))
+  seychelles_spirits %>%
+  ggplot(aes(x = Year,
+            y = Litres,
+            group = Beverage_Types,
+            color = Beverage_Types)) +
+  geom_line(size = 1.5) +
+  theme_linedraw() +
+  theme(panel.grid.major.x = element_blank(), 
+          axis.ticks.y = element_blank(),
+          panel.border = element_blank(),
+          legend.position='bottom') +
+  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol)",
+         y = "Litres of pure alcohol") +
+  scale_color_brewer(palette = "BrBG") +
+  scale_x_continuous(breaks=seq(1960, 2020, 5)) 
+  ggplotly()
 ```
 
-
-```{r}
-# Percentage of change
-
-b_percent <- consumption_c %>%
-  filter(Beverage_Types == "Beer") %>%
-  select("Country", "2018", "1965") %>%
-  na.omit() %>%
-  mutate("Percent" = (b_percent$"2018" - b_percent$"1965")) 
-b_percent
-```
-
-
-
-```{r}
-beer_time <- left_join(countries, b_percent, by = c("admin" = "Country"))
-ggplot()+
-  geom_sf(data = beer_time, mapping = aes(fill = Percent)) +
-  scale_fill_distiller(palette = "Spectral", na.value = "white", ) +
-    labs(title = "Beer",
-       fill = "") +
-    theme_void()+
-  theme(panel.grid.major = element_line(colour = "transparent"),
-        legend.position = "bottom")
-
-```
-
-
-
-
-
-
-### Spirits
-
-```{r}
-# Percentage of change
-
-s_data <- consumption_c %>%
-  filter(Beverage_Types == "Spirits") %>%
-  select("Country", "2018", "1965") %>%
-  na.omit() %>%
-  group_by(Country) %>%
-  mutate("Deviation" = (s_data$"2018" - s_data$"1965"))
-s_data
-```
-
-
-Column {data-width=500}
+Column {data-width=320}
 -------------------------------------
 
 ### Consumption trends of each type of alcohol
@@ -287,8 +233,51 @@ trend_total <- c_tidy %>%
 
 ### Research Question 1 
 
-**How has the popularity of each type of alcohol changed over the years for different countries and have the local favorites of earlier decades been overtaken by other types of alcohol in terms of consumption?**
+**How has the popularity of each type of alcohol changed over the**
 
+**years for different countries and have the local favorites of earlier**
+
+**decades been overtaken by other types of alcohol in terms of consumption?**
+
+### Differentiate alcohol consumption by gender
+
+```{r}
+consumption_g <- read_csv("../clean_data/consumption_gender.csv")
+
+consumption_g[consumption_g == 0] <- NA
+```
+
+```{r}
+seychelles_gender <- consumption_g %>%
+  filter(Country == "Seychelles") %>%
+  pivot_longer(cols = -c(Country, Gender),
+               names_to = "Year",
+               values_to = "Litres") %>%
+  group_by(Gender, Year)%>%
+  na.omit() 
+
+  seychelles_gender %>%
+  ggplot(aes(x = Year,
+             y = Litres,
+             group = Gender)) +
+  geom_col(aes(fill = Gender), position = "dodge") +
+  theme_grey() +
+  scale_fill_brewer(palette = "BrBG") +
+  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol)",
+       y = "Litres of pure alcohol") +
+  geom_text(aes(label = Litres), vjust = -0.5, position = position_dodge(0.9))
+```
+
+### Research Question 1 
+
+**How has the popularity of each type of alcohol changed over the**
+
+**years for different countries and have the local favorites of earlier**
+
+**decades been overtaken by other types of alcohol in terms of consumption?**
+
+
+### Differentiate alcohol consumption by gender
 
 Cause of Mortality {.tabset}
 ======================
