@@ -74,13 +74,11 @@ Popularity General {.tabset}
 Column {data-width=500}
 -------------------------------------
 
-### Total Consumption
+### Popular changes in beer
 
 ```{r}
 consumption <- read_csv("../clean_data/consumption_join.csv")
-```
 
-```{r}
 consumption[consumption == 0] <- NA
 ```
 
@@ -159,15 +157,18 @@ beer_time <- left_join(countries, beer_data, by = c("admin" = "Country"))
   geom_sf(data = countries, fill = NA) +
   geom_sf(data = beer_time %>% 
   filter(!is.na(Year)), mapping = aes(fill = Beer)) +
-  scale_fill_viridis(na.value="white") +
+  scale_fill_gradient(low = "#1e5a85", high = "#a2e951",
+    space = "Lab", na.value="white", guide = "colourbar",
+    aesthetics = "fill") +
   labs(title = "Countries where Beer is popular",
        subtitle = "Year: {current_frame}",
        fill = "Total") +
-  theme_bw() +
+  theme_void() +
   theme(legend.position = "bottom") +
   transition_manual(Year)
 
-  animate(b_time, duration = 30, fps = 20, width = 1000, height = 500, renderer = gifski_renderer())
+  animate(b_time, duration = 30, fps = 20, width = 1000, 
+          height = 500, renderer = gifski_renderer())
 ```
 
 
