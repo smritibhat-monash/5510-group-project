@@ -68,13 +68,13 @@ _Researchers:_
 - _Yin Shan Ho_
 
 
-Popularity General {.tabset}
+Popularity {.tabset}
 ======================
 
 Column {data-width=680}
 -------------------------------------
 
-### Popular changes in beer
+### Trend changes
 
 ```{r}
 consumption <- read_csv("../clean_data/consumption_join.csv")
@@ -178,8 +178,8 @@ type_time <- left_join(Countries, spirit_data, by = c("admin" = "Country"))
 t_tidy <- c_tidy %>%
   rename(All = All_types, Other = Other_alcoholic_beverages)
 
-  seychelles_spirits <- t_tidy %>%
-  filter(Country == "Seychelles") %>%
+  russia_spirits <- t_tidy %>%
+  filter(Country == "Russia") %>%
   pivot_longer(cols = -c(Country, Year),
                names_to = "Types",
                values_to = "Litres")  %>%
@@ -187,7 +187,7 @@ t_tidy <- c_tidy %>%
   group_by(Types,Year) %>%
   na.omit()
 
-  seychelles_spirits %>%
+  russia_spirits %>%
   ggplot(aes(x = Year,
             y = Litres,
             group = Types,
@@ -208,8 +208,8 @@ t_tidy <- c_tidy %>%
 ### Changes in the popularity of various alcoholic beverages
 
 ```{r}
-denmark_wine <- t_tidy %>%
-  filter(Country == "Denmark") %>%
+spain_wine <- t_tidy %>%
+  filter(Country == "Spain") %>%
   pivot_longer(cols = -c(Country, Year),
                names_to = "Types",
                values_to = "Litres")  %>%
@@ -217,7 +217,7 @@ denmark_wine <- t_tidy %>%
   group_by(Types,Year) %>%
   na.omit()
 
-  denmark_wine %>%
+  spain_wine %>%
   ggplot(aes(x = Year,
             y = Litres,
             color = Types)) +
@@ -237,7 +237,7 @@ denmark_wine <- t_tidy %>%
 Column {data-width=320}
 -------------------------------------
 
-### Consumption trends of each type of alcohol
+### Total consumption 
 
 ```{r}
 trend_total <- t_tidy %>%
@@ -263,8 +263,11 @@ trend_total <- t_tidy %>%
     scale_x_continuous(breaks=seq(1960, 2020, 5)) 
 ```
 
-### Research Question 1 
+### Analysis
 
+**Loyal enthusiast**
+
+- Beer: 
 **How has the popularity of each type of alcohol changed over the**
 
 **years for different countries and have the local favorites of earlier**
@@ -280,15 +283,15 @@ consumption_g[consumption_g == 0] <- NA
 ```
 
 ```{r}
-seychelles_gender <- consumption_g %>%
-  filter(Country == "Seychelles") %>%
+russia_gender <- consumption_g %>%
+  filter(Country == "Russian Federation") %>%
   pivot_longer(cols = -c(Country, Gender),
                names_to = "Year",
                values_to = "Litres") %>%
   group_by(Gender, Year) %>%
   na.omit()
 
-  seychelles_gender %>%
+  russia_gender %>%
   ggplot(aes(x = Year,
              y = Litres,
              fill = Gender)) +
@@ -311,15 +314,15 @@ seychelles_gender <- consumption_g %>%
 ### Differentiate alcohol consumption by gender
 
 ```{r}
-denmark_gender <- consumption_g %>%
-  filter(Country == "Denmark") %>%
+spain_gender <- consumption_g %>%
+  filter(Country == "Spain") %>%
   pivot_longer(cols = -c(Country, Gender),
                names_to = "Year",
                values_to = "Litres") %>%
   group_by(Gender, Year) %>%
   na.omit()
 
-  denmark_gender %>%
+  spain_gender %>%
   ggplot(aes(x = Year,
              y = Litres,
              fill = Gender)) +
