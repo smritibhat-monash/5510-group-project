@@ -177,21 +177,26 @@ ggplotly(p1)
 
 **Analysis:**
 
+
 - Alcohol causes the highest death rate in *Nigeria* and the lowest in *Lybia*.
 
 - Alcohol brings the highest number of deaths in African countries while the lowest in Middle East countries.
 
-- Alcohol causes more deaths to *Males*.
-
-- *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
 
 **Possible reasons affecting death rates**
 
 - Religions
 
-- Income
+In the Middle East and North African areas, most of them are Islam countries which consider drinking alcohol as very serious crimes. For example, in Saudi Arabia, consuming alcohol can bring heavy penalties such as flogging or end up in jail. In addition, the foreigners will get deportation for this. The only way to consume alcohol is from the smugglers or black market. Therefore, religion is a significant reason to the lower alcohol-attributed death rate.
 
-- Education
+- Income 
+
+Based on the table and the map, it is found that the lower income countries such as South Africa has the highest number of alcohol-attributed death. For instance, in Tanzania, there is an unauthorized locally produced low quality beverage called Congo. This drink has been proven to be very harmful to human body, however there are great amount of consumption because of its extremely low price. Moreover, as the price of Congo is even lower than food, the jobless people in Tanzania tend to consume alcohol instead of food and got addicted to alcohol. And evtually drink themselves to death. 
+
+
+- Education 
+
+On the other hand, the high income countries are found with the lowest number of death. Based on the study in 'Literacy and economy', literacy was found positively related to the income. For example, Japan is a high income country, there are educations in the harmfulness on alcohol from primary school. Therefore, people are less likely to suffer from excessive drinking.
 
 
 
