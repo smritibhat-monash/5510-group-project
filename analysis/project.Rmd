@@ -71,10 +71,10 @@ _Researchers:_
 Popularity {.tabset}
 ======================
 
-Column {data-width=680}
+Column {data-width=650}
 -------------------------------------
 
-### Trend changes
+### Popularity of each alcoholic beverage over time
 
 ```{r}
 consumption <- read_csv("../clean_data/consumption_join.csv")
@@ -178,36 +178,6 @@ type_time <- left_join(Countries, spirit_data, by = c("admin" = "Country"))
 t_tidy <- c_tidy %>%
   rename(All = All_types, Other = Other_alcoholic_beverages)
 
-  russia_spirits <- t_tidy %>%
-  filter(Country == "Russia") %>%
-  pivot_longer(cols = -c(Country, Year),
-               names_to = "Types",
-               values_to = "Litres")  %>%
-  mutate(Year = as.double(Year)) %>%
-  group_by(Types,Year) %>%
-  na.omit()
-
-  russia_spirits %>%
-  ggplot(aes(x = Year,
-            y = Litres,
-            group = Types,
-            color = Types)) +
-  geom_line(size = 1.5) +
-  theme_linedraw() +
-  theme(panel.grid.major.x = element_blank(), 
-          axis.ticks.y = element_blank(),
-          panel.border = element_blank()) +
-  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol)",
-       y = "Litres of pure alcohol",
-       legend.position='dodge') +
-  scale_color_brewer(palette = "BrBG") +
-  scale_x_continuous(breaks=seq(1960, 2020, 5)) 
-  ggplotly()
-```
-
-### Changes in the popularity of various alcoholic beverages
-
-```{r}
 spain_wine <- t_tidy %>%
   filter(Country == "Spain") %>%
   pivot_longer(cols = -c(Country, Year),
@@ -226,7 +196,7 @@ spain_wine <- t_tidy %>%
   theme(panel.grid.major.x = element_blank(), 
           axis.ticks.y = element_blank(),
           panel.border = element_blank()) +
-  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol)",
+  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol) in Spain",
        y = "Litres of pure alcohol",
        legend.position='dodge') +
   scale_color_brewer(palette = "BrBG") +
@@ -234,7 +204,7 @@ spain_wine <- t_tidy %>%
   ggplotly()
 ```
 
-Column {data-width=320}
+Column {data-width=350}
 -------------------------------------
 
 ### Total consumption 
@@ -259,6 +229,8 @@ trend_total <- t_tidy %>%
     theme(panel.grid.major.x = element_blank(), 
           axis.ticks.y = element_blank(),
           legend.position='bottom') +
+    labs(title = "Total alcohol consumption per capita (15+) in the world",
+         y = "Litres of pure alcohol") +
     scale_color_brewer(palette = "Paired") +
     scale_x_continuous(breaks=seq(1960, 2020, 5)) 
 ```
@@ -267,12 +239,17 @@ trend_total <- t_tidy %>%
 
 **Loyal enthusiast**
 
-- Beer: 
-**How has the popularity of each type of alcohol changed over the**
+- Beer: United States, Canada, United Kingdom, Germany, Australia and New Zealand
 
-**years for different countries and have the local favorites of earlier**
+- Spirits: Russia, Mongolia, China, India and Myanmar
 
-**decades been overtaken by other types of alcohol in terms of consumption?**
+- Wine: France, Italy, Portugal and Argentina
+
+**Replacement**
+
+- Spirits --> Beer *(2000)* : Brazil, Peru and Bolivia
+
+- Wine --> Beer *(1990-2000)* : Turkey, Spain and Algeria
 
 ### Differentiate alcohol consumption by gender
 
@@ -281,37 +258,6 @@ consumption_g <- read_csv("../clean_data/consumption_gender.csv")
 
 consumption_g[consumption_g == 0] <- NA
 ```
-
-```{r}
-russia_gender <- consumption_g %>%
-  filter(Country == "Russian Federation") %>%
-  pivot_longer(cols = -c(Country, Gender),
-               names_to = "Year",
-               values_to = "Litres") %>%
-  group_by(Gender, Year) %>%
-  na.omit()
-
-  russia_gender %>%
-  ggplot(aes(x = Year,
-             y = Litres,
-             fill = Gender)) +
-  labs(title = "Alcohol per capita (15+) consumption",
-       y = "Litres of pure alcohol",
-       legend.position='dodge') +
-  geom_col() +
-  scale_fill_brewer(palette = "BrBG")
-  ggplotly()
-```
-
-### Research Question 1 
-
-**How has the popularity of each type of alcohol changed over the**
-
-**years for different countries and have the local favorites of earlier**
-
-**decades been overtaken by other types of alcohol in terms of consumption?**
-
-### Differentiate alcohol consumption by gender
 
 ```{r}
 spain_gender <- consumption_g %>%
@@ -326,7 +272,7 @@ spain_gender <- consumption_g %>%
   ggplot(aes(x = Year,
              y = Litres,
              fill = Gender)) +
-  labs(title = "Alcohol per capita (15+) consumption",
+  labs(title = "Alcohol per capita (15+) consumption in Spain",
        y = "Litres of pure alcohol",
        legend.position='dodge') +
   geom_col() +
@@ -334,13 +280,11 @@ spain_gender <- consumption_g %>%
   ggplotly()
 ```
 
-### Research Question 1 
+### Trend changes in Spain
 
-**How has the popularity of each type of alcohol changed over the**
+- Total alcohol consumption continues to grow after 2010.
 
-**years for different countries and have the local favorites of earlier**
-
-**decades been overtaken by other types of alcohol in terms of consumption?**
+- The most popular wine was replaced by beer in 2002.
 
 Cause of Mortality {.tabset}
 ======================
