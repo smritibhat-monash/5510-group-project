@@ -669,7 +669,7 @@ limits_tidy <- limits1 %>%
          "heavy_rate" = heavy_drinker_percentage)
 ```
 
-Column {data-width=650}
+Column {data-width=700}
 ---------------------------
 
 
@@ -784,7 +784,7 @@ shinyApp(ui=ui, server=server, options = list(height = 500), enableBookmarking =
 
 
 
-Column {data-width=350}
+Column {data-width=450}
 ---------------------------
 
 
@@ -827,9 +827,9 @@ Column {data-width=350}
     - Drinking culture  
     - National character  
     - Natural cold  
-
-
-
+  
+The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
+  
 
 Youth Inebriation {.tabset}
 ======================
