@@ -361,7 +361,18 @@ all_loc <-left_join(Countries, map_all, by = c("admin" = "Country"))
 world_points<- st_centroid(all_loc)
 world_points <- cbind(all_loc, st_coordinates(st_centroid(all_loc$geometry)))
 
-p1 <- ggplot()+
+
+
+ui<-fluidPage(
+ titlePanel("New York City Crime Data from 2006-2016"),
+   mainPanel(plotlyOutput("crimeplot"))
+ )
+ 
+
+
+ server<-function(input,output){
+   output$crimeplot<-renderPlotly({
+     p1 <- ggplot() +
   geom_sf(data = Countries, fill = NA) +
   geom_sf(data = all_loc, mapping = aes(fill = number_of_death))+
   geom_text(data= world_points,aes(x=X, y=Y, label=admin),
@@ -372,9 +383,13 @@ p1 <- ggplot()+
   theme_void()+
   theme(panel.grid.major = element_line(colour = "transparent"),
         legend.position = "bottom")
+     ggplotly(p1)
 
-(p1)
+   })
 
+ }
+
+ shinyApp(ui = ui, server = server)
 ```
 
 ### Comparison between alcohol-attributed deaths

@@ -1,10 +1,10 @@
 ---
 title: "Alcohol Consumption Patterns"
+runtime: shiny
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
     orientation: columns
-    runtime: shiny
     vertical_layout: scroll
 ---
    
@@ -106,7 +106,7 @@ c_tidy <- consumption %>%
 # Loading countries data
 
 Countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
-  select(admin, continent, pop_est, gdp_md_est, economy, income_grp )
+  select(admin, continent, pop_est, gdp_md_est, economy, income_grp)
 ```
 
 ```{r}
@@ -158,7 +158,6 @@ spirit_data <- c_tidy %>%
 type_time <- left_join(Countries, spirit_data, by = c("admin" = "Country"))
 
   t_time  <- ggplot() +
-  geom_sf(data = Countries, fill = NA) +
   geom_sf(data = type_time %>% 
   filter(!is.na(Year)), mapping = aes(fill = Types)) +
   scale_fill_brewer(palette = "Set2", na.value="white") +
@@ -286,6 +285,7 @@ spain_gender <- consumption_g %>%
 
 - The most popular wine was replaced by beer in 2002.
 
+
 Cause of Mortality {.tabset}
 ======================
 
@@ -329,9 +329,6 @@ alc_traffic_death <- death_traffic %>%
 
 ```{r}
 
-countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
-  select(admin, continent, income_grp)
-
  alc_death_sum <- alc_death %>% 
    group_by(Country) %>% 
    summarise(number_of_death = sum(number_of_death))
@@ -360,24 +357,39 @@ map_all <- alc_death_sum %>%
                              "Venezuela (Bolivarian Republic of)" = "Venezuela",
                              "Viet Nam" = "Vietnam")) 
 
-all_loc <-left_join(countries, map_all, by = c("admin" = "Country"))
+all_loc <-left_join(Countries, map_all, by = c("admin" = "Country"))
 world_points<- st_centroid(all_loc)
 world_points <- cbind(all_loc, st_coordinates(st_centroid(all_loc$geometry)))
 
-p1 <- all_loc %>% 
-      ggplot()+
-  geom_sf(mapping = aes(fill = number_of_death))+
+
+
+ui<-fluidPage(
+ titlePanel("New York City Crime Data from 2006-2016"),
+   mainPanel(plotlyOutput("crimeplot"))
+ )
+ 
+
+
+ server<-function(input,output){
+   output$crimeplot<-renderPlotly({
+     p1 <- ggplot() +
+  geom_sf(data = Countries, fill = NA) +
+  geom_sf(data = all_loc, mapping = aes(fill = number_of_death))+
   geom_text(data= world_points,aes(x=X, y=Y, label=admin),
     color = "transparent", size = 1, check_overlap = FALSE)+
-  scale_fill_distiller(palette = "Spectral", na.value = "white", )+
-  labs(title = "Overview on number of alcohol-attributed deaths(per 100,000 population)",
+  scale_fill_distiller(palette = "Spectral", na.value = "white")+
+  labs(title = "Overview on number of alcohol-attributed deaths per 100,000 population",
        fill = "") +
   theme_void()+
   theme(panel.grid.major = element_line(colour = "transparent"),
         legend.position = "bottom")
+     ggplotly(p1)
 
-ggplotly(p1)
+   })
 
+ }
+
+ shinyApp(ui = ui, server = server)
 ```
 
 ### Comparison between alcohol-attributed deaths
@@ -437,7 +449,7 @@ ggplotly(overview)
 ```{r }
 
 alc_death %>%
-  left_join(countries, by = c("Country" = "admin")) %>% 
+  left_join(Countries, by = c("Country" = "admin")) %>% 
   mutate(income_grp = recode(income_grp,
                             `2. High income: nonOECD` = "high",
                             `5. Low income` = "low",
@@ -479,7 +491,6 @@ alc_death %>%
 - Alcohol causes more deaths to *Males*.
 
 - *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
-
 
 Policy Pattern {.tabset}
 ======================
