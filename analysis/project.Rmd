@@ -1129,17 +1129,6 @@ Meltzer, M. (2019, March 18). Your guide to drinking laws in the Arab world. Ret
 
 Drucker, D. P., Mutumbuka, D., & V, G. (2015, November 26). Literacy & the Economy. Retrieved May 20, 2021, from http://www.read.org.za/useful-info/literacy-the-economy/
 
-<<<<<<< HEAD
-
-The End {.tabset}
-======================
-
-### Thank You
-
-```{r pressure2, echo=FALSE, fig.cap="Do You?", out.width = '100%'}
-knitr::include_graphics("meme1.jpeg")
-```
-=======
   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
   https://doi.org/10.21105/joss.01686
   
@@ -1189,4 +1178,14 @@ knitr::include_graphics("meme1.jpeg")
   
     Nicholas Tierney, Di Cook, Miles McBain and Colin Fay (2020). naniar: Data Structures, Summaries, and
   Visualisations for Missing Data. R package version 0.6.0. https://CRAN.R-project.org/package=naniar
->>>>>>> main
+
+
+The End {.tabset}
+======================
+
+### Thank You
+
+```{r pressure2, echo=FALSE, fig.cap="Do You?", out.width = '100%'}
+knitr::include_graphics("meme1.jpeg")
+```
+
