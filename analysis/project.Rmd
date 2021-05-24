@@ -6,6 +6,7 @@ output:
     theme: bootstrap
     orientation: columns
     vertical_layout: scroll
+always_allow_html: yes
 ---
    
 
@@ -27,19 +28,34 @@ library(gridExtra)
 library(ggiraph)
 library(gganimate)
 library(naniar)
+library(jpeg)
+library(png)
 ```
 
 Introduction {.tabset}
 ======================
 
-Column {.tabset} {data-width=800}
+
+
+
+Column {data-width=800}
 -------------------------------------
 
 ### Background
 
-Alcohol is a psychoactive substance with dependent properties that has been widely consumed in many cultures for centuries. It has been consumed for a wide variety of purposes from celebration to mourning. Countries around the world also have different drinking cultures.
+Alcohol is a psychoactive substance with dependent properties that has been widely consumed in many cultures for centuries. It has been consumed for a wide variety of purposes from celebration to mourning.
+
+Countries around the world also have different drinking cultures.
 But the harmful use of alcohol can impose a heavy disease on the person. It also results in a social and economic burden on society. As one of the major risk factors for the health of the global population, WHO Member States in 2010 discussed and agreed to an international consensus on the Global Strategy to Reduce the Harmful Use of Alcohol.
+
+
 The reproducible report will use WHO's definitive data on alcohol and health as a dataset to further analyse alcohol consumption and the impact it has on society.
+
+### Familiar?
+
+```{r pressure, echo=FALSE, fig.cap="Disaster", out.width = '100%'}
+knitr::include_graphics("meme2.png.webp")
+```
 
 
 Column {.tabset} {data-width=200}
@@ -704,12 +720,12 @@ df <- head(df,10) %>%
 - However upon checking the largest percentage increase in per capita alcohol consumption it is visible that this policy has `r df[1]` entries.
 - This shows that the governments are not taking the efficient route.
 ```{r}
-df <- check_tbl %>%
+df_alc <- check_tbl %>%
   group_by(`Action Area`) %>%
   summarise(mean = mean(alc_diff_2)) %>%
   arrange(mean)
 
-kbl(df) %>%
+kbl(df_alc) %>%
   kable_minimal(font_size = 9) %>%
   row_spec(1, bold = T) %>%
   row_spec(10, bold = T)
@@ -1041,7 +1057,7 @@ ggplotly(freq)
 
 
 
-Limitations {.tabset} 
+Conclusions {.tabset} 
 ======================
 
 Column {.tabset}
@@ -1067,11 +1083,38 @@ Column {.tabset}
 
 ### Cause of Mortality
 
+#### Conclusion
+
+- There are lots of causes that can affect the number of alcohol-attributed deaths. 
+- The positive causes include education and religions.
+- The negative causes include poverty and lack of government interventions such as lack of controls on advertisement and the production of the unauthorized harmful alcoholic breverages.
+
+---------------------------
+#### Limitations
+
 1. There can be unidentified alcohol-attributed deaths.
 2. It contains only 2016 data that may cause limitations in explaining the situation.
 3. There are missing data in some areas that would affect the accuracy of the analysis.
 
 ### Policy Patterns
+
+#### Conclusion
+
+- There are many policy action areas that are being undertaken by countries across the world.
+- However their efforts seem focused in the wrong direction.
+- The countries need to refocus with primary efforts towards the policy action areas of -
+
+```{r}
+df_alc <- head(df_alc, 3)
+
+kbl(df_alc$`Action Area`) %>%
+  kable_minimal(font_size = 15) %>%
+  row_spec(1, bold = T)
+```
+
+
+---------------------------
+#### Limitations
 
 1. The values for each policy area have not been weighted by importance.
 2. Data is not available for a large number of countries so the analysis has been performed on the limited data set given.
@@ -1082,13 +1125,28 @@ Column {.tabset}
 
 ### Age Restrictions
 
+#### Conlusion
+
+- There are a lot of factors that influence teen drinking, such as religious beliefs, drinking culture, economic depression, national character, price of alcoholic drinks, natural cold and so on.
+
+- The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
+
+---------------------------
+#### Limitations 
+
 1. Only data in 2016 is included in the dataset.
 2. There are several countries with NAs in either age or BAC limits.  
 3. Many other factors affect adolescent drinking.  
 
 ### Youth Inebriation
 
-1. Only 15-year-olds were analyzed.  
+#### Conlusion
+
+*  In Europe, teenagers in Northern Europe drink the least.
+
+#### Limitations
+
+1. Only 15-year-old were analyzed.  
 2. Each set of data has only a few years.  
 3. Only part of countries are included in dataset.
 
@@ -1157,3 +1215,14 @@ Drucker, D. P., Mutumbuka, D., & V, G. (2015, November 26). Literacy & the Econo
   
     Nicholas Tierney, Di Cook, Miles McBain and Colin Fay (2020). naniar: Data Structures, Summaries, and
   Visualisations for Missing Data. R package version 0.6.0. https://CRAN.R-project.org/package=naniar
+
+
+The End {.tabset}
+======================
+
+### Thank You
+
+```{r pressure2, echo=FALSE, fig.cap="Do You?", out.width = '100%'}
+knitr::include_graphics("meme1.jpeg")
+```
+
