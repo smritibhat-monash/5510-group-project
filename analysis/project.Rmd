@@ -12,9 +12,7 @@ always_allow_html: yes
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-library(knitr)
 library(tidyverse)
-library(dplyr)
 library(maps)
 library(plotly)
 library(flexdashboard)
@@ -28,9 +26,7 @@ library(stringr)
 library(shiny)
 library(gridExtra)
 library(ggiraph)
-library(tidytuesdayR)
 library(gganimate)
-library(ggplot2)
 library(naniar)
 library(jpeg)
 library(png)
@@ -1133,6 +1129,7 @@ Meltzer, M. (2019, March 18). Your guide to drinking laws in the Arab world. Ret
 
 Drucker, D. P., Mutumbuka, D., & V, G. (2015, November 26). Literacy & the Economy. Retrieved May 20, 2021, from http://www.read.org.za/useful-info/literacy-the-economy/
 
+<<<<<<< HEAD
 
 The End {.tabset}
 ======================
@@ -1142,3 +1139,54 @@ The End {.tabset}
 ```{r pressure2, echo=FALSE, fig.cap="Do You?", out.width = '100%'}
 knitr::include_graphics("meme1.jpeg")
 ```
+=======
+  Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
+  https://doi.org/10.21105/joss.01686
+  
+  Original S code by Richard A. Becker, Allan R. Wilks. R version by Ray Brownrigg. Enhancements by Thomas P
+  Minka and Alex Deckmyn. (2018). maps: Draw Geographical Maps. R package version 3.3.0.
+  https://CRAN.R-project.org/package=maps
+  
+    C. Sievert. Interactive Web-Based Data Visualization with R, plotly, and shiny. Chapman and Hall/CRC Florida,
+  2020.
+  
+   Richard Iannone, JJ Allaire and Barbara Borges (2020). flexdashboard: R Markdown Format for Flexible
+  Dashboards. R package version 0.5.2. https://CRAN.R-project.org/package=flexdashboard
+  
+    Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.4.
+  https://CRAN.R-project.org/package=kableExtra
+  
+   Andy South (2017). rnaturalearth: World Map Data from Natural Earth. R package version 0.1.0.
+  https://CRAN.R-project.org/package=rnaturalearth
+
+ Erich Neuwirth (2014). RColorBrewer: ColorBrewer Palettes. R package version 1.1-2.
+  https://CRAN.R-project.org/package=RColorBrewer
+  
+   Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1),
+  439-446, https://doi.org/10.32614/RJ-2018-009
+
+ Simon Garnier, Noam Ross, Robert Rudis, Antônio P. Camargo, Marco Sciaini, and Cédric Scherer (2021). Rvision
+  - Colorblind-Friendly Color Maps for R. R package version 0.6.0.
+  
+    Joe Cheng, Bhaskar Karambelkar and Yihui Xie (2021). leaflet: Create Interactive Web Maps with the JavaScript
+  'Leaflet' Library. R package version 2.0.4.1. https://CRAN.R-project.org/package=leaflet
+
+  Hadley Wickham (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version
+  1.4.0. https://CRAN.R-project.org/package=stringr
+  
+    Winston Chang, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan
+  McPherson, Alan Dipert and Barbara Borges (2021). shiny: Web Application Framework for R. R package version
+  1.6.0. https://CRAN.R-project.org/package=shiny
+
+  Baptiste Auguie (2017). gridExtra: Miscellaneous Functions for "Grid" Graphics. R package version 2.3.
+  https://CRAN.R-project.org/package=gridExtra
+
+  David Gohel and Panagiotis Skintzos (2021). ggiraph: Make 'ggplot2' Graphics Interactive. R package version
+  0.7.9. https://CRAN.R-project.org/package=ggiraph
+  
+    Thomas Lin Pedersen and David Robinson (2020). gganimate: A Grammar of Animated Graphics. R package version
+  1.0.7. https://CRAN.R-project.org/package=gganimate
+  
+    Nicholas Tierney, Di Cook, Miles McBain and Colin Fay (2020). naniar: Data Structures, Summaries, and
+  Visualisations for Missing Data. R package version 0.6.0. https://CRAN.R-project.org/package=naniar
+>>>>>>> main
