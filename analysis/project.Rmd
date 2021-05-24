@@ -840,7 +840,15 @@ Column {.tabset}
 
 ### Age Restrictions
 
+1. Only data in 2016 is included in the dataset.
+2. There are several countries with NAs in either age or BAC limits.  
+3. Many other factors affect adolescent drinking.  
+
 ### Youth Inebriation
+
+1. Only 15-year-olds were analyzed.  
+2. Each set of data has only a few years.  
+3. Only part of countries are included in dataset.
 
 References {.tabset}
 ======================
