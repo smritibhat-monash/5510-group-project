@@ -1070,6 +1070,15 @@ Column {.tabset}
 
 ### Cause of Mortality
 
+#### Conclusion
+
+- There are lots of causes that can affect the number of alcohol-attributed deaths. 
+- The positive causes include education and religions.
+- The negative causes include poverty and lack of government interventions such as lack of controls on advertisement and the production of the unauthorized harmful alcoholic breverages.
+
+
+#### Limitations
+
 1. There can be unidentified alcohol-attributed deaths.
 2. It contains only 2016 data that may cause limitations in explaining the situation.
 3. There are missing data in some areas that would affect the accuracy of the analysis.
@@ -1103,13 +1112,27 @@ kbl(df_alc$`Action Area`) %>%
 
 ### Age Restrictions
 
+#### Conlusion
+
+- There are a lot of factors that influence teen drinking, such as religious beliefs, drinking culture, economic depression, national character, price of alcoholic drinks, natural cold and so on.
+
+- The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
+
+#### Limitations 
+
 1. Only data in 2016 is included in the dataset.
 2. There are several countries with NAs in either age or BAC limits.  
 3. Many other factors affect adolescent drinking.  
 
 ### Youth Inebriation
 
-1. Only 15-year-olds were analyzed.  
+#### Conlusion
+
+*  In Europe, teenagers in Northern Europe drink the least.
+
+#### Limitations
+
+1. Only 15-year-old were analyzed.  
 2. Each set of data has only a few years.  
 3. Only part of countries are included in dataset.
 
