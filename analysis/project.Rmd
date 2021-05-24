@@ -1,10 +1,11 @@
 ---
 title: "Alcohol Consumption Patterns"
+runtime: shiny
 output:
   flexdashboard::flex_dashboard:
     theme: bootstrap
+    orientation: columns
     vertical_layout: scroll
-runtime: shiny
 ---
    
 
@@ -70,38 +71,52 @@ _Researchers:_
 Popularity {.tabset}
 ======================
 
-Column {data-width=500}
+Column {data-width=650}
 -------------------------------------
 
-### Total Consumption
+### Popularity of each alcoholic beverage over time
 
 ```{r}
-
 consumption <- read_csv("../clean_data/consumption_join.csv")
 
+consumption[consumption == 0] <- NA
 ```
 
 ```{r}
 # Pivoting Beverage_Types and Year
 
-c_tidy1 <- consumption %>%
-  pivot_longer(cols = -c(Country, Beverage_Types),
+c_tidy <- consumption %>%
+  rename(Types = Beverage_Types) %>%
+  pivot_longer(cols = -c(Country, Types),
                names_to = "Year",
-               values_to = "Litres")
+               values_to = "Litres") %>%
+  mutate(Types = recode(Types,
+                        "All types" = "All_types",
+                        "Other alcoholic beverages" = "Other_alcoholic_beverages")) %>%
+  pivot_wider(names_from = Types,
+              values_from = Litres) %>%
+  mutate(All_types = as.double(as.character(All_types))) %>%
+  mutate(Beer = as.double(as.character(Beer))) %>% 
+  mutate(Wine = as.double(as.character(Wine))) %>% 
+  mutate(Spirits = as.double(as.character(Spirits))) %>% 
+  mutate(Other_alcoholic_beverages = as.double(as.character(Other_alcoholic_beverages))) 
 ```
 
 ```{r}
 # Loading countries data
 
-countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
-  select(admin, continent, pop_est, gdp_md_est, economy, income_grp )
+Countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
+  select(admin, continent, pop_est, gdp_md_est, economy, income_grp)
 ```
 
 ```{r}
+# Test unmatched countries
+
+country_test <- anti_join(c_tidy, Countries, by = c("Country" = "admin"))
 
 # Modify the country name consisting with rnaturalearth package
 
-c_tidy <- c_tidy1 %>%
+c_tidy <- c_tidy %>%
   mutate(Country = recode(Country,
                              "Bahamas" = "The Bahamas",
                              "Bolivia (Plurinational State of)" = "Bolivia",
@@ -131,57 +146,144 @@ c_tidy <- c_tidy1 %>%
 
 ```{r}
 spirit_data <- c_tidy %>%
-  filter(!str_detect(Beverage_Types, "All")) %>%
+  pivot_longer(cols = All_types:Other_alcoholic_beverages,
+               names_to = "Types",
+               values_to = "Litres") %>%
+  filter(!str_detect(Types, "All")) %>%
   group_by(Country, Year) %>%
   slice(which.max(Litres))
 ```
 
 ```{r}
+type_time <- left_join(Countries, spirit_data, by = c("admin" = "Country"))
 
-# Alcohol popularity by time
-
-alc_time <- left_join(countries, spirit_data, by = c("admin" = "Country"))
-
-  # b_time  <- ggplot() +
-  # geom_sf(data = countries, fill = NA) +
-  # geom_sf(data = alc_time %>% 
-  # filter(!is.na(Year)), mapping = aes(fill = Beverage_Types)) +
-  # labs(title = "Change in popularity of alcohol",
-  #      subtitle = "Year: {current_frame}",
-  #      fill = "Total") +
-  # theme_bw() +
-  # theme(legend.position = "bottom") +
-  # transition_manual(Year)
-  # 
-  # animate(b_time, duration = 30, fps = 20)
+  t_time  <- ggplot() +
+  geom_sf(data = type_time %>% 
+  filter(!is.na(Year)), mapping = aes(fill = Types)) +
+  scale_fill_brewer(palette = "Set2", na.value="white") +
+  labs(title = "Popularity of each type alcohol",
+       subtitle = "Year: {current_frame}",
+       fill = "Total") +
+  theme_void() +
+  theme(legend.position = "bottom") +
+  
+  transition_manual(Year) 
+  animate(t_time, duration = 30, fps = 20, width = 1060, height = 480)
 ```
 
-
-Column {data-width=500}
--------------------------------------
-
-### Consumption trends of each type of alcohol
+### Changes in the popularity of various alcoholic beverages
 
 ```{r}
-trend_total <- c_tidy1 %>%
+t_tidy <- c_tidy %>%
+  rename(All = All_types, Other = Other_alcoholic_beverages)
+
+spain_wine <- t_tidy %>%
+  filter(Country == "Spain") %>%
+  pivot_longer(cols = -c(Country, Year),
+               names_to = "Types",
+               values_to = "Litres")  %>%
   mutate(Year = as.double(Year)) %>%
-  group_by(Beverage_Types,Year) %>%
+  group_by(Types,Year) %>%
+  na.omit()
+
+  spain_wine %>%
+  ggplot(aes(x = Year,
+            y = Litres,
+            color = Types)) +
+  geom_line(size = 1.5) +
+  theme_linedraw() +
+  theme(panel.grid.major.x = element_blank(), 
+          axis.ticks.y = element_blank(),
+          panel.border = element_blank()) +
+  labs(title = "Alcohol per capita (15+) consumption (in litres of pure alcohol) in Spain",
+       y = "Litres of pure alcohol",
+       legend.position='dodge') +
+  scale_color_brewer(palette = "BrBG") +
+  scale_x_continuous(breaks=seq(1960, 2020, 5)) 
+  ggplotly()
+```
+
+Column {data-width=350}
+-------------------------------------
+
+### Total consumption 
+
+```{r}
+trend_total <- t_tidy %>%
+  pivot_longer(cols = -c(Country, Year),
+               names_to = "Types",
+               values_to = "Litres") %>%
+  mutate(Year = as.double(Year)) %>%
+  group_by(Types,Year) %>%
   na.omit() %>%
   summarise(sum = sum(Litres, na.rm = TRUE))
   
-  # trend_total %>%
-  # ggplot(aes(x = Year,
-  #           y = sum,
-  #           group = Beverage_Types,
-  #           color = Beverage_Types)) +
-  # geom_line(size = 1.5) +
-  #   theme_classic() +
-  #   theme(panel.grid.major.x = element_blank(), 
-  #         axis.ticks.y = element_blank(),
-  #         legend.position='bottom') +
-  #   scale_color_brewer(palette = "Paired") +
-  #   scale_x_continuous(breaks=seq(1960, 2020, 5)) 
+  trend_total %>%
+  ggplot(aes(x = Year,
+            y = sum,
+            group = Types,
+            color = Types)) +
+  geom_line(size = 1.5) +
+    theme_classic() +
+    theme(panel.grid.major.x = element_blank(), 
+          axis.ticks.y = element_blank(),
+          legend.position='bottom') +
+    labs(title = "Total alcohol consumption per capita (15+) in the world",
+         y = "Litres of pure alcohol") +
+    scale_color_brewer(palette = "Paired") +
+    scale_x_continuous(breaks=seq(1960, 2020, 5)) 
 ```
+
+### Analysis
+
+**Loyal enthusiast**
+
+- Beer: United States, Canada, United Kingdom, Germany, Australia and New Zealand
+
+- Spirits: Russia, Mongolia, China, India and Myanmar
+
+- Wine: France, Italy, Portugal and Argentina
+
+**Replacement**
+
+- Spirits --> Beer *(2000)* : Brazil, Peru and Bolivia
+
+- Wine --> Beer *(1990-2000)* : Turkey, Spain and Algeria
+
+### Differentiate alcohol consumption by gender
+
+```{r}
+consumption_g <- read_csv("../clean_data/consumption_gender.csv")
+
+consumption_g[consumption_g == 0] <- NA
+```
+
+```{r}
+spain_gender <- consumption_g %>%
+  filter(Country == "Spain") %>%
+  pivot_longer(cols = -c(Country, Gender),
+               names_to = "Year",
+               values_to = "Litres") %>%
+  group_by(Gender, Year) %>%
+  na.omit()
+
+  spain_gender %>%
+  ggplot(aes(x = Year,
+             y = Litres,
+             fill = Gender)) +
+  labs(title = "Alcohol per capita (15+) consumption in Spain",
+       y = "Litres of pure alcohol",
+       legend.position='dodge') +
+  geom_col() +
+  scale_fill_brewer(palette = "BrBG")
+  ggplotly()
+```
+
+### Trend changes in Spain
+
+- Total alcohol consumption continues to grow after 2010.
+
+- The most popular wine was replaced by beer in 2002.
 
 
 Cause of Mortality {.tabset}
@@ -227,9 +329,6 @@ alc_traffic_death <- death_traffic %>%
 
 ```{r}
 
-countries <- ne_countries(returnclass = "sf", scale = "medium") %>%
-  select(admin, continent, income_grp)
-
  alc_death_sum <- alc_death %>% 
    group_by(Country) %>% 
    summarise(number_of_death = sum(number_of_death))
@@ -258,24 +357,39 @@ map_all <- alc_death_sum %>%
                              "Venezuela (Bolivarian Republic of)" = "Venezuela",
                              "Viet Nam" = "Vietnam")) 
 
-all_loc <-left_join(countries, map_all, by = c("admin" = "Country"))
+all_loc <-left_join(Countries, map_all, by = c("admin" = "Country"))
 world_points<- st_centroid(all_loc)
 world_points <- cbind(all_loc, st_coordinates(st_centroid(all_loc$geometry)))
 
-p1 <- all_loc %>% 
-      ggplot()+
-  geom_sf(mapping = aes(fill = number_of_death))+
+
+
+ui<-fluidPage(
+ titlePanel("New York City Crime Data from 2006-2016"),
+   mainPanel(plotlyOutput("crimeplot"))
+ )
+ 
+
+
+ server<-function(input,output){
+   output$crimeplot<-renderPlotly({
+     p1 <- ggplot() +
+  geom_sf(data = Countries, fill = NA) +
+  geom_sf(data = all_loc, mapping = aes(fill = number_of_death))+
   geom_text(data= world_points,aes(x=X, y=Y, label=admin),
     color = "transparent", size = 1, check_overlap = FALSE)+
-  scale_fill_distiller(palette = "Spectral", na.value = "white", )+
-  labs(title = "Overview on number of alcohol-attributed deaths(per 100,000 population)",
+  scale_fill_distiller(palette = "Spectral", na.value = "white")+
+  labs(title = "Overview on number of alcohol-attributed deaths per 100,000 population",
        fill = "") +
   theme_void()+
   theme(panel.grid.major = element_line(colour = "transparent"),
         legend.position = "bottom")
+     ggplotly(p1)
 
-ggplotly(p1)
+   })
 
+ }
+
+ shinyApp(ui = ui, server = server)
 ```
 
 ### Comparison between alcohol-attributed deaths
@@ -335,7 +449,7 @@ ggplotly(overview)
 ```{r }
 
 alc_death %>%
-  left_join(countries, by = c("Country" = "admin")) %>% 
+  left_join(Countries, by = c("Country" = "admin")) %>% 
   mutate(income_grp = recode(income_grp,
                             `2. High income: nonOECD` = "high",
                             `5. Low income` = "low",
@@ -377,7 +491,6 @@ alc_death %>%
 - Alcohol causes more deaths to *Males*.
 
 - *Liver Cirrhosis* causes the highest death rate while *Road Traffic Accidents* causes the lowest.
-
 
 Policy Pattern {.tabset}
 ======================
@@ -669,7 +782,7 @@ limits_tidy <- limits1 %>%
          "heavy_rate" = heavy_drinker_percentage)
 ```
 
-Column {data-width=700}
+Column {data-width=650}
 ---------------------------
 
 
@@ -784,7 +897,7 @@ shinyApp(ui=ui, server=server, options = list(height = 500), enableBookmarking =
 
 
 
-Column {data-width=450}
+Column {data-width=350}
 ---------------------------
 
 
@@ -827,9 +940,9 @@ Column {data-width=450}
     - Drinking culture  
     - National character  
     - Natural cold  
-  
-The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
-  
+
+
+
 
 Youth Inebriation {.tabset}
 ======================
