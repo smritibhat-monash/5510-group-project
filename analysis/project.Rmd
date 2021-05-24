@@ -1075,6 +1075,7 @@ Column {.tabset}
 - For countries where wine and spirits were the most popular alcohol types at the beginning, these two types of alcohol have been replaced by beer to varying degrees.
 
 ---------------------------
+
 #### Limitations
 
 1. Since Unrecorded consumption data only has data for one year in 2019, there is no way to combine it with the recorded data to get more accurate results.
@@ -1089,6 +1090,7 @@ Column {.tabset}
 - The positive causes include education and religions.
 - The negative causes include poverty and lack of government interventions such as lack of controls on advertisement and the production of the unauthorized harmful alcoholic breverages.
 
+---------------------------
 
 #### Limitations
 
@@ -1114,6 +1116,7 @@ kbl(df_alc$`Action Area`) %>%
 
 
 ---------------------------
+
 #### Limitations
 
 1. The values for each policy area have not been weighted by importance.
@@ -1131,6 +1134,8 @@ kbl(df_alc$`Action Area`) %>%
 
 - The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
 
+---------------------------
+
 #### Limitations 
 
 1. Only data in 2016 is included in the dataset.
@@ -1142,6 +1147,8 @@ kbl(df_alc$`Action Area`) %>%
 #### Conlusion
 
 *  In Europe, teenagers in Northern Europe drink the least.
+
+---------------------------
 
 #### Limitations
 
