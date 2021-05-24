@@ -364,22 +364,20 @@ world_points <- cbind(all_loc, st_coordinates(st_centroid(all_loc$geometry)))
 
 
 ui<-fluidPage(
- titlePanel("New York City Crime Data from 2006-2016"),
-   mainPanel(plotlyOutput("crimeplot"))
+ titlePanel("Number of alcohol-attributed deaths per 100,000 population"),
+   mainPanel(plotlyOutput("deathplot"))
  )
  
 
 
  server<-function(input,output){
-   output$crimeplot<-renderPlotly({
+   output$deathplot<-renderPlotly({
      p1 <- ggplot() +
-  geom_sf(data = Countries, fill = NA) +
   geom_sf(data = all_loc, mapping = aes(fill = number_of_death))+
   geom_text(data= world_points,aes(x=X, y=Y, label=admin),
     color = "transparent", size = 1, check_overlap = FALSE)+
   scale_fill_distiller(palette = "Spectral", na.value = "white")+
-  labs(title = "Overview on number of alcohol-attributed deaths per 100,000 population",
-       fill = "") +
+  labs(fill = "") +
   theme_void()+
   theme(panel.grid.major = element_line(colour = "transparent"),
         legend.position = "bottom")
