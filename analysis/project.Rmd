@@ -697,7 +697,7 @@ ggplotly(p) %>%
 act_area <-  length(unique(policy_country_group$`Action Area`))
 ```
 
-- There are `r act_area` main areas of Policy Actions that the effectiveness are measured for.
+- There are **`r act_area`** main areas of Policy Actions that the effectiveness are measured for.
 From the figure of Policies favored across countries from the years 2010-2016, it is visible that 'Leadership, awareness and commitment' policies are the ones that are being favored by most countries.
 ```{r}
 df <- check_tbl %>%
@@ -708,7 +708,7 @@ df <- head(df,10) %>%
   length()
 ```
 
-- Upon checking the largest percentage decrease in per capita alcohol consumption it is visible that this policy has only `r df` entry which has resulted in a decrease.
+- Upon checking the largest percentage decrease in per capita alcohol consumption it is visible that this policy has only **`r df`** entry which has resulted in a decrease.
 ```{r}
 df <- check_tbl %>%
   arrange(desc(alc_diff_2))
@@ -717,8 +717,8 @@ df <- head(df,10) %>%
   tally()
 ```
 
-- However upon checking the largest percentage increase in per capita alcohol consumption it is visible that this policy has `r df[1]` entries.
-- This shows that the governments are not taking the efficient route.
+- However upon checking the largest percentage increase in per capita alcohol consumption it is visible that this policy has **`r df[1]`** entries.
+- **This shows that the governments are not taking the efficient route**.
 ```{r}
 df_alc <- check_tbl %>%
   group_by(`Action Area`) %>%
@@ -730,9 +730,9 @@ kbl(df_alc) %>%
   row_spec(1, bold = T) %>%
   row_spec(10, bold = T)
 ```
-- From the table we can see that the most efficient action area seems to be - `r paste(df$'Action Area'[1])`
-- While the least efficient area is - `r paste(df$'Action Area'[10])`
-- One area of relief is that the second most efficent action area i.e., `r paste(df$'Action Area'[2])`, is also the second most used strategy by countries across the world.
+- From the table we can see that the most efficient action area seems to be - **`r paste(df_alc$'Action Area'[1])`**
+- While the least efficient area is - **`r paste(df_alc$'Action Area'[10])`**
+- **`r paste(df_alc$'Action Area'[2])`** and **`r paste(df_alc$'Action Area'[3])`** is also said to be efficient however the government refuses to take up these courses of action
 ```{r}
 df1 <- check_tbl %>%
   filter(alc_diff_2 == min(alc_diff_2))
@@ -1060,11 +1060,12 @@ ggplotly(freq)
 Conclusions {.tabset} 
 ======================
 
-Column {.tabset}
----------------------------
+
 ### Popularity
 
-#### Conclusion
+
+**Conclusion**
+
 
 - Global alcohol consumption continues to grow, and the most popular one is beer.
 
@@ -1074,9 +1075,9 @@ Column {.tabset}
 
 - For countries where wine and spirits were the most popular alcohol types at the beginning, these two types of alcohol have been replaced by beer to varying degrees.
 
----------------------------
 
-#### Limitations
+
+**Limitations**
 
 1. Since Unrecorded consumption data only has data for one year in 2019, there is no way to combine it with the recorded data to get more accurate results.
 2. The data in the early years is relatively incomplete.
@@ -1084,23 +1085,25 @@ Column {.tabset}
 
 ### Cause of Mortality
 
-#### Conclusion
+**Conclusion**
 
 - There are lots of causes that can affect the number of alcohol-attributed deaths. 
 - The positive causes include education and religions.
 - The negative causes include poverty and lack of government interventions such as lack of controls on advertisement and the production of the unauthorized harmful alcoholic breverages.
 
----------------------------
 
-#### Limitations
+**Limitations**
 
 1. There can be unidentified alcohol-attributed deaths.
 2. It contains only 2016 data that may cause limitations in explaining the situation.
 3. There are missing data in some areas that would affect the accuracy of the analysis.
 
+
 ### Policy Patterns
 
-#### Conclusion
+
+**Conclusion**
+
 
 - There are many policy action areas that are being undertaken by countries across the world.
 - However their efforts seem focused in the wrong direction.
@@ -1115,9 +1118,8 @@ kbl(df_alc$`Action Area`) %>%
 ```
 
 
----------------------------
 
-#### Limitations
+**Limitations**
 
 1. The values for each policy area have not been weighted by importance.
 2. Data is not available for a large number of countries so the analysis has been performed on the limited data set given.
@@ -1128,15 +1130,14 @@ kbl(df_alc$`Action Area`) %>%
 
 ### Age Restrictions
 
-#### Conlusion
+**Conclusion**
 
 - There are a lot of factors that influence teen drinking, such as religious beliefs, drinking culture, economic depression, national character, price of alcoholic drinks, natural cold and so on.
 
 - The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
 
----------------------------
 
-#### Limitations 
+**Limitations** 
 
 1. Only data in 2016 is included in the dataset.
 2. There are several countries with NAs in either age or BAC limits.  
@@ -1144,13 +1145,12 @@ kbl(df_alc$`Action Area`) %>%
 
 ### Youth Inebriation
 
-#### Conlusion
+**Conclusion**
 
-*  In Europe, teenagers in Northern Europe drink the least.
+- In Europe, teenagers in Northern Europe drink the least.
 
----------------------------
 
-#### Limitations
+**Limitations**
 
 1. Only 15-year-old were analyzed.  
 2. Each set of data has only a few years.  
