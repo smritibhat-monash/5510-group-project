@@ -1064,6 +1064,19 @@ Column {.tabset}
 ---------------------------
 ### Popularity
 
+#### Conclusion
+
+- Global alcohol consumption continues to grow, and the most popular one is beer.
+
+- South America, Brazil, Peru and Bolivia which were most interested in spirits at the beginning, were replaced by beer in around 2000.
+
+- Wine was most popular in Turkey, Spain, and Algeria, but it was replaced by beer from 1990 to 2000.
+
+- For countries where wine and spirits were the most popular alcohol types at the beginning, these two types of alcohol have been replaced by beer to varying degrees.
+
+---------------------------
+#### Limitations
+
 1. Since Unrecorded consumption data only has data for one year in 2019, there is no way to combine it with the recorded data to get more accurate results.
 2. The data in the early years is relatively incomplete.
 3. Some countries have data interruptions for several consecutive years.
