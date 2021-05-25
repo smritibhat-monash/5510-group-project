@@ -1060,51 +1060,19 @@ ggplotly(freq)
 Conclusions {.tabset} 
 ======================
 
+Column {.tabset}
+--------------------
 
-### Popularity
-
-
-**Conclusion**
+### Conclusion
 
 
 - Global alcohol consumption continues to grow, and the most popular one is beer.
-
 - South America, Brazil, Peru and Bolivia which were most interested in spirits at the beginning, were replaced by beer in around 2000.
-
 - Wine was most popular in Turkey, Spain, and Algeria, but it was replaced by beer from 1990 to 2000.
-
 - For countries where wine and spirits were the most popular alcohol types at the beginning, these two types of alcohol have been replaced by beer to varying degrees.
-
-
-
-**Limitations**
-
-1. Since Unrecorded consumption data only has data for one year in 2019, there is no way to combine it with the recorded data to get more accurate results.
-2. The data in the early years is relatively incomplete.
-3. Some countries have data interruptions for several consecutive years.
-
-### Cause of Mortality
-
-**Conclusion**
-
 - There are lots of causes that can affect the number of alcohol-attributed deaths. 
 - The positive causes include education and religions.
 - The negative causes include poverty and lack of government interventions such as lack of controls on advertisement and the production of the unauthorized harmful alcoholic breverages.
-
-
-**Limitations**
-
-1. There can be unidentified alcohol-attributed deaths.
-2. It contains only 2016 data that may cause limitations in explaining the situation.
-3. There are missing data in some areas that would affect the accuracy of the analysis.
-
-
-### Policy Patterns
-
-
-**Conclusion**
-
-
 - There are many policy action areas that are being undertaken by countries across the world.
 - However their efforts seem focused in the wrong direction.
 - The countries need to refocus with primary efforts towards the policy action areas of -
@@ -1117,41 +1085,27 @@ kbl(df_alc$`Action Area`) %>%
   row_spec(1, bold = T)
 ```
 
+- There are a lot of factors that influence teen drinking, such as religious beliefs, drinking culture, economic depression, national character, price of alcoholic drinks, natural cold and so on.
+- The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
+- In Europe, teenagers in Northern Europe drink the least
 
 
-**Limitations**
 
+### Limitations
+
+1. Since Unrecorded consumption data only has data for one year in 2019, there is no way to combine it with the recorded data to get more accurate results.
+2. The data in the early years is relatively incomplete.
+3. Some countries have data interruptions for several consecutive years.
+1. There can be unidentified alcohol-attributed deaths.
+2. It contains only 2016 data that may cause limitations in explaining the situation.
+3. There are missing data in some areas that would affect the accuracy of the analysis.
 1. The values for each policy area have not been weighted by importance.
 2. Data is not available for a large number of countries so the analysis has been performed on the limited data set given.
 3. This analysis has only been limited between the years of 2010-2016.
 4. There could be population/age bias as demographic data is unavailable.
-
-
-
-### Age Restrictions
-
-**Conclusion**
-
-- There are a lot of factors that influence teen drinking, such as religious beliefs, drinking culture, economic depression, national character, price of alcoholic drinks, natural cold and so on.
-
-- The reason that some of the country's restrictions have little to do with the proportion of youth alcohol drinking is that what matters is whether the policy is strictly enforced and how effective it is.
-
-
-**Limitations** 
-
 1. Only data in 2016 is included in the dataset.
 2. There are several countries with NAs in either age or BAC limits.  
 3. Many other factors affect adolescent drinking.  
-
-### Youth Inebriation
-
-**Conclusion**
-
-- In Europe, teenagers in Northern Europe drink the least.
-
-
-**Limitations**
-
 1. Only 15-year-old were analyzed.  
 2. Each set of data has only a few years.  
 3. Only part of countries are included in dataset.
